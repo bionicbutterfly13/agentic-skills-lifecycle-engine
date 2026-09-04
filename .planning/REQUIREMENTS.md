@@ -144,13 +144,53 @@ evaluation shows that it helps without violating correctness or safety.
 
 ## Traceability
 
-Roadmap phase mappings will be added when the initial roadmap is approved.
+| Requirement | Phase | Status |
+|-------------|-------|--------|
+| PROJ-01 | Phase 1 | Pending |
+| PROJ-02 | Phase 1 | Pending |
+| PROJ-03 | Phase 1 | Pending |
+| CORE-01 | Phase 7 | Pending |
+| CORE-02 | Phase 2 | Pending |
+| CORE-03 | Phase 2 | Pending |
+| EVID-01 | Phase 5 | Pending |
+| EVID-02 | Phase 3 | Pending |
+| EVID-03 | Phase 2 | Pending |
+| EVID-04 | Phase 5 | Pending |
+| LIFE-01 | Phase 5 | Pending |
+| LIFE-02 | Phase 9 | Pending |
+| LIFE-03 | Phase 5 | Pending |
+| LIFE-04 | Phase 9 | Pending |
+| STAT-01 | Phase 5 | Pending |
+| STAT-02 | Phase 5 | Pending |
+| STAT-03 | Phase 5 | Pending |
+| SECU-01 | Phase 4 | Pending |
+| SECU-02 | Phase 4 | Pending |
+| SECU-03 | Phase 4 | Pending |
+| SECU-04 | Phase 4 | Pending |
+| DAED-01 | Phase 7 | Pending |
+| DAED-02 | Phase 7 | Pending |
+| DAED-03 | Phase 7 | Pending |
+| STUD-01 | Phase 8 | Pending |
+| STUD-02 | Phase 8 | Pending |
+| STUD-03 | Phase 8 | Pending |
+| STUD-04 | Phase 9 | Pending |
+| STUD-05 | Phase 8 | Pending |
+| STUD-06 | Phase 3 | Pending |
+| STUD-07 | Phase 9 | Pending |
+| DIST-01 | Phase 10 | Pending |
+| DIST-02 | Phase 10 | Pending |
+| DIST-03 | Phase 10 | Pending |
+| DOCS-01 | Phase 1 | Pending |
+| DOCS-02 | Phase 1 | Pending |
+| SALV-01 | Phase 6 | Pending |
+| SALV-02 | Phase 6 | Pending |
+| SALV-03 | Phase 6 | Pending |
 
 **Coverage:**
 - v1 requirements: 39 total
-- Mapped to phases: 0
-- Unmapped: 39
+- Mapped to phases: 39
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-09-04*
-*Last updated: 2026-09-04 after initial definition*
+*Last updated: 2026-09-04 after initial roadmap creation*
