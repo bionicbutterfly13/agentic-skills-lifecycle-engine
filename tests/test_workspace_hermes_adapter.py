@@ -361,20 +361,42 @@ def test_hermes_adapter_selects_zero_workers_and_has_no_launch_surface() -> None
     assert function_names == {"capability_report", "_handle_capabilities", "register"}
 
 
-def test_current_tree_is_community_scan_clean() -> None:
+def test_current_tree_is_community_scan_clean(tmp_path: Path) -> None:
     package_root = Path(__file__).parents[1]
-    projection = build_projection(
-        source_root=package_root,
-        compatibility=Compatibility(
-            contract_version="asme.contract.v1",
-            core_version="0.1.0",
-            package_version="0.1.0",
-            adapter_id="hermes",
-            adapter_version="0.1.0",
-            runtime_min_tested="0.20.5",
-            runtime_max_tested="0.20.6",
-            runtime_tested=("0.20.5", "0.20.6"),
-        ),
-        source_attribution=({"title": "WikiSkill", "license": "CC BY 4.0"},),
+    spec = importlib.util.spec_from_file_location(
+        "distribution_boundary", package_root / "scripts/verify_distribution.py"
     )
-    assert projection.files
+    boundary = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(boundary)
+    files = boundary.source_distribution_files(package_root)
+    from asme.package import scan_community_safety
+    scan_community_safety(files)
+    # A full, isolated source fixture keeps the generic rejection meaningful in an sdist.
+    for name, content in files.items():
+        target = tmp_path / name
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(content)
+    internal = tmp_path / ".planning/private.md"
+    internal.parent.mkdir()
+    internal.write_bytes(b"/" + b"Users" + b"/private-fixture/work")
+    with pytest.raises(ContractError, match="private absolute"):
+        build_projection(
+            source_root=tmp_path,
+            compatibility=Compatibility(
+                contract_version="asme.contract.v1",
+                core_version="0.1.0",
+                package_version="0.1.0",
+                adapter_id="hermes",
+                adapter_version="0.1.0",
+                runtime_min_tested="0.20.5",
+                runtime_max_tested="0.20.6",
+                runtime_tested=("0.20.5", "0.20.6"),
+            ),
+            source_attribution=({"title": "WikiSkill", "license": "CC BY 4.0"},),
+        )
+    for name in ("docs/research/wikiskill-code-parity.md",
+                 "docs/evidence/wikiskill-parity-audit.json"):
+        if (package_root / name).is_file():
+            assert name not in files
+            with pytest.raises(ContractError, match="private absolute"):
+                scan_community_safety({name: (package_root / name).read_bytes()})
