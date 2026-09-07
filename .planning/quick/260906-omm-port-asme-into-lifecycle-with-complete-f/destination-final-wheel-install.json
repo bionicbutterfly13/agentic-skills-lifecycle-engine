@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "python3",
+    "-m",
+    "pip",
+    "install",
+    "--no-index",
+    "--no-deps",
+    "--target",
+    "build/port-wheel-install-final",
+    "build/port-verification-final/agent_skill_mastery_engine-0.2.0-py3-none-any.whl"
+  ],
+  "started_at": "2026-09-07T02:12:19.912746+00:00",
+  "finished_at": "2026-09-07T02:12:36.127447+00:00",
+  "elapsed_seconds": 16.213,
+  "exit_code": 0,
+  "stdout": "Processing ./build/port-verification-final/agent_skill_mastery_engine-0.2.0-py3-none-any.whl\nInstalling collected packages: agent-skill-mastery-engine\nSuccessfully installed agent-skill-mastery-engine-0.2.0\n",
+  "stderr": "",
+  "scope": "Offline installation into task-owned target; no dependency or global installation"
+}

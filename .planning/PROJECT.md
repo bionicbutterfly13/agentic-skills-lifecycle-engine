@@ -20,8 +20,10 @@ that it helps without violating correctness or safety.
 
 ### Validated
 
-(None yet. Research and experimental design exist, but the engine has not been
-implemented or run.)
+(The broader Lifecycle requirements below remain unvalidated. The preserved ASME
+compatibility implementation is now present; its migration and offline verification
+are recorded separately in `docs/migration/asme-port.md` and
+`docs/evidence/asme-port-verification.json`.)
 
 ### Active
 
@@ -71,9 +73,17 @@ and an event ledger are part of the planned contract. Correctness is the hard ga
 efficiency is secondary. Promotion is study-local, and weak evidence requires
 abstention.
 
-No Lifecycle implementation or live study exists yet. The current evidence supports a
-project definition and a falsifiable first experiment, not a claim that the engine
-works.
+Lifecycle now contains the preserved Agent Skill Mastery Engine implementation under
+its existing `asme` namespace, CLI, package identity and version. The compatibility
+port retains the original source repository and records file preservation, offline
+checks and remaining limitations in `docs/migration/asme-port.md`. These checks do
+not establish live Hermes execution or a successful controlled study.
+
+The current autonomous milestone is strict WikiSkill v1 parity, with an audit and
+scoped GSD workstream tracked separately from this broader project design. The
+systems-foundation features and Daedalus study above remain broader project goals;
+they are not added to the WikiSkill implementation scope. No paper-performance or
+empirical parity claim is established by the import.
 
 ## Constraints
 
@@ -124,4 +134,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with verified project state.
 
 ---
-*Last updated: 2026-09-04 after initialization*
+*Last updated: 2026-09-06 for the ASME compatibility import; broader requirements remain pending*

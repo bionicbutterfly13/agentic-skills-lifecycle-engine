@@ -1,0 +1,124 @@
+{
+  "conclusion": "Public code and release within one week verified; an August 27-30 push is not established by these records. Git author/committer dates are not GitHub receipt timestamps.",
+  "events": [
+    {
+      "before": null,
+      "created_at": "2026-09-02T11:59:32Z",
+      "head": null,
+      "id": "19934292799",
+      "ref": "feat/install-path",
+      "type": "DeleteEvent"
+    },
+    {
+      "before": "c1f6d08d641fb7b7c05a6c123a564f630bcdb34f",
+      "created_at": "2026-09-02T11:59:24Z",
+      "head": "c79097aea0da803b84f4f75db7395063b98d0705",
+      "id": "19933752762",
+      "ref": "refs/heads/main",
+      "type": "PushEvent"
+    },
+    {
+      "before": "a8d5de202ec0a56f9a675fad4ca93d6b182e9053",
+      "created_at": "2026-09-01T15:07:45Z",
+      "head": "176bcaace6b8eb91de7579f0f193e5443269aca7",
+      "id": "19767508860",
+      "ref": "refs/heads/main",
+      "type": "PushEvent"
+    },
+    {
+      "before": "176bcaace6b8eb91de7579f0f193e5443269aca7",
+      "created_at": "2026-09-01T22:57:23Z",
+      "head": "c1f6d08d641fb7b7c05a6c123a564f630bcdb34f",
+      "id": "19757104577",
+      "ref": "refs/heads/main",
+      "type": "PushEvent"
+    },
+    {
+      "before": "a8d5de202ec0a56f9a675fad4ca93d6b182e9053",
+      "created_at": "2026-09-01T15:07:45Z",
+      "head": "176bcaace6b8eb91de7579f0f193e5443269aca7",
+      "id": "19734589676",
+      "ref": "refs/heads/main",
+      "type": "PushEvent"
+    },
+    {
+      "before": null,
+      "created_at": "2026-09-02T06:29:14Z",
+      "head": null,
+      "id": "14260277947",
+      "ref": null,
+      "type": "ReleaseEvent"
+    },
+    {
+      "before": null,
+      "created_at": "2026-09-01T22:57:23Z",
+      "head": null,
+      "id": "19728967743",
+      "ref": "feat/install-path",
+      "type": "CreateEvent"
+    },
+    {
+      "before": "c20a4fd72e120209c819b33a3209c2ac85af7275",
+      "created_at": "2026-09-01T14:11:23Z",
+      "head": "a8d5de202ec0a56f9a675fad4ca93d6b182e9053",
+      "id": "19724824535",
+      "ref": "refs/heads/main",
+      "type": "PushEvent"
+    },
+    {
+      "before": null,
+      "created_at": "2026-09-01T06:00:50Z",
+      "head": null,
+      "id": "19626958334",
+      "ref": "main",
+      "type": "CreateEvent"
+    }
+  ],
+  "observed_at": "2026-09-06T21:54:22.069238+00:00",
+  "paper": {
+    "submitted_at": "2026-08-27T17:59:11Z",
+    "title": "WikiSkill: Compiling Agent Experience into Persistent Knowledge for Skill Evolution",
+    "url": "https://arxiv.org/abs/2608.27454",
+    "version": "2608.27454v1"
+  },
+  "release": {
+    "created_at": "2026-09-02T06:29:05Z",
+    "draft": false,
+    "html_url": "https://github.com/bionicbutterfly13/agent-skill-mastery-engine/releases/tag/v0.2.0",
+    "id": 381020408,
+    "prerelease": false,
+    "published_at": "2026-09-02T06:29:14Z",
+    "tag_name": "v0.2.0",
+    "url": "https://api.github.com/repos/bionicbutterfly13/agent-skill-mastery-engine/releases/381020408"
+  },
+  "release_elapsed_seconds": 477003,
+  "repository": {
+    "created_at": "2026-09-01T06:00:39Z",
+    "default_branch": "main",
+    "full_name": "bionicbutterfly13/agent-skill-mastery-engine",
+    "html_url": "https://github.com/bionicbutterfly13/agent-skill-mastery-engine",
+    "id": 1353193525,
+    "private": false,
+    "pushed_at": "2026-09-02T11:59:31Z"
+  },
+  "root_commit": {
+    "author_date": "2026-09-01T05:54:16Z",
+    "committer_date": "2026-09-01T05:54:16Z",
+    "file_count": 88,
+    "parents": [],
+    "python_package_files": 29,
+    "sha": "c20a4fd72e120209c819b33a3209c2ac85af7275",
+    "tree_sha": "c6435d2927c9621ffa5abcd77a0fa1022b1f5672",
+    "url": "https://github.com/bionicbutterfly13/agent-skill-mastery-engine/commit/c20a4fd72e120209c819b33a3209c2ac85af7275",
+    "test_python_files": 24,
+    "test_modules_excluding_conftest": 23
+  },
+  "schema": "lifecycle.timeline-evidence.v1",
+  "sources": [
+    "https://api.github.com/repos/bionicbutterfly13/agent-skill-mastery-engine",
+    "https://api.github.com/repos/bionicbutterfly13/agent-skill-mastery-engine/events?per_page=100",
+    "https://api.github.com/repos/bionicbutterfly13/agent-skill-mastery-engine/commits/c20a4fd72e120209c819b33a3209c2ac85af7275",
+    "https://api.github.com/repos/bionicbutterfly13/agent-skill-mastery-engine/git/trees/c20a4fd72e120209c819b33a3209c2ac85af7275?recursive=1",
+    "https://api.github.com/repos/bionicbutterfly13/agent-skill-mastery-engine/releases/381020408"
+  ]
+}

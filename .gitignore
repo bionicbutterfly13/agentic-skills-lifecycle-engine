@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+.venv/
+build/
+dist/
+
+# EvoScientist/langgraph dev runtime state (workdir artifacts)
+.langgraph_api/
+.serena/
