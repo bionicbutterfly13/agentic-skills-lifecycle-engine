@@ -1,0 +1,442 @@
+{
+  "schema_version": 1,
+  "task_id": "R1",
+  "quick_plan": "260906-tz7",
+  "finding": "F-05: declared hyphenated source-distribution root rejected",
+  "status": "passed",
+  "scope": "Only the bounded source-archive root compatibility recovery; independent review and original Task 3 remain pending.",
+  "original_task_2_attempt_history": "Preserved. This supervisor-scoped recovery applied one targeted implementation correction after its own failing regression; it did not restart the original three-attempt loop.",
+  "gsd_entry": {
+    "command": "GSD_RUNTIME=codex node /Users/manisaintvictor/.claude/gsd-core/bin/gsd-tools.cjs query verification.status .planning/quick/260906-tz7-define-and-verify-the-explicit-public-so --pick status",
+    "observed_status": "gaps_found",
+    "recovery_contract": ".planning/quick/260906-tz7-define-and-verify-the-explicit-public-so/260906-tz7-GAP-REPAIR.md"
+  },
+  "worktree": "/Volumes/Asylum/dev/agentic-skills-lifecycle-engine-package-boundary",
+  "branch": "fix/portable-package-boundary",
+  "head_before": "9ed2f5aa11074ad62e7b196e4ac20bbe16742e76",
+  "head_after": "9ed2f5aa11074ad62e7b196e4ac20bbe16742e76",
+  "start_utc": "2026-09-07T03:46:11.649652+00:00",
+  "verification_finished_utc": "2026-09-07T03:55:56.053640+00:00",
+  "source_changes": {
+    "scripts/verify_distribution.py": {
+      "before": {
+        "mode": "0o644",
+        "sha256": "a0762abb69cf43d3cfd15c19cb79aa35d1bd4c09da56b98d4ebb67516434362c"
+      },
+      "after": {
+        "sha256": "b4fe75aa23731cf094c597e6f51dddee31805e62c70642e3cd5a17e3566484b4",
+        "mode": "0o644"
+      }
+    },
+    "tests/test_distribution.py": {
+      "before": {
+        "mode": "0o644",
+        "sha256": "bb4dfb4819352c53fad6001a96a92f09be3984deffaa585ddc9eb83188d51918"
+      },
+      "after": {
+        "sha256": "9a3a8e1170e434fefea37f78bcb5b7ecf40dcf0690124c95dc1b5e7d2e1bf16e",
+        "mode": "0o644"
+      }
+    }
+  },
+  "behavior": {
+    "accepted_roots": [
+      "agent_skill_mastery_engine-0.2.0",
+      "agent-skill-mastery-engine-0.2.0"
+    ],
+    "derivation": "Derive the permitted identities from existing project.name, existing project.normalized_name and project.version. Validate every archive member name, require exactly one permitted root across all members, then retain every existing member and payload check.",
+    "negative_coverage": [
+      "Mixed permitted roots in file members, both orderings",
+      "Mixed permitted roots through an extra directory, both orderings",
+      "Wrong project name even when the archive filename has the correct identity",
+      "Wrong version",
+      "Other normalization spelling",
+      "Traversal root and traversal member",
+      "Absolute root",
+      "Malformed member path",
+      "Empty root",
+      "Regular file occupying either permitted root",
+      "Empty archive raises ContractError"
+    ],
+    "existing_checks_preserved": "Membership, content, generated metadata, source modes, directory modes, PAX metadata, ZIP metadata, symlink/hardlink/special entries and scanner checks remain in place. Original test functions are unchanged.",
+    "primary_source": {
+      "url": "https://raw.githubusercontent.com/pypa/setuptools/v68.0.0/setuptools/_distutils/dist.py",
+      "symbol": "DistributionMetadata.get_fullname",
+      "lines": "1080-1081",
+      "evidence": "Primary source inspected in this R1 run; constructs fullname from declared name and version."
+    },
+    "evidence_limit": "Root-spelling fixtures are synthetic archives using the complete existing payload fixture and real source modes. No setuptools 68 build was executed."
+  },
+  "new_test_functions": [
+    "tests/test_distribution.py::test_distribution_sdist_declared_root_fixture",
+    "tests/test_distribution.py::test_distribution_sdist_invalid_root_fixture",
+    "tests/test_distribution.py::test_distribution_sdist_root_consistency",
+    "tests/test_distribution.py::test_distribution_sdist_empty_archive"
+  ],
+  "command_receipts": [
+    {
+      "argv": [
+        "python3",
+        "-m",
+        "pytest",
+        "-p",
+        "no:cacheprovider",
+        "tests/test_distribution.py::test_distribution_sdist_declared_root_fixture",
+        "tests/test_distribution.py::test_distribution_sdist_invalid_root_fixture",
+        "tests/test_distribution.py::test_distribution_sdist_root_consistency",
+        "tests/test_distribution.py::test_distribution_sdist_empty_archive",
+        "-vv",
+        "-rA"
+      ],
+      "collected": 17,
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 -m pytest -p no:cacheprovider tests/test_distribution.py::test_distribution_sdist_declared_root_fixture tests/test_distribution.py::test_distribution_sdist_invalid_root_fixture tests/test_distribution.py::test_distribution_sdist_root_consistency tests/test_distribution.py::test_distribution_sdist_empty_archive -vv -rA",
+      "counts": {
+        "error": 0,
+        "failed": 1,
+        "passed": 16,
+        "skipped": 0
+      },
+      "cwd": "/Volumes/Asylum/dev/agentic-skills-lifecycle-engine-package-boundary",
+      "deselected": 0,
+      "elapsed_seconds": 78.961151,
+      "environment_overrides": {
+        "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "executed_nodes": [
+        "tests/test_distribution.py::test_distribution_sdist_declared_root_fixture[normalized] PASSED [  5%]",
+        "tests/test_distribution.py::test_distribution_sdist_declared_root_fixture[declared] FAILED [ 11%]",
+        "tests/test_distribution.py::test_distribution_sdist_invalid_root_fixture[wrong-name] PASSED [ 17%]",
+        "tests/test_distribution.py::test_distribution_sdist_invalid_root_fixture[wrong-version] PASSED [ 23%]",
+        "tests/test_distribution.py::test_distribution_sdist_invalid_root_fixture[other-normalization] PASSED [ 29%]",
+        "tests/test_distribution.py::test_distribution_sdist_invalid_root_fixture[traversal-root] PASSED [ 35%]",
+        "tests/test_distribution.py::test_distribution_sdist_invalid_root_fixture[absolute-root] PASSED [ 41%]",
+        "tests/test_distribution.py::test_distribution_sdist_invalid_root_fixture[traversal-member] PASSED [ 47%]",
+        "tests/test_distribution.py::test_distribution_sdist_invalid_root_fixture[malformed-member] PASSED [ 52%]",
+        "tests/test_distribution.py::test_distribution_sdist_invalid_root_fixture[empty-root] PASSED [ 58%]",
+        "tests/test_distribution.py::test_distribution_sdist_root_consistency[mixed-file-normalized-first] PASSED [ 64%]",
+        "tests/test_distribution.py::test_distribution_sdist_root_consistency[mixed-file-declared-first] PASSED [ 70%]",
+        "tests/test_distribution.py::test_distribution_sdist_root_consistency[mixed-directory-normalized-first] PASSED [ 76%]",
+        "tests/test_distribution.py::test_distribution_sdist_root_consistency[mixed-directory-declared-first] PASSED [ 82%]",
+        "tests/test_distribution.py::test_distribution_sdist_root_consistency[root-file-normalized-first] PASSED [ 88%]",
+        "tests/test_distribution.py::test_distribution_sdist_root_consistency[root-file-declared-first] PASSED [ 94%]",
+        "tests/test_distribution.py::test_distribution_sdist_empty_archive PASSED [100%]"
+      ],
+      "exit_status": 1,
+      "expected_collected": 17,
+      "finish_utc": "2026-09-07T03:48:22.709528+00:00",
+      "label": "r1-red",
+      "raw_log": "build/package-boundary-logs/r1-red.log",
+      "raw_log_sha256": "3ab9af8953d023f2fb0b1fa9f1a7a715027275ff852cf09673c4e2b1e9755273",
+      "source_sha256_after": {
+        "scripts/verify_distribution.py": "a0762abb69cf43d3cfd15c19cb79aa35d1bd4c09da56b98d4ebb67516434362c",
+        "tests/test_distribution.py": "9a3a8e1170e434fefea37f78bcb5b7ecf40dcf0690124c95dc1b5e7d2e1bf16e"
+      },
+      "source_sha256_before": {
+        "scripts/verify_distribution.py": "a0762abb69cf43d3cfd15c19cb79aa35d1bd4c09da56b98d4ebb67516434362c",
+        "tests/test_distribution.py": "9a3a8e1170e434fefea37f78bcb5b7ecf40dcf0690124c95dc1b5e7d2e1bf16e"
+      },
+      "start_utc": "2026-09-07T03:47:03.740880+00:00",
+      "summary_lines": [
+        "=================== 1 failed, 16 passed in 75.98s (0:01:15) ===================="
+      ],
+      "receipt_path": "build/package-boundary-logs/r1-red.json",
+      "receipt_sha256": "f53de3fffc732bb7d51b290d557ee4b840ca4c8269dfe84d8a72705b933e6ec6"
+    },
+    {
+      "argv": [
+        "python3",
+        "-m",
+        "pytest",
+        "-p",
+        "no:cacheprovider",
+        "tests/test_distribution.py::test_distribution_sdist_declared_root_fixture",
+        "tests/test_distribution.py::test_distribution_sdist_invalid_root_fixture",
+        "tests/test_distribution.py::test_distribution_sdist_root_consistency",
+        "tests/test_distribution.py::test_distribution_sdist_empty_archive",
+        "-vv",
+        "-rA"
+      ],
+      "collected": 17,
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 -m pytest -p no:cacheprovider tests/test_distribution.py::test_distribution_sdist_declared_root_fixture tests/test_distribution.py::test_distribution_sdist_invalid_root_fixture tests/test_distribution.py::test_distribution_sdist_root_consistency tests/test_distribution.py::test_distribution_sdist_empty_archive -vv -rA",
+      "counts": {
+        "error": 0,
+        "failed": 0,
+        "passed": 17,
+        "skipped": 0
+      },
+      "cwd": "/Volumes/Asylum/dev/agentic-skills-lifecycle-engine-package-boundary",
+      "deselected": 0,
+      "elapsed_seconds": 92.358954,
+      "environment_overrides": {
+        "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "executed_nodes": [
+        "tests/test_distribution.py::test_distribution_sdist_declared_root_fixture[normalized] PASSED [  5%]",
+        "tests/test_distribution.py::test_distribution_sdist_declared_root_fixture[declared] PASSED [ 11%]",
+        "tests/test_distribution.py::test_distribution_sdist_invalid_root_fixture[wrong-name] PASSED [ 17%]",
+        "tests/test_distribution.py::test_distribution_sdist_invalid_root_fixture[wrong-version] PASSED [ 23%]",
+        "tests/test_distribution.py::test_distribution_sdist_invalid_root_fixture[other-normalization] PASSED [ 29%]",
+        "tests/test_distribution.py::test_distribution_sdist_invalid_root_fixture[traversal-root] PASSED [ 35%]",
+        "tests/test_distribution.py::test_distribution_sdist_invalid_root_fixture[absolute-root] PASSED [ 41%]",
+        "tests/test_distribution.py::test_distribution_sdist_invalid_root_fixture[traversal-member] PASSED [ 47%]",
+        "tests/test_distribution.py::test_distribution_sdist_invalid_root_fixture[malformed-member] PASSED [ 52%]",
+        "tests/test_distribution.py::test_distribution_sdist_invalid_root_fixture[empty-root] PASSED [ 58%]",
+        "tests/test_distribution.py::test_distribution_sdist_root_consistency[mixed-file-normalized-first] PASSED [ 64%]",
+        "tests/test_distribution.py::test_distribution_sdist_root_consistency[mixed-file-declared-first] PASSED [ 70%]",
+        "tests/test_distribution.py::test_distribution_sdist_root_consistency[mixed-directory-normalized-first] PASSED [ 76%]",
+        "tests/test_distribution.py::test_distribution_sdist_root_consistency[mixed-directory-declared-first] PASSED [ 82%]",
+        "tests/test_distribution.py::test_distribution_sdist_root_consistency[root-file-normalized-first] PASSED [ 88%]",
+        "tests/test_distribution.py::test_distribution_sdist_root_consistency[root-file-declared-first] PASSED [ 94%]",
+        "tests/test_distribution.py::test_distribution_sdist_empty_archive PASSED [100%]"
+      ],
+      "exit_status": 0,
+      "expected_collected": 17,
+      "finish_utc": "2026-09-07T03:50:31.027724+00:00",
+      "label": "r1-green",
+      "raw_log": "build/package-boundary-logs/r1-green.log",
+      "raw_log_sha256": "a5d7b90ea412d702e17bb177c244b18c77b01b2ae6fa2bcf8ac5df19164c6b9a",
+      "source_sha256_after": {
+        "scripts/verify_distribution.py": "b4fe75aa23731cf094c597e6f51dddee31805e62c70642e3cd5a17e3566484b4",
+        "tests/test_distribution.py": "9a3a8e1170e434fefea37f78bcb5b7ecf40dcf0690124c95dc1b5e7d2e1bf16e"
+      },
+      "source_sha256_before": {
+        "scripts/verify_distribution.py": "b4fe75aa23731cf094c597e6f51dddee31805e62c70642e3cd5a17e3566484b4",
+        "tests/test_distribution.py": "9a3a8e1170e434fefea37f78bcb5b7ecf40dcf0690124c95dc1b5e7d2e1bf16e"
+      },
+      "start_utc": "2026-09-07T03:48:58.662408+00:00",
+      "summary_lines": [
+        "======================== 17 passed in 89.48s (0:01:29) ========================="
+      ],
+      "receipt_path": "build/package-boundary-logs/r1-green.json",
+      "receipt_sha256": "b028c153ce14938909994b520afbd3dee2bfbc342bd4a45b32ff5f852d54c559"
+    },
+    {
+      "argv": [
+        "python3",
+        "-m",
+        "pytest",
+        "-p",
+        "no:cacheprovider",
+        "tests/test_distribution.py",
+        "-vv",
+        "-rA"
+      ],
+      "collected": 83,
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 -m pytest -p no:cacheprovider tests/test_distribution.py -vv -rA",
+      "counts": {
+        "error": 0,
+        "failed": 0,
+        "passed": 83,
+        "skipped": 0
+      },
+      "cwd": "/Volumes/Asylum/dev/agentic-skills-lifecycle-engine-package-boundary",
+      "deselected": 0,
+      "elapsed_seconds": 265.107538,
+      "environment_overrides": {
+        "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "executed_nodes": [
+        "tests/test_distribution.py::test_distribution_complete_independent_families PASSED [  1%]",
+        "tests/test_distribution.py::test_distribution_exact_internal_records_preserved[.planning/private.md] PASSED [  2%]",
+        "tests/test_distribution.py::test_distribution_exact_internal_records_preserved[docs/research/wikiskill-code-parity.md] PASSED [  3%]",
+        "tests/test_distribution.py::test_distribution_exact_internal_records_preserved[docs/evidence/wikiskill-parity-audit.json] PASSED [  4%]",
+        "tests/test_distribution.py::test_distribution_private_public_content_fails[src/asme/cli.py] PASSED [  6%]",
+        "tests/test_distribution.py::test_distribution_private_public_content_fails[docs/evidence/ordinary.md] PASSED [  7%]",
+        "tests/test_distribution.py::test_distribution_private_public_content_fails[docs/research/ordinary.md] PASSED [  8%]",
+        "tests/test_distribution.py::test_distribution_manifest_refusals[omission] PASSED [  9%]",
+        "tests/test_distribution.py::test_distribution_manifest_refusals[missing] PASSED [ 10%]",
+        "tests/test_distribution.py::test_distribution_manifest_refusals[unknown] PASSED [ 12%]",
+        "tests/test_distribution.py::test_distribution_manifest_refusals[duplicate] PASSED [ 13%]",
+        "tests/test_distribution.py::test_distribution_manifest_refusals[wildcard] PASSED [ 14%]",
+        "tests/test_distribution.py::test_distribution_manifest_refusals[escape] PASSED [ 15%]",
+        "tests/test_distribution.py::test_distribution_manifest_refusals[internal-runtime] PASSED [ 16%]",
+        "tests/test_distribution.py::test_distribution_manifest_refusals[unclassified] PASSED [ 18%]",
+        "tests/test_distribution.py::test_distribution_nonregular_source_fails[file] PASSED [ 19%]",
+        "tests/test_distribution.py::test_distribution_nonregular_source_fails[parent] PASSED [ 20%]",
+        "tests/test_distribution.py::test_distribution_nonregular_source_fails[hardlink] PASSED [ 21%]",
+        "tests/test_distribution.py::test_distribution_nonregular_source_fails[special] PASSED [ 22%]",
+        "tests/test_distribution.py::test_distribution_archival_context_and_draft PASSED [ 24%]",
+        "tests/test_distribution.py::test_distribution_missing_document_dependency_fails PASSED [ 25%]",
+        "tests/test_distribution.py::test_distribution_no_git_or_internal_state_required PASSED [ 26%]",
+        "tests/test_distribution.py::test_distribution_rejects_foreign_preloaded_asme PASSED [ 27%]",
+        "tests/test_distribution.py::test_distribution_sdist_adversarial[missing] PASSED [ 28%]",
+        "tests/test_distribution.py::test_distribution_sdist_adversarial[extra] PASSED [ 30%]",
+        "tests/test_distribution.py::test_distribution_sdist_adversarial[changed] PASSED [ 31%]",
+        "tests/test_distribution.py::test_distribution_sdist_adversarial[metadata] PASSED [ 32%]",
+        "tests/test_distribution.py::test_distribution_sdist_adversarial[duplicate] PASSED [ 33%]",
+        "tests/test_distribution.py::test_distribution_sdist_adversarial[escape] PASSED [ 34%]",
+        "tests/test_distribution.py::test_distribution_sdist_adversarial[absolute] PASSED [ 36%]",
+        "tests/test_distribution.py::test_distribution_sdist_adversarial[normalized] PASSED [ 37%]",
+        "tests/test_distribution.py::test_distribution_sdist_adversarial[symlink] PASSED [ 38%]",
+        "tests/test_distribution.py::test_distribution_sdist_adversarial[hardlink] PASSED [ 39%]",
+        "tests/test_distribution.py::test_distribution_sdist_adversarial[special] PASSED [ 40%]",
+        "tests/test_distribution.py::test_distribution_sdist_declared_root_fixture[normalized] PASSED [ 42%]",
+        "tests/test_distribution.py::test_distribution_sdist_declared_root_fixture[declared] PASSED [ 43%]",
+        "tests/test_distribution.py::test_distribution_sdist_invalid_root_fixture[wrong-name] PASSED [ 44%]",
+        "tests/test_distribution.py::test_distribution_sdist_invalid_root_fixture[wrong-version] PASSED [ 45%]",
+        "tests/test_distribution.py::test_distribution_sdist_invalid_root_fixture[other-normalization] PASSED [ 46%]",
+        "tests/test_distribution.py::test_distribution_sdist_invalid_root_fixture[traversal-root] PASSED [ 48%]",
+        "tests/test_distribution.py::test_distribution_sdist_invalid_root_fixture[absolute-root] PASSED [ 49%]",
+        "tests/test_distribution.py::test_distribution_sdist_invalid_root_fixture[traversal-member] PASSED [ 50%]",
+        "tests/test_distribution.py::test_distribution_sdist_invalid_root_fixture[malformed-member] PASSED [ 51%]",
+        "tests/test_distribution.py::test_distribution_sdist_invalid_root_fixture[empty-root] PASSED [ 53%]",
+        "tests/test_distribution.py::test_distribution_sdist_root_consistency[mixed-file-normalized-first] PASSED [ 54%]",
+        "tests/test_distribution.py::test_distribution_sdist_root_consistency[mixed-file-declared-first] PASSED [ 55%]",
+        "tests/test_distribution.py::test_distribution_sdist_root_consistency[mixed-directory-normalized-first] PASSED [ 56%]",
+        "tests/test_distribution.py::test_distribution_sdist_root_consistency[mixed-directory-declared-first] PASSED [ 57%]",
+        "tests/test_distribution.py::test_distribution_sdist_root_consistency[root-file-normalized-first] PASSED [ 59%]",
+        "tests/test_distribution.py::test_distribution_sdist_root_consistency[root-file-declared-first] PASSED [ 60%]",
+        "tests/test_distribution.py::test_distribution_sdist_empty_archive PASSED [ 61%]",
+        "tests/test_distribution.py::test_distribution_wheel_adversarial[missing] PASSED [ 62%]",
+        "tests/test_distribution.py::test_distribution_wheel_adversarial[extra] PASSED [ 63%]",
+        "tests/test_distribution.py::test_distribution_wheel_adversarial[changed] PASSED [ 65%]",
+        "tests/test_distribution.py::test_distribution_wheel_adversarial[metadata] PASSED [ 66%]",
+        "tests/test_distribution.py::test_distribution_wheel_adversarial[record] PASSED [ 67%]",
+        "tests/test_distribution.py::test_distribution_wheel_adversarial[duplicate] PASSED [ 68%]",
+        "tests/test_distribution.py::test_distribution_wheel_adversarial[escape] PASSED [ 69%]",
+        "tests/test_distribution.py::test_distribution_wheel_adversarial[normalized] PASSED [ 71%]",
+        "tests/test_distribution.py::test_distribution_wheel_adversarial[symlink] PASSED [ 72%]",
+        "tests/test_distribution.py::test_distribution_wheel_adversarial[special] PASSED [ 73%]",
+        "tests/test_distribution.py::test_distribution_archive_positive_independent_payload PASSED [ 74%]",
+        "tests/test_distribution.py::test_distribution_generated_collision_refused PASSED [ 75%]",
+        "tests/test_distribution.py::test_distribution_deleted_imported_file_and_declaration_refused PASSED [ 77%]",
+        "tests/test_distribution.py::test_distribution_backend_literal_list_and_generated_inputs PASSED [ 78%]",
+        "tests/test_distribution.py::test_distribution_tar_transport_metadata[pax-comment] PASSED [ 79%]",
+        "tests/test_distribution.py::test_distribution_tar_transport_metadata[global-pax] PASSED [ 80%]",
+        "tests/test_distribution.py::test_distribution_tar_transport_metadata[late-global-pax] PASSED [ 81%]",
+        "tests/test_distribution.py::test_distribution_tar_transport_metadata[owner] PASSED [ 83%]",
+        "tests/test_distribution.py::test_distribution_tar_transport_metadata[directory-mode] PASSED [ 84%]",
+        "tests/test_distribution.py::test_distribution_tar_transport_metadata[file-mode] PASSED [ 85%]",
+        "tests/test_distribution.py::test_distribution_zip_transport_metadata[archive-comment] PASSED [ 86%]",
+        "tests/test_distribution.py::test_distribution_zip_transport_metadata[member-comment] PASSED [ 87%]",
+        "tests/test_distribution.py::test_distribution_zip_transport_metadata[extra] PASSED [ 89%]",
+        "tests/test_distribution.py::test_distribution_zip_transport_metadata[file-mode] PASSED [ 90%]",
+        "tests/test_distribution.py::test_distribution_reserved_generated_source[PKG-INFO] PASSED [ 91%]",
+        "tests/test_distribution.py::test_distribution_reserved_generated_source[setup.cfg] PASSED [ 92%]",
+        "tests/test_distribution.py::test_distribution_reserved_generated_source[src/agent_skill_mastery_engine.egg-info/PKG-INFO] PASSED [ 93%]",
+        "tests/test_distribution.py::test_distribution_reserved_generated_source[src/agent_skill_mastery_engine.egg-info/SOURCES.txt] PASSED [ 95%]",
+        "tests/test_distribution.py::test_distribution_reserved_generated_source[src/agent_skill_mastery_engine.egg-info/entry_points.txt] PASSED [ 96%]",
+        "tests/test_distribution.py::test_distribution_legacy_metadata_identity PASSED [ 97%]",
+        "tests/test_distribution.py::test_distribution_absent_internal_draft PASSED [ 98%]",
+        "tests/test_distribution.py::test_distribution_legacy_wheel_metadata_layout PASSED [100%]"
+      ],
+      "exit_status": 0,
+      "expected_collected": 83,
+      "finish_utc": "2026-09-07T03:55:12.893137+00:00",
+      "label": "r1-distribution",
+      "raw_log": "build/package-boundary-logs/r1-distribution.log",
+      "raw_log_sha256": "8964c561ff8614241fea32bd4d252cffc5a591b2bba275a6217a8fa6cf4e72fa",
+      "source_sha256_after": {
+        "scripts/verify_distribution.py": "b4fe75aa23731cf094c597e6f51dddee31805e62c70642e3cd5a17e3566484b4",
+        "tests/test_distribution.py": "9a3a8e1170e434fefea37f78bcb5b7ecf40dcf0690124c95dc1b5e7d2e1bf16e"
+      },
+      "source_sha256_before": {
+        "scripts/verify_distribution.py": "b4fe75aa23731cf094c597e6f51dddee31805e62c70642e3cd5a17e3566484b4",
+        "tests/test_distribution.py": "9a3a8e1170e434fefea37f78bcb5b7ecf40dcf0690124c95dc1b5e7d2e1bf16e"
+      },
+      "start_utc": "2026-09-07T03:50:47.775539+00:00",
+      "summary_lines": [
+        "================== 83 passed, 1 warning in 262.25s (0:04:22) ==================="
+      ],
+      "receipt_path": "build/package-boundary-logs/r1-distribution.json",
+      "receipt_sha256": "35affc9ee9a7338391a2ac8c2cc478a6fdadff633bcb944a57f382b1a552425b"
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "collected": null,
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 git diff --check",
+      "counts": {
+        "error": 0,
+        "failed": 0,
+        "passed": 0,
+        "skipped": 0
+      },
+      "cwd": "/Volumes/Asylum/dev/agentic-skills-lifecycle-engine-package-boundary",
+      "deselected": 0,
+      "elapsed_seconds": 0.110513,
+      "environment_overrides": {
+        "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "executed_nodes": [],
+      "exit_status": 0,
+      "expected_collected": null,
+      "finish_utc": "2026-09-07T03:49:48.371441+00:00",
+      "label": "r1-diff-check",
+      "raw_log": "build/package-boundary-logs/r1-diff-check.log",
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_sha256_after": {
+        "scripts/verify_distribution.py": "b4fe75aa23731cf094c597e6f51dddee31805e62c70642e3cd5a17e3566484b4",
+        "tests/test_distribution.py": "9a3a8e1170e434fefea37f78bcb5b7ecf40dcf0690124c95dc1b5e7d2e1bf16e"
+      },
+      "source_sha256_before": {
+        "scripts/verify_distribution.py": "b4fe75aa23731cf094c597e6f51dddee31805e62c70642e3cd5a17e3566484b4",
+        "tests/test_distribution.py": "9a3a8e1170e434fefea37f78bcb5b7ecf40dcf0690124c95dc1b5e7d2e1bf16e"
+      },
+      "start_utc": "2026-09-07T03:49:48.259865+00:00",
+      "summary_lines": [],
+      "receipt_path": "build/package-boundary-logs/r1-diff-check.json",
+      "receipt_sha256": "e155d3b8bcadfec96456f5ff7993963c99cbb37e66054e76b1eef8621b58b655"
+    }
+  ],
+  "verification": {
+    "red": "17 collected: 1 expected declared-root failure, 16 passed; exit 1; no skips or deselections.",
+    "green": "Same command and 17 cases: 17 passed; exit 0; no skips or deselections.",
+    "complete_distribution_file": "83 collected and passed; exit 0; no skips or deselections.",
+    "inherited_warning": "Existing duplicate-wheel negative fixture emits UserWarning: Duplicate name: 'asme/cli.py'.",
+    "git_diff_check": "Exit 0. Git checks tracked diffs; added-line whitespace was also checked in the captured before/after diff because the two owned source files were already untracked at the checkpoint.",
+    "source_structure": {
+      "path": "build/package-boundary-logs/r1-source-structure.log",
+      "sha256": "3d48a59272b8b9e62831b1cfe6338d6ac36e2361de0558600ebee524dd22897f",
+      "unchanged_helper_functions": 24,
+      "unchanged_test_and_fixture_functions": 24
+    },
+    "source_diff": {
+      "final_source_sha256": {
+        "scripts/verify_distribution.py": "b4fe75aa23731cf094c597e6f51dddee31805e62c70642e3cd5a17e3566484b4",
+        "tests/test_distribution.py": "9a3a8e1170e434fefea37f78bcb5b7ecf40dcf0690124c95dc1b5e7d2e1bf16e"
+      },
+      "source_diff_log": "build/package-boundary-logs/r1-source-diff.log",
+      "source_diff_sha256": "240cfac34d3959f00da43dca2eb10ad92a0eb1cee369897804602b643074f962"
+    },
+    "preservation": {
+      "receipt": "build/package-boundary-logs/r1-preservation.json",
+      "receipt_sha256": "9f8c83a242644d8165fa3231afe642921925e2f205ea12b035b538bfe9753b73",
+      "baseline_receipt": "build/package-boundary-logs/r1-baseline.json",
+      "baseline_sha256": "0c1e8a25ad053b43d6e2378edb82124324f0bd9088b7f42c289f4a40222c07fa",
+      "baseline_entries_checked": 212,
+      "unchanged_entries": 210,
+      "changed_entries": [
+        "scripts/verify_distribution.py",
+        "tests/test_distribution.py"
+      ],
+      "mode_changes": [],
+      "missing": [],
+      "unexpected_new_files": [],
+      "scope": "All tracked and untracked nonignored files except .gsd operational state, plus all pre-existing command-log files. Historical receipts, original import manifest, scanner, identity/dependency configuration and all other feature files are unchanged."
+    }
+  },
+  "remaining_gates": [
+    "Independent F-05 recheck and final review",
+    "Original Task 3 public-document finalization",
+    "Complete frozen-source project suite and stdlib smoke",
+    "Final real source/wheel build and full archive validation",
+    "Validated extraction, extracted-source rebuild, tests and smoke",
+    "Final current/import accounting and parent-owned authorized integration"
+  ],
+  "no_commits_created": true,
+  "no_full_project_suite_or_builds_run": true,
+  "packaging_feature_complete": false,
+  "wikiskill_parity_complete": false,
+  "self_check": {
+    "status": "passed",
+    "evidence": "Receipt exit statuses, collected counts, identical RED/GREEN commands, log hashes, frozen source hashes, baseline preservation and branch/HEAD were checked before this result was written."
+  }
+}
