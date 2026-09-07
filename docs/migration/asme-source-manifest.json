@@ -1,0 +1,1050 @@
+{
+  "entries": [
+    {
+      "destination": ".gitignore",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "f127655433308385e8061a50fd3a45569098cb0520800bf8bfe89406dac3584f",
+      "source_path": ".gitignore"
+    },
+    {
+      "destination": null,
+      "disposition": "retained_at_source",
+      "git_mode": "100644",
+      "reason": "Private source planning remains at its original source path; no copy or source deletion.",
+      "sha256": "19c203a5f1b2e619ff37e7ad51748195ca6c0c71c6ed4a4a37df45e1d89d30d2",
+      "source_path": ".planning/codebase/ARCHITECTURE.md"
+    },
+    {
+      "destination": null,
+      "disposition": "retained_at_source",
+      "git_mode": "100644",
+      "reason": "Private source planning remains at its original source path; no copy or source deletion.",
+      "sha256": "e660d1d11c76be61188b29b44dfedb057a332067ef43171ee4cc8f6ec11d4388",
+      "source_path": ".planning/codebase/CONCERNS.md"
+    },
+    {
+      "destination": null,
+      "disposition": "retained_at_source",
+      "git_mode": "100644",
+      "reason": "Private source planning remains at its original source path; no copy or source deletion.",
+      "sha256": "0cde5006b34ef08e4f029b79d533dabde1c8635bb6fab9d6c9466dc11c063413",
+      "source_path": ".planning/codebase/CONVENTIONS.md"
+    },
+    {
+      "destination": null,
+      "disposition": "retained_at_source",
+      "git_mode": "100644",
+      "reason": "Private source planning remains at its original source path; no copy or source deletion.",
+      "sha256": "6b974ccb0379d94232c117f1524c5bc39b35c6d635e7cb7656c7b92fea6684e6",
+      "source_path": ".planning/codebase/INTEGRATIONS.md"
+    },
+    {
+      "destination": null,
+      "disposition": "retained_at_source",
+      "git_mode": "100644",
+      "reason": "Private source planning remains at its original source path; no copy or source deletion.",
+      "sha256": "21f2272746229e2474d60e6d41811bff0f3064338ec8741e677c8b27f4c2eb14",
+      "source_path": ".planning/codebase/STACK.md"
+    },
+    {
+      "destination": null,
+      "disposition": "retained_at_source",
+      "git_mode": "100644",
+      "reason": "Private source planning remains at its original source path; no copy or source deletion.",
+      "sha256": "85ab1c8de4697e36f93a64773cd31d139e8aeb3ead9e6a4bbe9c3d230e9eaf23",
+      "source_path": ".planning/codebase/STRUCTURE.md"
+    },
+    {
+      "destination": null,
+      "disposition": "retained_at_source",
+      "git_mode": "100644",
+      "reason": "Private source planning remains at its original source path; no copy or source deletion.",
+      "sha256": "bfb60862fffc87594122a3b050df44e80fa1b1d259c2abf3512e48422ef876ed",
+      "source_path": ".planning/codebase/TESTING.md"
+    },
+    {
+      "destination": "CHANGELOG.md",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "a1bcccee7d594a2f6d85b56876ce67ff2f1374c45771385dda2a2eaa3a3671fa",
+      "source_path": "CHANGELOG.md"
+    },
+    {
+      "destination": "CITATION.cff",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "f1edf1c419bf1d7399d896e4c0b8813263bfde3ae9774b3f3f3852a2e1694e07",
+      "source_path": "CITATION.cff"
+    },
+    {
+      "current_sha256": "548937a9cdd35f1511e80c8a978c045e09ed8a82daab0ae88774ee069522586d",
+      "destination": "CONTRIBUTING.md",
+      "disposition": "historical_copy_with_current_document",
+      "git_mode": "100644",
+      "historical_destination": "docs/migration/asme-source/CONTRIBUTING.md",
+      "sha256": "7d452945ffc7d0a83f4789d1b13f670a6dec33b7349342472adf6bed55eae6d0",
+      "source_path": "CONTRIBUTING.md"
+    },
+    {
+      "destination": "LICENSE",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "c8f562989bbb38537389477b5e6de7b91eb3d29d192dc4a4f18ced0d570e4289",
+      "source_path": "LICENSE"
+    },
+    {
+      "destination": "MANIFEST.in",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "b40c80f397557aa0cf491b58e2950feba7aff5e85b75bd2bd5bd471a9c686b08",
+      "source_path": "MANIFEST.in"
+    },
+    {
+      "destination": "NOTICE.md",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "fb2c6a455a86e9f1a814553b15ccb28d0bd73e9aa77ddd64c679e83b953f0432",
+      "source_path": "NOTICE.md"
+    },
+    {
+      "current_sha256": "de76d3b84a9e5e3a081f39528143341ac91ea4df6a7f311a0972aa3ec8b85e19",
+      "destination": "PROVENANCE.md",
+      "disposition": "historical_copy_with_current_document",
+      "git_mode": "100644",
+      "historical_destination": "docs/migration/asme-source/PROVENANCE.md",
+      "sha256": "ff12252a5257fb162051c5198a66122e54dc1ac31d7ed9ef25dec5d4dcdf10a5",
+      "source_path": "PROVENANCE.md"
+    },
+    {
+      "destination": "PURPOSE.md",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "b37e11bde6838f48b27628e6709a19d12ba077114fc28b4217511fc27f18a628",
+      "source_path": "PURPOSE.md"
+    },
+    {
+      "current_sha256": "52932f47dd570b8594869e9aa2c6c1b4617c4561bd560ada18940cd1a4bc1fb7",
+      "destination": "README.md",
+      "disposition": "historical_copy_with_current_document",
+      "git_mode": "100644",
+      "historical_destination": "docs/migration/asme-source/README.md",
+      "sha256": "a1dc95b92b76cf094dc0d46bb98177897ecdec1ba32e1e05696ec5a55bd311ac",
+      "source_path": "README.md"
+    },
+    {
+      "destination": "SECURITY.md",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "f3b7c96a7f70e5f287db15a458d76eb37f4347b70d5e342ef9e0acc9c27dfda0",
+      "source_path": "SECURITY.md"
+    },
+    {
+      "destination": "SKILL.md",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "45eee50caf592746a4d6c5e7cbb83204c8c2352719a11471b191c00a551fa600",
+      "source_path": "SKILL.md"
+    },
+    {
+      "destination": "adapters/hermes_plugin/README.md",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "83455fcfd49233b6715e29c46658d0f099cde4b259ef16bb53cb82c4e51500dc",
+      "source_path": "adapters/hermes_plugin/README.md"
+    },
+    {
+      "destination": "adapters/hermes_plugin/__init__.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "dffab647e30098329809cde4857b50e0eee30bfd97f762f6ee26b12c2a9f221c",
+      "source_path": "adapters/hermes_plugin/__init__.py"
+    },
+    {
+      "destination": "adapters/hermes_plugin/plugin.yaml",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "9b8bdfce7a37985cd6912595125f567aa3765a94b1be9d0fc877b29ba1b90e33",
+      "source_path": "adapters/hermes_plugin/plugin.yaml"
+    },
+    {
+      "destination": "assets/PURPOSE.md.tmpl",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "f9967cafe4845e29b49fe8fb8e615d0bbb5500deeba149ba9893e268545407d8",
+      "source_path": "assets/PURPOSE.md.tmpl"
+    },
+    {
+      "destination": "assets/SKILL.md.tmpl",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "f88821d7ffecf0342b12819099c1ba15da558466e4a013faece3de940572ffe9",
+      "source_path": "assets/SKILL.md.tmpl"
+    },
+    {
+      "destination": "assets/eval/arithmetic/answers.jsonl",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "3b570bddc3cc71e699ad157a55ad2c12d6f2fa7fa79a0276fe4e1e740125722d",
+      "source_path": "assets/eval/arithmetic/answers.jsonl"
+    },
+    {
+      "destination": "assets/eval/arithmetic/cartridge.json",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "2661d769a486c8fb9f850a441f8c064c7a14c305b46ab2bb86a9221f88ee0930",
+      "source_path": "assets/eval/arithmetic/cartridge.json"
+    },
+    {
+      "destination": "assets/eval/arithmetic/prompt.txt",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "b826a8143a2e2c51eb341b63738950960dd52f1c0c69cda3cdc6c518ef4a41ac",
+      "source_path": "assets/eval/arithmetic/prompt.txt"
+    },
+    {
+      "destination": "assets/eval/arithmetic/rollouts/run-1/baseline.jsonl",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "4a0002bd0d581dc215688ea49eaf59fabc0ed4128b8e813f2c91d501da105e34",
+      "source_path": "assets/eval/arithmetic/rollouts/run-1/baseline.jsonl"
+    },
+    {
+      "destination": "assets/eval/arithmetic/rollouts/run-1/confirmation.jsonl",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "7050a358854bde2cad232476859c7eb973d7b54112e5a9c61a3cecaf90572f2b",
+      "source_path": "assets/eval/arithmetic/rollouts/run-1/confirmation.jsonl"
+    },
+    {
+      "destination": "assets/eval/arithmetic/rollouts/run-1/validation.jsonl",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "192bb88a65fa1d67961c9e97c95a5ed8497398855da825e3950024bd1efbb774",
+      "source_path": "assets/eval/arithmetic/rollouts/run-1/validation.jsonl"
+    },
+    {
+      "destination": "assets/eval/arithmetic/tasks.jsonl",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "c5b5e6065aa599a225514b464046ac7706c054e9af7d4fd35f74a434ab0b54eb",
+      "source_path": "assets/eval/arithmetic/tasks.jsonl"
+    },
+    {
+      "destination": "assets/eval/echo/answers.jsonl",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "6d00d0fb3a3c84bd077c401a4341613c8973c0390b89235ae1d3f06cc87fae9d",
+      "source_path": "assets/eval/echo/answers.jsonl"
+    },
+    {
+      "destination": "assets/eval/echo/cartridge.json",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "ea98ef024db6811a1b8093233869860a028d7c008aa333e20920bdeb1e4552e5",
+      "source_path": "assets/eval/echo/cartridge.json"
+    },
+    {
+      "destination": "assets/eval/echo/prompt.txt",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "13240715bb4ad30b5034bde39b3b33dd90cc0a53c415fee5dc5300c55b3d1d64",
+      "source_path": "assets/eval/echo/prompt.txt"
+    },
+    {
+      "destination": "assets/eval/echo/rollouts/run-1/baseline.jsonl",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "bd320bd93c874f2a9205ae1f582582dc89284ca6be902f70dcf8dc7acfe91866",
+      "source_path": "assets/eval/echo/rollouts/run-1/baseline.jsonl"
+    },
+    {
+      "destination": "assets/eval/echo/rollouts/run-1/confirmation.jsonl",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "bd320bd93c874f2a9205ae1f582582dc89284ca6be902f70dcf8dc7acfe91866",
+      "source_path": "assets/eval/echo/rollouts/run-1/confirmation.jsonl"
+    },
+    {
+      "destination": "assets/eval/echo/rollouts/run-1/validation.jsonl",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "bd320bd93c874f2a9205ae1f582582dc89284ca6be902f70dcf8dc7acfe91866",
+      "source_path": "assets/eval/echo/rollouts/run-1/validation.jsonl"
+    },
+    {
+      "destination": "assets/eval/echo/tasks.jsonl",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "22acece7d91e9c1f27eabba81b19d0aa118f15b644c8a03e37cb4eeb20039997",
+      "source_path": "assets/eval/echo/tasks.jsonl"
+    },
+    {
+      "destination": "assets/index.md.tmpl",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "611008da6208a38329b72aaef7e56eb71c22879e6c96551acc8df657950cc51c",
+      "source_path": "assets/index.md.tmpl"
+    },
+    {
+      "destination": "assets/inference-prompt.txt.tmpl",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "4ca8a7797c8ec804bfa7a4894c37ae969c0f9468999360c43b770b6d144ce7ea",
+      "source_path": "assets/inference-prompt.txt.tmpl"
+    },
+    {
+      "destination": "assets/log.md.tmpl",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "3daf3ceb6960b04782b822d6c807594e045e1389951c2359f16308790ebad17e",
+      "source_path": "assets/log.md.tmpl"
+    },
+    {
+      "destination": "assets/pattern.md.tmpl",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "dc7913c9fb439b7d5df354d1bc95b5819863c936b28765a46ae70d492164a14f",
+      "source_path": "assets/pattern.md.tmpl"
+    },
+    {
+      "destination": "assets/skill-impact.md.tmpl",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "b88e0a336f5b61023e609ec98cb847651ef114e8eca901e6c3392889ad15292f",
+      "source_path": "assets/skill-impact.md.tmpl"
+    },
+    {
+      "destination": "docs/implementation-parity.md",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "0e102a4d344cd8cd521c231e3dfdc3c86514402d16d6f376f648604f32c08c67",
+      "source_path": "docs/implementation-parity.md"
+    },
+    {
+      "destination": "docs/license-decision.md",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "183250dc0e77b0078576efce35f680e672a4bd0f8d4ddb1e232ddfbfc23857a6",
+      "source_path": "docs/license-decision.md"
+    },
+    {
+      "destination": "locked/acceptance-matrix.md",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "15c6d089e666e4d2f60f86cbb91e4d5ee295b8dd66df30e543d0ad3177d4a25a",
+      "source_path": "locked/acceptance-matrix.md"
+    },
+    {
+      "destination": "locked/architecture-contract.md",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "63c32497e5c14fd8ea95138731d4b12c11c4d1dd910eb698b8f2fb03b3aafac0",
+      "source_path": "locked/architecture-contract.md"
+    },
+    {
+      "destination": "locked/source-parity-matrix.md",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "240f7211792b0b0dc0fc077d2008341b679515ad27b0b44957b673f2a3fa73ad",
+      "source_path": "locked/source-parity-matrix.md"
+    },
+    {
+      "destination": "pyproject.toml",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "5a43a492654b60f39ca1bc73d6b307bf61e81228cf94e0d9a8bdcfa75cf56233",
+      "source_path": "pyproject.toml"
+    },
+    {
+      "destination": "references/fidelity.md",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "10edf788a1288ae01f1a1caa9de146f861e7c8b1fa7c431bd6fe9cfd09a1d887",
+      "source_path": "references/fidelity.md"
+    },
+    {
+      "destination": "references/integration.md",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "60c529672fdc2bd4854158dc913486b5faca45b2b53ec403669ddc66883b4465",
+      "source_path": "references/integration.md"
+    },
+    {
+      "destination": "references/paper-notes.md",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "dfed1eaa2edc2800387fd3c15e72fb61a174e0dcd9996caea7843c42787824e1",
+      "source_path": "references/paper-notes.md"
+    },
+    {
+      "destination": "references/verification/README.md",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "3be4a54ae021bd0f1f922607ab8ac61aae94d21a362ca602a56fc3c51a9a4546",
+      "source_path": "references/verification/README.md"
+    },
+    {
+      "destination": "references/verification/independent-review-protocol.md",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "202300643ff5e6c6850b18a7d3806737c8156be5e1308bd2d687cd8dbdeef330",
+      "source_path": "references/verification/independent-review-protocol.md"
+    },
+    {
+      "destination": "scripts/extractors/answer_tag.py",
+      "disposition": "copied_exact",
+      "git_mode": "100755",
+      "sha256": "2b9253cc920d2f4813951cd2b9619ebf71e288317acff4471c16f7b3667a45e2",
+      "source_path": "scripts/extractors/answer_tag.py"
+    },
+    {
+      "destination": "scripts/install_claude_skill.py",
+      "disposition": "copied_exact",
+      "git_mode": "100755",
+      "sha256": "f7f8ab4384aa619e60252b2fc8b5f96992ed153871cdcdb3347b02f646c0108b",
+      "source_path": "scripts/install_claude_skill.py"
+    },
+    {
+      "destination": "scripts/scorers/exact_match.py",
+      "disposition": "copied_exact",
+      "git_mode": "100755",
+      "sha256": "4da5e1019e8400311164c5341eed297fc1ddc45123098d2cb273fb5c81579541",
+      "source_path": "scripts/scorers/exact_match.py"
+    },
+    {
+      "destination": "scripts/scorers/numeric_tolerance.py",
+      "disposition": "copied_exact",
+      "git_mode": "100755",
+      "sha256": "e3180cdaab679cf82c8504b346f7cb1515431812b7235a3831760589589d8b1b",
+      "source_path": "scripts/scorers/numeric_tolerance.py"
+    },
+    {
+      "destination": "scripts/stdlib_smoke.py",
+      "disposition": "copied_exact",
+      "git_mode": "100755",
+      "sha256": "056879f9f780e2c132b74fe681fd0a5211f542fe029b0a27b5b64945d4338943",
+      "source_path": "scripts/stdlib_smoke.py"
+    },
+    {
+      "destination": "setup.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "ddcdd4b7410d5e5cae8a1e258b41863545d61b8148e7fa7118460f03a1e319b6",
+      "source_path": "setup.py"
+    },
+    {
+      "destination": "src/asme/__init__.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "872bbfc13231d014b172de5b2d0df3903da5c2da3dc18132aed3d03115dddbb9",
+      "source_path": "src/asme/__init__.py"
+    },
+    {
+      "destination": "src/asme/__main__.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "0f7d54f3fbb1f79a85eb8110f11793db99da6f3c61ee979de5abe9a1b5f3fdb3",
+      "source_path": "src/asme/__main__.py"
+    },
+    {
+      "destination": "src/asme/adapter.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "9d6e1a995613c667d6f696f7b6a3000fdde41b2d17d2a81fb34f36879c9d51e7",
+      "source_path": "src/asme/adapter.py"
+    },
+    {
+      "destination": "src/asme/bootstrap.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "65bb2e89c232fd99fd67b16893b2d6427a1dd4d4157898e8e77f91c83384087f",
+      "source_path": "src/asme/bootstrap.py"
+    },
+    {
+      "destination": "src/asme/canonical.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "51e0ca74eb7b2c4ac3a8ce6cda62235fa2427b3abf0d19baba1cdeeb5ecc9e7d",
+      "source_path": "src/asme/canonical.py"
+    },
+    {
+      "destination": "src/asme/cartridge.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "2d164a259a8fb5f83b1e9afdb08cfa4daf3a631a2a76380f676726130a0736a3",
+      "source_path": "src/asme/cartridge.py"
+    },
+    {
+      "destination": "src/asme/claims.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "a450a7b7d378611333b5350cb105a9a56d7ca14415c71d0dbc81b87dbd81aaf4",
+      "source_path": "src/asme/claims.py"
+    },
+    {
+      "destination": "src/asme/cli.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "0089fc62e1f400e2add051edc282ac5e15b8b4fbcd116672e77ac751089f5167",
+      "source_path": "src/asme/cli.py"
+    },
+    {
+      "destination": "src/asme/clock.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "fcdd120a8b9ba88accf3a2ddc24b0497c3668907ebeeb5367d67cd30f1f54190",
+      "source_path": "src/asme/clock.py"
+    },
+    {
+      "destination": "src/asme/contract.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "87752014e1bfbc5d09aa56b5287eb214e9297e30d2c1ffcd310504f81b09c740",
+      "source_path": "src/asme/contract.py"
+    },
+    {
+      "destination": "src/asme/data/source-registry.json",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "5335e267c5259d047cf9eb3ef175f6757ea2d393e9b21948700b4eee25c38a39",
+      "source_path": "src/asme/data/source-registry.json"
+    },
+    {
+      "destination": "src/asme/delivery.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "3ce1c00bc768c405a62731929f54b87792ec40f622f5c05426f60225f12c8b95",
+      "source_path": "src/asme/delivery.py"
+    },
+    {
+      "destination": "src/asme/dependencies.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "ace887a20fe20f6e8f3b6ada3d70c4a51e4810496174c23f9bf5543855e3e2e1",
+      "source_path": "src/asme/dependencies.py"
+    },
+    {
+      "destination": "src/asme/domain.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "4c70775c4585f33523fa857b0f135454a75c0cb9176f9bf65abb48d25157a17f",
+      "source_path": "src/asme/domain.py"
+    },
+    {
+      "destination": "src/asme/evalreport.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "86bb37b43053212617149a435cf50226cbd3ed57b77746fe84c4999671e833c3",
+      "source_path": "src/asme/evalreport.py"
+    },
+    {
+      "destination": "src/asme/evaluation.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "32e7798acd411a3a4de74795c164457b64131d806f583ad4f0b6690d3416b1c5",
+      "source_path": "src/asme/evaluation.py"
+    },
+    {
+      "destination": "src/asme/evidence.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "3771fd045d313646eb9c61cdd6627f045b9ad52b7d4405864c9026ed69e8dec7",
+      "source_path": "src/asme/evidence.py"
+    },
+    {
+      "destination": "src/asme/evolution_eval.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "8286f252f1cca5932427f4fea71c6e14ed8bef66fb5bfc6c73d43b82c821257b",
+      "source_path": "src/asme/evolution_eval.py"
+    },
+    {
+      "destination": "src/asme/gate2.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "4edc53268c8d6941cf313fe2a630445b302795056a340eb154de60fb72e450b8",
+      "source_path": "src/asme/gate2.py"
+    },
+    {
+      "destination": "src/asme/governance.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "67ddcddace34c1fab39f07d208e05042bc2ac7db3973a1bcdd7a22a900d08147",
+      "source_path": "src/asme/governance.py"
+    },
+    {
+      "destination": "src/asme/impact.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "1245ea2610dd5fa1ea766ba78d5768f3e6fc9e89d5e85369ae42efc54135eaee",
+      "source_path": "src/asme/impact.py"
+    },
+    {
+      "destination": "src/asme/integration.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "e7f908970b345d819e47ad765c9de9df4829c919e81dd8c49883c99d979b661d",
+      "source_path": "src/asme/integration.py"
+    },
+    {
+      "destination": "src/asme/lifecycle.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "88163d8e6e89e14672f8a00eecad1a6426df18d2af74c972e38e7b34cc528a8a",
+      "source_path": "src/asme/lifecycle.py"
+    },
+    {
+      "destination": "src/asme/manifest.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "73ff5d0ea100dc51dea71f429eeb8cd3fc4619e9f01a79d1b3930a491894a99f",
+      "source_path": "src/asme/manifest.py"
+    },
+    {
+      "destination": "src/asme/observer_bridge.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "6f3760870e0a65e34beb7628146f22b76241fd75d9c6d127279dca1d5abd2c6f",
+      "source_path": "src/asme/observer_bridge.py"
+    },
+    {
+      "destination": "src/asme/package.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "9d9fe4277f5ccaa9a66da9db6c6643ac2c09134f310420ba357d5503085e907e",
+      "source_path": "src/asme/package.py"
+    },
+    {
+      "destination": "src/asme/proposal.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "7b00ab77b6de3eba987fdd05232960b49214084c4ba3683ed397705095c76360",
+      "source_path": "src/asme/proposal.py"
+    },
+    {
+      "destination": "src/asme/seed.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "3d789a7b8d46185b44526933c938ebf607c51c48480f43b655e928f376399f94",
+      "source_path": "src/asme/seed.py"
+    },
+    {
+      "destination": "src/asme/skill_assets.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "20d2ce3e3fa142f9b7f6f5ebe58f6ae06fe647246e1efae427cb04580ac9a1fd",
+      "source_path": "src/asme/skill_assets.py"
+    },
+    {
+      "destination": "src/asme/skill_install.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "e4a377624da5d3dc8bd045c8966bc66cdfd34c94d3e167ae84c465bbda091ce8",
+      "source_path": "src/asme/skill_install.py"
+    },
+    {
+      "destination": "src/asme/skill_safety.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "13648030c27c77399241f780d3eac81255d4c1510dfdd44255f2a436fa2e3072",
+      "source_path": "src/asme/skill_safety.py"
+    },
+    {
+      "destination": "src/asme/snapshot.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "9e97504f8e00559f19e8b9ca5e8b74a364c04acf3bc2ab871129688005063b69",
+      "source_path": "src/asme/snapshot.py"
+    },
+    {
+      "destination": "src/asme/source_registry.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "6d4471ffbe9742cf64adf8d8ad6c0fb1804de2287bc2a163b6f7d39ffd25fabb",
+      "source_path": "src/asme/source_registry.py"
+    },
+    {
+      "destination": "src/asme/transaction.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "910b8f211eb399d3ac7bd51b776d64756d04a2b489163a0a59f7e8833c999f9a",
+      "source_path": "src/asme/transaction.py"
+    },
+    {
+      "destination": "src/asme/wiki.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "a36d8aeda6de96719ab32240ec66fbe8cac2bab9db5016b5e5499b124d7227ff",
+      "source_path": "src/asme/wiki.py"
+    },
+    {
+      "destination": "src/asme/workflow.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "9dcaa203b50ef7d21e78dfd4195a4acd0118b4eacfc91a09b1931b239dfbed47",
+      "source_path": "src/asme/workflow.py"
+    },
+    {
+      "destination": "src/asme/workspace.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "e17cf2245e709aae4b96c1e0797a1d5a335266f048b64d5bba28511f525ca0e9",
+      "source_path": "src/asme/workspace.py"
+    },
+    {
+      "destination": "tests/conftest.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "0e017f4320661a4b47d6ec80774b8d4e2e60a4dc9546afbbf67eb6df2995e31d",
+      "source_path": "tests/conftest.py"
+    },
+    {
+      "destination": "tests/test_bootstrap.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "cfee91732eac7ce7a3be0153f876c5cff305fac279f41bdbc55103903092e170",
+      "source_path": "tests/test_bootstrap.py"
+    },
+    {
+      "destination": "tests/test_builtin_cartridge_programs.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "5fddef92e11cea97ccfa6eff019e92cd0010d55b38ce1a077248231e57f7bb94",
+      "source_path": "tests/test_builtin_cartridge_programs.py"
+    },
+    {
+      "destination": "tests/test_cartridge.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "5d27e17f0aa6e7872854d30b82fde1b5b0dd32ebebd97a12bcdaf6fdc230d170",
+      "source_path": "tests/test_cartridge.py"
+    },
+    {
+      "destination": "tests/test_cli.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "ea59fcd350336f82c32633a7490a74236294e708e5242b9ad9fa6d92fd7af140",
+      "source_path": "tests/test_cli.py"
+    },
+    {
+      "destination": "tests/test_cli_eval_bridge.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "33f38ae968904ffeef8715542423d5d95a99c787efd9e38ca3984dd7cd445feb",
+      "source_path": "tests/test_cli_eval_bridge.py"
+    },
+    {
+      "destination": "tests/test_clock.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "f1e3f73876cb0ba59e93ac6a4d006b3aad478a983f64cc4d124a31847a01c263",
+      "source_path": "tests/test_clock.py"
+    },
+    {
+      "destination": "tests/test_contract_adapter.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "8b515035b2f2091b7a3437a2378e9b7676e97cfcfaca890ae7fe6e72086b451c",
+      "source_path": "tests/test_contract_adapter.py"
+    },
+    {
+      "destination": "tests/test_crash_oracle.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "203e28fe217f0a1ec31c43eece2aa6ea57c9ac884003b28a14505057d9d5e30a",
+      "source_path": "tests/test_crash_oracle.py"
+    },
+    {
+      "destination": "tests/test_delivery.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "0d7d4138666de699f83ae47bd5e70c428ce477155db364584b8ebf8af0117eb5",
+      "source_path": "tests/test_delivery.py"
+    },
+    {
+      "destination": "tests/test_domain_evaluation_manifest.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "59b297328bd0fae4049d5f655615397f4c7522a6c0cbec3dd1e9585606ae556e",
+      "source_path": "tests/test_domain_evaluation_manifest.py"
+    },
+    {
+      "destination": "tests/test_evalreport.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "5e8fe46f77ee99abc07760becb1355889df4b6e0c4ea794bf3a07d29df440272",
+      "source_path": "tests/test_evalreport.py"
+    },
+    {
+      "destination": "tests/test_evolution_eval.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "08f97ab84879bdee42185119b5c43f60c3c8e7c447b18740f512e45ce32abc3e",
+      "source_path": "tests/test_evolution_eval.py"
+    },
+    {
+      "destination": "tests/test_governance_dependencies_gate2.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "43ea2ce6c4e35cc7c0972e10979e21ce48270edf80b1b0cbdbc04e6bf034abb8",
+      "source_path": "tests/test_governance_dependencies_gate2.py"
+    },
+    {
+      "destination": "tests/test_integration_bridge.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "ae98207f5ab3028fe86f92bd5a0c9ee3390ecfe54b95394aadbcae938c3fc276",
+      "source_path": "tests/test_integration_bridge.py"
+    },
+    {
+      "destination": "tests/test_lifecycle.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "bc35c968c0f290bfaac2a53c6e7f3884ea1b4ab1222ed7df2034d83bcc59f7e8",
+      "source_path": "tests/test_lifecycle.py"
+    },
+    {
+      "destination": "tests/test_observer_bridge.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "a9fd4e894978c48e5c798c761fff712a693f82936818f0555dd221d43f7b6346",
+      "source_path": "tests/test_observer_bridge.py"
+    },
+    {
+      "destination": "tests/test_proposal.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "5377c8f2c728f1f5fb9b9edf13caa281fc5a58e4b28f2d5b696b50fce2d9a0ce",
+      "source_path": "tests/test_proposal.py"
+    },
+    {
+      "destination": "tests/test_release_surface.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "9b53bda6b24862a89991c6d8894f79098864352aa4a4c1594fe95f7c95b45e09",
+      "source_path": "tests/test_release_surface.py"
+    },
+    {
+      "destination": "tests/test_reset_errors.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "3ebc217a972ad15dbf2ad46ca1a95cac18981e317364d76d78d418884f44697b",
+      "source_path": "tests/test_reset_errors.py"
+    },
+    {
+      "destination": "tests/test_seed.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "0e689d60618b064ddd96232aecc7519b72cc401f8e82f84367435d66cbbc4f1f",
+      "source_path": "tests/test_seed.py"
+    },
+    {
+      "destination": "tests/test_skill_assets.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "6bbfec898065f9971f4ba33bb34778c988818e15e34e638061460185b764ab6b",
+      "source_path": "tests/test_skill_assets.py"
+    },
+    {
+      "destination": "tests/test_skill_install.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "7bdd92169e47b7ac00ec30acf3b8b21c3ecf9776de8018f02737542243d4de0c",
+      "source_path": "tests/test_skill_install.py"
+    },
+    {
+      "destination": "tests/test_skill_safety.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "1091d4c1634d62912330453c3fd627b361af1738e9353626b0cd5404a15d335b",
+      "source_path": "tests/test_skill_safety.py"
+    },
+    {
+      "destination": "tests/test_snapshot_package.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "3dd4b92ff6bdb0aa32745f8f52a94c431121e5c2bfba15fa57b08ac5a2167f26",
+      "source_path": "tests/test_snapshot_package.py"
+    },
+    {
+      "destination": "tests/test_stdlib_smoke.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "8bcc15c9e32047d51da61ec22edf7a87c691ac89dc6a4ff94732b5fd37475ed1",
+      "source_path": "tests/test_stdlib_smoke.py"
+    },
+    {
+      "destination": "tests/test_terminal_paths.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "1cf7a3eef8ad8f9073f6de299f6e74df9390855043dc765478a69ad0405678ce",
+      "source_path": "tests/test_terminal_paths.py"
+    },
+    {
+      "destination": "tests/test_transaction.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "df72ee6b67fc97f1b0b56cfb4ca48ee62539cb1992b7efdcd295a331a5b0da6a",
+      "source_path": "tests/test_transaction.py"
+    },
+    {
+      "destination": "tests/test_wiki.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "41c856098e5ff5ea1e990987c932e0c40b12c52480f2280c396b38153b27222c",
+      "source_path": "tests/test_wiki.py"
+    },
+    {
+      "destination": "tests/test_workflow.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "6efd1e4c986f0ad9d12b11b455cee7e18215ec8143ea07b1b41a09553695b7ed",
+      "source_path": "tests/test_workflow.py"
+    },
+    {
+      "destination": "tests/test_workflow_candidate.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "3236e49cdfb72e68218dc24b80c7a45b6b27f6a65737b5a80fe6e17315aa68ac",
+      "source_path": "tests/test_workflow_candidate.py"
+    },
+    {
+      "destination": "tests/test_workspace_hermes_adapter.py",
+      "disposition": "copied_exact",
+      "git_mode": "100644",
+      "sha256": "34dbf564194ba3040199b112e009df18438646b527943e4c9839d2f95134c02f",
+      "source_path": "tests/test_workspace_hermes_adapter.py"
+    }
+  ],
+  "imported_at": "2026-09-07T00:56:51.387707+00:00",
+  "nontracked_inventory": {
+    "disposition": "Retained at source; paths enumerated without reading contents; not imported.",
+    "ignored_paths": [
+      ".langgraph_api/.langgraph_checkpoint.1.pckl",
+      ".langgraph_api/.langgraph_checkpoint.2.pckl",
+      ".langgraph_api/.langgraph_checkpoint.3.pckl",
+      ".langgraph_api/.langgraph_ops.pckl",
+      ".langgraph_api/.langgraph_retry_counter.pckl",
+      ".langgraph_api/store.pckl",
+      ".langgraph_api/store.vectors.pckl",
+      ".pytest_cache/.gitignore",
+      ".pytest_cache/CACHEDIR.TAG",
+      ".pytest_cache/README.md",
+      ".pytest_cache/v/cache/lastfailed",
+      ".pytest_cache/v/cache/nodeids",
+      ".serena/.gitignore",
+      ".serena/project.local.yml",
+      ".serena/project.yml",
+      "adapters/hermes_plugin/__pycache__/__init__.cpython-314.pyc",
+      "dist/agent_skill_mastery_engine-0.2.0-py3-none-any.whl",
+      "dist/agent_skill_mastery_engine-0.2.0.tar.gz",
+      "src/agent_skill_mastery_engine.egg-info/PKG-INFO",
+      "src/agent_skill_mastery_engine.egg-info/SOURCES.txt",
+      "src/agent_skill_mastery_engine.egg-info/dependency_links.txt",
+      "src/agent_skill_mastery_engine.egg-info/entry_points.txt",
+      "src/agent_skill_mastery_engine.egg-info/top_level.txt",
+      "src/asme/__pycache__/__init__.cpython-314.pyc",
+      "src/asme/__pycache__/__main__.cpython-314.pyc",
+      "src/asme/__pycache__/adapter.cpython-314.pyc",
+      "src/asme/__pycache__/bootstrap.cpython-314.pyc",
+      "src/asme/__pycache__/canonical.cpython-314.pyc",
+      "src/asme/__pycache__/cartridge.cpython-314.pyc",
+      "src/asme/__pycache__/claims.cpython-314.pyc",
+      "src/asme/__pycache__/cli.cpython-314.pyc",
+      "src/asme/__pycache__/clock.cpython-314.pyc",
+      "src/asme/__pycache__/contract.cpython-314.pyc",
+      "src/asme/__pycache__/delivery.cpython-314.pyc",
+      "src/asme/__pycache__/dependencies.cpython-314.pyc",
+      "src/asme/__pycache__/domain.cpython-314.pyc",
+      "src/asme/__pycache__/evalreport.cpython-314.pyc",
+      "src/asme/__pycache__/evaluation.cpython-314.pyc",
+      "src/asme/__pycache__/evidence.cpython-314.pyc",
+      "src/asme/__pycache__/evolution_eval.cpython-314.pyc",
+      "src/asme/__pycache__/gate2.cpython-314.pyc",
+      "src/asme/__pycache__/governance.cpython-314.pyc",
+      "src/asme/__pycache__/impact.cpython-314.pyc",
+      "src/asme/__pycache__/integration.cpython-314.pyc",
+      "src/asme/__pycache__/lifecycle.cpython-314.pyc",
+      "src/asme/__pycache__/manifest.cpython-314.pyc",
+      "src/asme/__pycache__/observer_bridge.cpython-314.pyc",
+      "src/asme/__pycache__/package.cpython-314.pyc",
+      "src/asme/__pycache__/proposal.cpython-314.pyc",
+      "src/asme/__pycache__/seed.cpython-314.pyc",
+      "src/asme/__pycache__/skill_assets.cpython-314.pyc",
+      "src/asme/__pycache__/skill_install.cpython-314.pyc",
+      "src/asme/__pycache__/skill_safety.cpython-314.pyc",
+      "src/asme/__pycache__/snapshot.cpython-314.pyc",
+      "src/asme/__pycache__/source_registry.cpython-314.pyc",
+      "src/asme/__pycache__/transaction.cpython-314.pyc",
+      "src/asme/__pycache__/wiki.cpython-314.pyc",
+      "src/asme/__pycache__/workflow.cpython-314.pyc",
+      "src/asme/__pycache__/workspace.cpython-314.pyc",
+      "tests/__pycache__/conftest.cpython-314-pytest-9.1.1.pyc",
+      "tests/__pycache__/test_bootstrap.cpython-314-pytest-9.1.1.pyc",
+      "tests/__pycache__/test_builtin_cartridge_programs.cpython-314-pytest-9.1.1.pyc",
+      "tests/__pycache__/test_cartridge.cpython-314-pytest-9.1.1.pyc",
+      "tests/__pycache__/test_cli.cpython-314-pytest-9.1.1.pyc",
+      "tests/__pycache__/test_cli_eval_bridge.cpython-314-pytest-9.1.1.pyc",
+      "tests/__pycache__/test_clock.cpython-314-pytest-9.1.1.pyc",
+      "tests/__pycache__/test_contract_adapter.cpython-314-pytest-9.1.1.pyc",
+      "tests/__pycache__/test_crash_oracle.cpython-314-pytest-9.1.1.pyc",
+      "tests/__pycache__/test_delivery.cpython-314-pytest-9.1.1.pyc",
+      "tests/__pycache__/test_domain_evaluation_manifest.cpython-314-pytest-9.1.1.pyc",
+      "tests/__pycache__/test_evalreport.cpython-314-pytest-9.1.1.pyc",
+      "tests/__pycache__/test_evolution_eval.cpython-314-pytest-9.1.1.pyc",
+      "tests/__pycache__/test_governance_dependencies_gate2.cpython-314-pytest-9.1.1.pyc",
+      "tests/__pycache__/test_integration_bridge.cpython-314-pytest-9.1.1.pyc",
+      "tests/__pycache__/test_lifecycle.cpython-314-pytest-9.1.1.pyc",
+      "tests/__pycache__/test_observer_bridge.cpython-314-pytest-9.1.1.pyc",
+      "tests/__pycache__/test_proposal.cpython-314-pytest-9.1.1.pyc",
+      "tests/__pycache__/test_release_surface.cpython-314-pytest-9.1.1.pyc",
+      "tests/__pycache__/test_reset_errors.cpython-314-pytest-9.1.1.pyc",
+      "tests/__pycache__/test_seed.cpython-314-pytest-9.1.1.pyc",
+      "tests/__pycache__/test_skill_assets.cpython-314-pytest-9.1.1.pyc",
+      "tests/__pycache__/test_skill_install.cpython-314-pytest-9.1.1.pyc",
+      "tests/__pycache__/test_skill_safety.cpython-314-pytest-9.1.1.pyc",
+      "tests/__pycache__/test_snapshot_package.cpython-314-pytest-9.1.1.pyc",
+      "tests/__pycache__/test_stdlib_smoke.cpython-314-pytest-9.1.1.pyc",
+      "tests/__pycache__/test_terminal_paths.cpython-314-pytest-9.1.1.pyc",
+      "tests/__pycache__/test_transaction.cpython-314-pytest-9.1.1.pyc",
+      "tests/__pycache__/test_wiki.cpython-314-pytest-9.1.1.pyc",
+      "tests/__pycache__/test_workflow.cpython-314-pytest-9.1.1.pyc",
+      "tests/__pycache__/test_workflow_candidate.cpython-314-pytest-9.1.1.pyc",
+      "tests/__pycache__/test_workspace_hermes_adapter.cpython-314-pytest-9.1.1.pyc"
+    ],
+    "observed_at": "2026-09-07T00:56:51.389986+00:00",
+    "untracked_paths": []
+  },
+  "preflight_scan": {
+    "benign_classification": "Pinned observer phase constant, AST-verified non-credential; original redacted audit retained in WikiSkill parity evidence.",
+    "benign_context_matches": 1,
+    "patterns": "AWS access key prefix, generic sk token, PEM private key header",
+    "tracked_imports_scanned": 122,
+    "unresolved_hits": 0
+  },
+  "prior_current_documents": {
+    "destination_content_digest": "ead997d49425bde6c42d2d9fe7d87107382ec5b7954374f5a6c5d5c0557c58b2",
+    "sha256": {
+      "CONTRIBUTING.md": "548937a9cdd35f1511e80c8a978c045e09ed8a82daab0ae88774ee069522586d",
+      "PROVENANCE.md": "a1f5d6d0b1af41fdca384f5fc41380e625c6fc78d98a54fda0363be453579a00",
+      "README.md": "f63a4fcc09511866dea5cfdd89dc04e2bfad76038e10e38cf139b6da0594142a"
+    },
+    "status": "Pre-repair current documents; original full-suite failures retained in destination-pytest.json"
+  },
+  "schema": "lifecycle.asme-port.v1",
+  "source_history": {
+    "preservation": "Original repository and all Git history retained; no history copied or deleted.",
+    "public_tip": "c79097aea0da803b84f4f75db7395063b98d0705",
+    "unique_local_commits": [
+      "07fa7a6d8003150dc163f9aa3aec81772a4caa32",
+      "68a8a9e04cafdebf26542505fc8df37b8e8ba3f0",
+      "f837a1d206df29b5d4715c480c9071574e6d440b",
+      "de91882e65e24c03270fe591a475b0cbcfc39542",
+      "0d30d5a71818db858b054f86642820d1179c8548",
+      "1137c6705fd844546d5588757a5a23d4007b20c4"
+    ]
+  },
+  "source_repository": "https://github.com/bionicbutterfly13/agent-skill-mastery-engine",
+  "source_revision": "1137c6705fd844546d5588757a5a23d4007b20c4"
+}

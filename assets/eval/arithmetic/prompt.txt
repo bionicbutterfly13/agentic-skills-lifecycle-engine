@@ -1,0 +1,2 @@
+Compute the expression and reply with only the number inside <answer> tags: {input}
+{active_skills}

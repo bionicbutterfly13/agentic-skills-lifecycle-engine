@@ -1,0 +1,958 @@
+{
+  "schema": "lifecycle.asme-port-verification.v1",
+  "status": "mechanical_compatibility_import_verified_awaiting_orchestrator_git_closeout",
+  "observed_at": "2026-09-07T01:01:56.498184+00:00",
+  "source_revision": "1137c6705fd844546d5588757a5a23d4007b20c4",
+  "destination": {
+    "repository": "agentic-skills-lifecycle-engine",
+    "worktree": "agentic-skills-lifecycle-engine-asme-port",
+    "branch": "feat/asme-hermes-parity-port",
+    "base_commit": "19375806a748db16e706c70f49aa3bc83b142eb0",
+    "content_digest_status": "post_document_repair_verified_manifest_destinations",
+    "imported_source_files": 122,
+    "exact_canonical_copies": 119,
+    "historical_copies": 3,
+    "revised_current_documents": 3,
+    "content_digest": "00ead34220eca190d1ebac8c06618b2551d97807f7fc762b237df2219dcc6a57"
+  },
+  "interpreter": {
+    "version": "3.14.6",
+    "executable": "/usr/local/bin/python3"
+  },
+  "source_smoke": {
+    "reported_by": "orchestrator",
+    "working_directory": "agent-skill-mastery-engine source checkout",
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 scripts/stdlib_smoke.py",
+    "started_at": null,
+    "ended_at": null,
+    "timestamp_status": "exact timestamps unavailable",
+    "exit_code": 0,
+    "output": {
+      "domain_id": "stdlib-smoke",
+      "isolation": "unsandboxed",
+      "network_used": false,
+      "phase": "DONE",
+      "score": 1.0,
+      "trace_fidelity": "final_only"
+    }
+  },
+  "preflight": {
+    "source_tracked_clean": true,
+    "tracked_paths": 129,
+    "planned_import_paths": 122,
+    "planned_retained_source_paths": 7,
+    "untracked_paths": 0,
+    "ignored_paths_at_preflight": 91,
+    "ignored_contents_read": false,
+    "scan_status": "complete_no_unresolved_hits",
+    "flagged_path": "src/asme/observer_bridge.py",
+    "classification": "Redacted AST verified ordinary observer phase constant; not a credential.",
+    "benign_context_matches": 1,
+    "all_imported_tracked_files_scanned": 122,
+    "classification_context": "The flag was classified without exposing its substring. After it was verified as a non-credential, its complete pinned source file was imported unchanged.",
+    "matching_value_exposed_during_redacted_classification": false,
+    "classified_noncredential_source_imported_exactly": true
+  },
+  "checks": [
+    {
+      "command": "python3 -m pytest -q tests/test_asme_port.py",
+      "stage": "RED before verifier implementation",
+      "exit_code": 1,
+      "collected": 21,
+      "passed": 0,
+      "failed": 0,
+      "errors": 21,
+      "skipped": 0,
+      "duration_seconds": 11.23,
+      "result": "expected missing verifier module setup failure"
+    },
+    {
+      "command": "python3 -m pytest -q tests/test_asme_port.py",
+      "stage": "GREEN initial verifier implementation",
+      "exit_code": 0,
+      "collected": 21,
+      "passed": 21,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "duration_seconds": 3.41
+    },
+    {
+      "command": "python3 -m pytest -q tests/test_asme_port.py",
+      "stage": "Expanded direct containment and source-symlink coverage",
+      "exit_code": 0,
+      "collected": 26,
+      "passed": 26,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "duration_seconds": 6.74
+    },
+    {
+      "command": "python3 -m pytest -q tests/test_asme_port.py",
+      "stage": "CLI pass/fail exit behavior and parent-symlink containment",
+      "exit_code": 0,
+      "collected": 28,
+      "passed": 28,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "duration_seconds": 43.05
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 -m pytest -p no:cacheprovider -q tests/test_asme_port.py",
+      "stage": "RED independent-review regressions before fixes",
+      "exit_code": 1,
+      "collected": 36,
+      "passed": 28,
+      "failed": 8,
+      "errors": 0,
+      "skipped": 0,
+      "duration_seconds": 4.57,
+      "result": "Expected failures: Git subdirectory, planning-retention override, six index-drift variants"
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 -m pytest -p no:cacheprovider -q tests/test_asme_port.py",
+      "stage": "GREEN independent-review repairs",
+      "exit_code": 0,
+      "collected": 36,
+      "passed": 36,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "duration_seconds": 4.89
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 -m pytest --noconftest -p no:cacheprovider tests/test_asme_port.py -q",
+      "stage": "Final independent reviewer run",
+      "reported_by": "orchestrator from independent reviewer",
+      "exit_code": 0,
+      "collected": 36,
+      "passed": 36,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "duration_seconds": 5.32,
+      "scope": "New migration verifier only; source untouched"
+    },
+    {
+      "check": "Independent synthetic CLI probes",
+      "status": "pass",
+      "reported_by": "orchestrator from independent reviewer",
+      "cases": [
+        {
+          "case": "valid receipt",
+          "exit_code": 0,
+          "status": "pass"
+        },
+        {
+          "case": "nested Git source",
+          "exit_code": 1,
+          "result": "root required"
+        },
+        {
+          "case": "planning copy override",
+          "exit_code": 1,
+          "result": "must retain at source"
+        },
+        {
+          "case": "unmerged index",
+          "exit_code": 1,
+          "result": "unmerged or duplicate entries rejected"
+        }
+      ],
+      "review_conclusion": "All three reported fixes pass; no additional material defect found in bounded review"
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0,
+      "scope": "tracked diff before final documentation"
+    },
+    {
+      "check": "datetime subtraction of recorded paper and release timestamps",
+      "status": "pass",
+      "elapsed_seconds": 477003
+    },
+    {
+      "check": "Prepared-artifact self-check",
+      "status": "pass",
+      "scope": "Nine intended files exist; JSON parse, local Markdown links, public prose and trailing whitespace; generated caches excluded"
+    },
+    {
+      "check": "Destination Git state",
+      "status": "pass",
+      "head": "19375806a748db16e706c70f49aa3bc83b142eb0",
+      "staged_files": 0,
+      "tracked_modified_paths": [
+        ".planning/STATE.md"
+      ]
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 -m pytest -p no:cacheprovider tests/test_asme_port.py",
+      "stage": "Resumed verifier pre-import",
+      "exit_code": 0,
+      "collected": 36,
+      "passed": 36,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "duration_seconds": 7.06,
+      "started_at": null,
+      "ended_at": null,
+      "timestamp_status": "Exact timestamps not captured by direct command"
+    },
+    {
+      "label": "Destination stdlib smoke",
+      "argv": [
+        "python3",
+        "scripts/stdlib_smoke.py"
+      ],
+      "environment": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "started_at": "2026-09-07T01:01:56.524053+00:00",
+      "ended_at": "2026-09-07T01:02:24.883583+00:00",
+      "elapsed_seconds": 28.359,
+      "exit_code": 0,
+      "stdout": "{\"domain_id\":\"stdlib-smoke\",\"isolation\":\"unsandboxed\",\"network_used\":false,\"phase\":\"DONE\",\"score\":1.0,\"trace_fidelity\":\"final_only\"}\n",
+      "stderr": ""
+    },
+    {
+      "label": "Preserved CLI help",
+      "argv": [
+        "python3",
+        "-m",
+        "asme",
+        "--help"
+      ],
+      "environment": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONPATH": "src"
+      },
+      "started_at": "2026-09-07T01:02:24.886604+00:00",
+      "ended_at": "2026-09-07T01:02:32.786777+00:00",
+      "elapsed_seconds": 7.9,
+      "exit_code": 0,
+      "stdout": "usage: asme [-h] [--version]\n            {transition-matrix,verify-archive,candidate-manifest,observation-candidate,init,skip-seed,seed-observations,rollback-seed,prepare-rollout,record-execution,ingest-rollout,reset-manifest,finalize-baseline,sample,apply-wiki,proposer-context,apply-proposal,gate,abandon-candidate,export,package-untested,eval-run,verify-packet,install,status,recover} ...\n\nRuntime-neutral WikiSkill core. Evolved candidates are staged, never\ninstalled; only `install` writes a skill directory, and it copies just Agent\nSkill Mastery Engine's own skill.\n\npositional arguments:\n  {transition-matrix,verify-archive,candidate-manifest,observation-candidate,init,skip-seed,seed-observations,rollback-seed,prepare-rollout,record-execution,ingest-rollout,reset-manifest,finalize-baseline,sample,apply-wiki,proposer-context,apply-proposal,gate,abandon-candidate,export,package-untested,eval-run,verify-packet,install,status,recover}\n    transition-matrix   Print the total lifecycle matrix\n    verify-archive      Verify a normalized staged .skill archive\n    candidate-manifest  Print a deterministic candidate manifest without\n                        writing an artifact\n    observation-candidate\n                        Print a review-only reusable-signal candidate without\n                        writing Task Observer\n    init                Initialize one sealed development domain\n    skip-seed           Record that no optional observation seed is used\n    seed-observations   Apply one human-approved named observation packet\n    rollback-seed       Remove an exact seed before baseline evidence exists\n    prepare-rollout     Write hash-bound jobs for one rollout phase\n    record-execution    Record one adapter-returned captured execution\n    ingest-rollout      Evaluate captured outputs and create one manifest\n    reset-manifest      Remove invalid unconsumed evidence, preserving outputs\n    finalize-baseline   Consume a valid baseline and enter evolution\n    sample              Create deterministic Wiki Maintainer input from train\n                        traces\n    apply-wiki          Validate and apply one Wiki Maintainer JSON result\n    proposer-context    Create the train-only Skill Proposer context\n    apply-proposal      Validate one create, patch, or no-action proposal\n    gate                Apply strict improvement and confirmation rules\n    abandon-candidate   Abandon the current candidate transactionally\n    export              Stage a validated active skill; never install it\n    package-untested    Stage an explicitly untested skill with approval\n    eval-run            Score offline rollouts through one cartridge and print\n                        the A2 report\n    verify-packet       Verify one Task Observer review packet against its\n                        manifest, read-only\n    install             Copy Agent Skill Mastery Engine's own skill files into\n                        a Claude Code skill directory\n    status              Read one domain state without recovery\n    recover             Replay one recorded pending transaction\n\noptions:\n  -h, --help            show this help message and exit\n  --version             show program's version number and exit\n",
+      "stderr": ""
+    },
+    {
+      "label": "Preserved transition matrix",
+      "argv": [
+        "python3",
+        "-m",
+        "asme",
+        "transition-matrix"
+      ],
+      "environment": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONPATH": "src"
+      },
+      "started_at": "2026-09-07T01:02:32.789520+00:00",
+      "ended_at": "2026-09-07T01:02:41.514702+00:00",
+      "elapsed_seconds": 8.725,
+      "exit_code": 0,
+      "stdout": "{\"DONE\":{\"abandon\":\"refused:abandon is refused in DONE\",\"apply-proposal-change\":\"refused:apply-proposal-change is refused in DONE\",\"apply-proposal-no-action\":\"refused:apply-proposal-no-action is refused in DONE\",\"apply-wiki\":\"refused:apply-wiki is refused in DONE\",\"baseline-finalize\":\"refused:baseline-finalize is refused in DONE\",\"confirm-ingest\":\"refused:confirm-ingest is refused in DONE\",\"export\":\"refused:export requires valid ingested test evidence\",\"gate\":\"refused:gate is refused in DONE\",\"init\":\"refused:init is refused in DONE\",\"package-untested\":\"refused:untested route requires action-time approval\",\"recover\":\"refused:recover requires a recorded transaction\",\"reset-manifest\":\"transition:DONE\",\"rollback-seed\":\"refused:rollback-seed is refused in DONE\",\"seed-observations\":\"refused:seed-observations is refused in DONE\",\"skip-seed\":\"refused:skip-seed is refused in DONE\",\"status\":\"transition:DONE\",\"test-ingest\":\"refused:test ingest requires the validated prepared step\",\"test-prepare\":\"refused:test prepare requires test-baseline or test-final\",\"train-ingest\":\"refused:train-ingest is refused in DONE\",\"val-ingest\":\"refused:val-ingest is refused in DONE\"},\"NEEDS_BASELINE_RUN\":{\"abandon\":\"refused:abandon is refused in NEEDS_BASELINE_RUN\",\"apply-proposal-change\":\"refused:apply-proposal-change is refused in NEEDS_BASELINE_RUN\",\"apply-proposal-no-action\":\"refused:apply-proposal-no-action is refused in NEEDS_BASELINE_RUN\",\"apply-wiki\":\"refused:apply-wiki is refused in NEEDS_BASELINE_RUN\",\"baseline-finalize\":\"transition:NEEDS_BASELINE_RUN\",\"confirm-ingest\":\"refused:confirm-ingest is refused in NEEDS_BASELINE_RUN\",\"export\":\"refused:export is refused in NEEDS_BASELINE_RUN\",\"gate\":\"refused:gate is refused in NEEDS_BASELINE_RUN\",\"init\":\"refused:init is refused in NEEDS_BASELINE_RUN\",\"package-untested\":\"refused:package-untested is refused in NEEDS_BASELINE_RUN\",\"recover\":\"refused:recover requires a recorded transaction\",\"reset-manifest\":\"transition:NEEDS_BASELINE_RUN\",\"rollback-seed\":\"refused:rollback-seed requires an applied observation seed\",\"seed-observations\":\"refused:seed-observations is refused in NEEDS_BASELINE_RUN\",\"skip-seed\":\"refused:skip-seed is refused in NEEDS_BASELINE_RUN\",\"status\":\"transition:NEEDS_BASELINE_RUN\",\"test-ingest\":\"refused:test-ingest is refused in NEEDS_BASELINE_RUN\",\"test-prepare\":\"refused:test-prepare is refused in NEEDS_BASELINE_RUN\",\"train-ingest\":\"refused:train-ingest is refused in NEEDS_BASELINE_RUN\",\"val-ingest\":\"refused:val-ingest is refused in NEEDS_BASELINE_RUN\"},\"NEEDS_GATE\":{\"abandon\":\"refused:abandon requires a candidate snapshot\",\"apply-proposal-change\":\"refused:apply-proposal-change is refused in NEEDS_GATE\",\"apply-proposal-no-action\":\"refused:apply-proposal-no-action is refused in NEEDS_GATE\",\"apply-wiki\":\"refused:apply-wiki is refused in NEEDS_GATE\",\"baseline-finalize\":\"refused:baseline-finalize is refused in NEEDS_GATE\",\"confirm-ingest\":\"refused:confirm-ingest is refused in NEEDS_GATE\",\"export\":\"refused:export is refused in NEEDS_GATE\",\"gate\":\"refused:operation requires a finite score in [0,1]\",\"init\":\"refused:init is refused in NEEDS_GATE\",\"package-untested\":\"refused:package-untested is refused in NEEDS_GATE\",\"recover\":\"refused:recover requires a recorded transaction\",\"reset-manifest\":\"refused:reset-manifest is refused in NEEDS_GATE\",\"rollback-seed\":\"refused:rollback-seed is refused in NEEDS_GATE\",\"seed-observations\":\"refused:seed-observations is refused in NEEDS_GATE\",\"skip-seed\":\"refused:skip-seed is refused in NEEDS_GATE\",\"status\":\"transition:NEEDS_GATE\",\"test-ingest\":\"refused:test-ingest is refused in NEEDS_GATE\",\"test-prepare\":\"refused:test-prepare is refused in NEEDS_GATE\",\"train-ingest\":\"refused:train-ingest is refused in NEEDS_GATE\",\"val-ingest\":\"refused:val-ingest is refused in NEEDS_GATE\"},\"NEEDS_OPTIONAL_SEED\":{\"abandon\":\"refused:abandon is refused in NEEDS_OPTIONAL_SEED\",\"apply-proposal-change\":\"refused:apply-proposal-change is refused in NEEDS_OPTIONAL_SEED\",\"apply-proposal-no-action\":\"refused:apply-proposal-no-action is refused in NEEDS_OPTIONAL_SEED\",\"apply-wiki\":\"refused:apply-wiki is refused in NEEDS_OPTIONAL_SEED\",\"baseline-finalize\":\"refused:baseline-finalize is refused in NEEDS_OPTIONAL_SEED\",\"confirm-ingest\":\"refused:confirm-ingest is refused in NEEDS_OPTIONAL_SEED\",\"export\":\"refused:export is refused in NEEDS_OPTIONAL_SEED\",\"gate\":\"refused:gate is refused in NEEDS_OPTIONAL_SEED\",\"init\":\"refused:init is refused in NEEDS_OPTIONAL_SEED\",\"package-untested\":\"refused:package-untested is refused in NEEDS_OPTIONAL_SEED\",\"recover\":\"refused:recover requires a recorded transaction\",\"reset-manifest\":\"refused:reset-manifest is refused in NEEDS_OPTIONAL_SEED\",\"rollback-seed\":\"refused:rollback-seed is refused in NEEDS_OPTIONAL_SEED\",\"seed-observations\":\"refused:seed-observations requires a scoped approval record\",\"skip-seed\":\"transition:NEEDS_BASELINE_RUN\",\"status\":\"transition:NEEDS_OPTIONAL_SEED\",\"test-ingest\":\"refused:test-ingest is refused in NEEDS_OPTIONAL_SEED\",\"test-prepare\":\"refused:test-prepare is refused in NEEDS_OPTIONAL_SEED\",\"train-ingest\":\"refused:train-ingest is refused in NEEDS_OPTIONAL_SEED\",\"val-ingest\":\"refused:val-ingest is refused in NEEDS_OPTIONAL_SEED\"},\"NEEDS_PROPOSAL\":{\"abandon\":\"refused:abandon is refused in NEEDS_PROPOSAL\",\"apply-proposal-change\":\"refused:a changed proposal requires a candidate snapshot hash\",\"apply-proposal-no-action\":\"transition:NEEDS_TRAIN_RUN\",\"apply-wiki\":\"refused:apply-wiki is refused in NEEDS_PROPOSAL\",\"baseline-finalize\":\"refused:baseline-finalize is refused in NEEDS_PROPOSAL\",\"confirm-ingest\":\"refused:confirm-ingest is refused in NEEDS_PROPOSAL\",\"export\":\"refused:export is refused in NEEDS_PROPOSAL\",\"gate\":\"refused:gate is refused in NEEDS_PROPOSAL\",\"init\":\"refused:init is refused in NEEDS_PROPOSAL\",\"package-untested\":\"refused:package-untested is refused in NEEDS_PROPOSAL\",\"recover\":\"refused:recover requires a recorded transaction\",\"reset-manifest\":\"refused:reset-manifest is refused in NEEDS_PROPOSAL\",\"rollback-seed\":\"refused:rollback-seed is refused in NEEDS_PROPOSAL\",\"seed-observations\":\"refused:seed-observations is refused in NEEDS_PROPOSAL\",\"skip-seed\":\"refused:skip-seed is refused in NEEDS_PROPOSAL\",\"status\":\"transition:NEEDS_PROPOSAL\",\"test-ingest\":\"refused:test-ingest is refused in NEEDS_PROPOSAL\",\"test-prepare\":\"refused:test-prepare is refused in NEEDS_PROPOSAL\",\"train-ingest\":\"refused:train-ingest is refused in NEEDS_PROPOSAL\",\"val-ingest\":\"refused:val-ingest is refused in NEEDS_PROPOSAL\"},\"NEEDS_TRAIN_RUN\":{\"abandon\":\"refused:abandon is refused in NEEDS_TRAIN_RUN\",\"apply-proposal-change\":\"refused:apply-proposal-change is refused in NEEDS_TRAIN_RUN\",\"apply-proposal-no-action\":\"refused:apply-proposal-no-action is refused in NEEDS_TRAIN_RUN\",\"apply-wiki\":\"refused:apply-wiki is refused in NEEDS_TRAIN_RUN\",\"baseline-finalize\":\"refused:baseline-finalize is refused in NEEDS_TRAIN_RUN\",\"confirm-ingest\":\"refused:confirm-ingest is refused in NEEDS_TRAIN_RUN\",\"export\":\"refused:export is refused in NEEDS_TRAIN_RUN\",\"gate\":\"refused:gate is refused in NEEDS_TRAIN_RUN\",\"init\":\"refused:init is refused in NEEDS_TRAIN_RUN\",\"package-untested\":\"refused:package-untested is refused in NEEDS_TRAIN_RUN\",\"recover\":\"refused:recover requires a recorded transaction\",\"reset-manifest\":\"transition:NEEDS_TRAIN_RUN\",\"rollback-seed\":\"refused:rollback-seed is refused in NEEDS_TRAIN_RUN\",\"seed-observations\":\"refused:seed-observations is refused in NEEDS_TRAIN_RUN\",\"skip-seed\":\"refused:skip-seed is refused in NEEDS_TRAIN_RUN\",\"status\":\"transition:NEEDS_TRAIN_RUN\",\"test-ingest\":\"refused:test-ingest is refused in NEEDS_TRAIN_RUN\",\"test-prepare\":\"refused:test-prepare is refused in NEEDS_TRAIN_RUN\",\"train-ingest\":\"transition:NEEDS_TRAIN_RUN\",\"val-ingest\":\"refused:val-ingest is refused in NEEDS_TRAIN_RUN\"},\"NEEDS_VAL_CONFIRM\":{\"abandon\":\"refused:abandon requires a candidate snapshot\",\"apply-proposal-change\":\"refused:apply-proposal-change is refused in NEEDS_VAL_CONFIRM\",\"apply-proposal-no-action\":\"refused:apply-proposal-no-action is refused in NEEDS_VAL_CONFIRM\",\"apply-wiki\":\"refused:apply-wiki is refused in NEEDS_VAL_CONFIRM\",\"baseline-finalize\":\"refused:baseline-finalize is refused in NEEDS_VAL_CONFIRM\",\"confirm-ingest\":\"transition:NEEDS_VAL_CONFIRM\",\"export\":\"refused:export is refused in NEEDS_VAL_CONFIRM\",\"gate\":\"refused:gate is refused in NEEDS_VAL_CONFIRM\",\"init\":\"refused:init is refused in NEEDS_VAL_CONFIRM\",\"package-untested\":\"refused:package-untested is refused in NEEDS_VAL_CONFIRM\",\"recover\":\"refused:recover requires a recorded transaction\",\"reset-manifest\":\"transition:NEEDS_VAL_CONFIRM\",\"rollback-seed\":\"refused:rollback-seed is refused in NEEDS_VAL_CONFIRM\",\"seed-observations\":\"refused:seed-observations is refused in NEEDS_VAL_CONFIRM\",\"skip-seed\":\"refused:skip-seed is refused in NEEDS_VAL_CONFIRM\",\"status\":\"transition:NEEDS_VAL_CONFIRM\",\"test-ingest\":\"refused:test-ingest is refused in NEEDS_VAL_CONFIRM\",\"test-prepare\":\"refused:test-prepare is refused in NEEDS_VAL_CONFIRM\",\"train-ingest\":\"refused:train-ingest is refused in NEEDS_VAL_CONFIRM\",\"val-ingest\":\"refused:val-ingest is refused in NEEDS_VAL_CONFIRM\"},\"NEEDS_VAL_RUN\":{\"abandon\":\"refused:abandon requires a candidate snapshot\",\"apply-proposal-change\":\"refused:apply-proposal-change is refused in NEEDS_VAL_RUN\",\"apply-proposal-no-action\":\"refused:apply-proposal-no-action is refused in NEEDS_VAL_RUN\",\"apply-wiki\":\"refused:apply-wiki is refused in NEEDS_VAL_RUN\",\"baseline-finalize\":\"refused:baseline-finalize is refused in NEEDS_VAL_RUN\",\"confirm-ingest\":\"refused:confirm-ingest is refused in NEEDS_VAL_RUN\",\"export\":\"refused:export is refused in NEEDS_VAL_RUN\",\"gate\":\"refused:gate is refused in NEEDS_VAL_RUN\",\"init\":\"refused:init is refused in NEEDS_VAL_RUN\",\"package-untested\":\"refused:package-untested is refused in NEEDS_VAL_RUN\",\"recover\":\"refused:recover requires a recorded transaction\",\"reset-manifest\":\"transition:NEEDS_VAL_RUN\",\"rollback-seed\":\"refused:rollback-seed is refused in NEEDS_VAL_RUN\",\"seed-observations\":\"refused:seed-observations is refused in NEEDS_VAL_RUN\",\"skip-seed\":\"refused:skip-seed is refused in NEEDS_VAL_RUN\",\"status\":\"transition:NEEDS_VAL_RUN\",\"test-ingest\":\"refused:test-ingest is refused in NEEDS_VAL_RUN\",\"test-prepare\":\"refused:test-prepare is refused in NEEDS_VAL_RUN\",\"train-ingest\":\"refused:train-ingest is refused in NEEDS_VAL_RUN\",\"val-ingest\":\"transition:NEEDS_VAL_RUN\"},\"NEEDS_WIKI\":{\"abandon\":\"refused:abandon is refused in NEEDS_WIKI\",\"apply-proposal-change\":\"refused:apply-proposal-change is refused in NEEDS_WIKI\",\"apply-proposal-no-action\":\"refused:apply-proposal-no-action is refused in NEEDS_WIKI\",\"apply-wiki\":\"refused:apply-wiki requires an unconsumed train manifest\",\"baseline-finalize\":\"refused:baseline-finalize is refused in NEEDS_WIKI\",\"confirm-ingest\":\"refused:confirm-ingest is refused in NEEDS_WIKI\",\"export\":\"refused:export is refused in NEEDS_WIKI\",\"gate\":\"refused:gate is refused in NEEDS_WIKI\",\"init\":\"refused:init is refused in NEEDS_WIKI\",\"package-untested\":\"refused:package-untested is refused in NEEDS_WIKI\",\"recover\":\"refused:recover requires a recorded transaction\",\"reset-manifest\":\"transition:NEEDS_TRAIN_RUN\",\"rollback-seed\":\"refused:rollback-seed is refused in NEEDS_WIKI\",\"seed-observations\":\"refused:seed-observations is refused in NEEDS_WIKI\",\"skip-seed\":\"refused:skip-seed is refused in NEEDS_WIKI\",\"status\":\"transition:NEEDS_WIKI\",\"test-ingest\":\"refused:test-ingest is refused in NEEDS_WIKI\",\"test-prepare\":\"refused:test-prepare is refused in NEEDS_WIKI\",\"train-ingest\":\"refused:train-ingest is refused in NEEDS_WIKI\",\"val-ingest\":\"refused:val-ingest is refused in NEEDS_WIKI\"},\"UNINITIALIZED\":{\"abandon\":\"refused:abandon is refused in UNINITIALIZED\",\"apply-proposal-change\":\"refused:apply-proposal-change is refused in UNINITIALIZED\",\"apply-proposal-no-action\":\"refused:apply-proposal-no-action is refused in UNINITIALIZED\",\"apply-wiki\":\"refused:apply-wiki is refused in UNINITIALIZED\",\"baseline-finalize\":\"refused:baseline-finalize is refused in UNINITIALIZED\",\"confirm-ingest\":\"refused:confirm-ingest is refused in UNINITIALIZED\",\"export\":\"refused:export is refused in UNINITIALIZED\",\"gate\":\"refused:gate is refused in UNINITIALIZED\",\"init\":\"transition:NEEDS_OPTIONAL_SEED\",\"package-untested\":\"refused:package-untested is refused in UNINITIALIZED\",\"recover\":\"refused:recover requires a recorded transaction\",\"reset-manifest\":\"refused:reset-manifest is refused in UNINITIALIZED\",\"rollback-seed\":\"refused:rollback-seed is refused in UNINITIALIZED\",\"seed-observations\":\"refused:seed-observations is refused in UNINITIALIZED\",\"skip-seed\":\"refused:skip-seed is refused in UNINITIALIZED\",\"status\":\"transition:UNINITIALIZED\",\"test-ingest\":\"refused:test-ingest is refused in UNINITIALIZED\",\"test-prepare\":\"refused:test-prepare is refused in UNINITIALIZED\",\"train-ingest\":\"refused:train-ingest is refused in UNINITIALIZED\",\"val-ingest\":\"refused:val-ingest is refused in UNINITIALIZED\"}}\n",
+      "stderr": ""
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 -m pytest -p no:cacheprovider tests/test_workspace_hermes_adapter.py::test_current_tree_is_community_scan_clean",
+      "stage": "Early inherited whole-tree packaging check",
+      "exit_code": 1,
+      "passed": 0,
+      "failed": 1,
+      "collected": 1,
+      "duration_seconds": 3.35,
+      "error_type": "asme.canonical.ContractError",
+      "error": "private absolute path detected in package file: .planning/quick/260906-omm-port-asme-into-lifecycle-with-complete-f/260906-omm-PLAN.md",
+      "source_location": "src/asme/package.py:388",
+      "interpretation": "Inherited whole-tree projection includes GSD private planning files; scanner correctly refuses packaging. No assertion, exclusion, or inherited code modified.",
+      "started_at": null,
+      "ended_at": null
+    },
+    {
+      "check": "Complete destination collection",
+      "exit_code": 0,
+      "collected": 596,
+      "module_count": 32,
+      "module_counts": {
+        "tests/test_asme_port.py": 36,
+        "tests/test_bootstrap.py": 7,
+        "tests/test_builtin_cartridge_programs.py": 2,
+        "tests/test_cartridge.py": 3,
+        "tests/test_cli.py": 4,
+        "tests/test_cli_eval_bridge.py": 6,
+        "tests/test_clock.py": 2,
+        "tests/test_contract_adapter.py": 10,
+        "tests/test_crash_oracle.py": 169,
+        "tests/test_delivery.py": 4,
+        "tests/test_domain_evaluation_manifest.py": 19,
+        "tests/test_evalreport.py": 12,
+        "tests/test_evolution_eval.py": 5,
+        "tests/test_governance_dependencies_gate2.py": 121,
+        "tests/test_integration_bridge.py": 7,
+        "tests/test_lifecycle.py": 10,
+        "tests/test_observer_bridge.py": 13,
+        "tests/test_proposal.py": 5,
+        "tests/test_release_surface.py": 5,
+        "tests/test_reset_errors.py": 21,
+        "tests/test_seed.py": 6,
+        "tests/test_skill_assets.py": 5,
+        "tests/test_skill_install.py": 12,
+        "tests/test_skill_safety.py": 24,
+        "tests/test_snapshot_package.py": 14,
+        "tests/test_stdlib_smoke.py": 1,
+        "tests/test_terminal_paths.py": 23,
+        "tests/test_transaction.py": 26,
+        "tests/test_wiki.py": 5,
+        "tests/test_workflow.py": 4,
+        "tests/test_workflow_candidate.py": 6,
+        "tests/test_workspace_hermes_adapter.py": 9
+      },
+      "receipt": ".planning/quick/260906-omm-port-asme-into-lifecycle-with-complete-f/destination-collection.json"
+    },
+    {
+      "check": "Current docs portability and links",
+      "files": 5,
+      "local_links_checked": 27,
+      "broken_links": 0,
+      "em_dashes": 0,
+      "source_tracked_clean": true
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 -m pytest -p no:cacheprovider tests/test_governance_dependencies_gate2.py::test_current_authority_and_attribution_sources_are_hash_reconstructable",
+      "stage": "Current provenance canonical-record regression",
+      "exit_code": 1,
+      "passed": 0,
+      "failed": 1,
+      "collected": 1,
+      "duration_seconds": 6.88,
+      "error_type": "AssertionError",
+      "error": "Current development authority exact fenced record absent from current PROVENANCE.md",
+      "source_location": "tests/test_governance_dependencies_gate2.py:100",
+      "interpretation": "Current-facing rewrite preserved records only in historical copy; canonical source-registry locator contract still requires exact records in current document.",
+      "started_at": null,
+      "ended_at": null
+    },
+    {
+      "check": "Post-document-repair actual source preservation",
+      "destination_content_digest": "00ead34220eca190d1ebac8c06618b2551d97807f7fc762b237df2219dcc6a57",
+      "digest_scope": "Manifest destination paths, SHA256 values, and Git modes; sorted compact JSON",
+      "preserved_destinations": 125,
+      "retained_at_source": 7,
+      "source_revision": "1137c6705fd844546d5588757a5a23d4007b20c4",
+      "status": "pass",
+      "tracked_paths": 129
+    }
+  ],
+  "pending_checks": [],
+  "inherited_boundary": {
+    "claims_policy": "Completed WikiSkill audit V03 independently reproduced acceptance of scripted, final-only evidence as paper_comparable; preserved inherited defect pending separate repair",
+    "hermes_dispatch": "staging_only_dispatch_disabled",
+    "installed_host_checked": false,
+    "provider_calls": 0,
+    "paper_performance_replicated": false,
+    "roadmap_phases_completed_by_this_task": 0
+  },
+  "authorization": {
+    "verified_feature_commit_merge_cleanup": "explicitly authorized by adopted WikiSkill v1 goal; review pending",
+    "paid_execution": "approval required",
+    "publication": "approval required",
+    "original_source_deletion": "not authorized"
+  },
+  "historical_source_baseline": {
+    "reported_by": "orchestrator",
+    "working_directory": "agent-skill-mastery-engine source checkout",
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 -m pytest -p no:cacheprovider",
+    "started_at": null,
+    "ended_at": null,
+    "timestamp_status": "exact timestamps unavailable",
+    "exit_code": 2,
+    "passed_before_interruption": 267,
+    "duration_seconds": 2075.19,
+    "status": "partial_verification_interrupted_for_scan_pause",
+    "termination": "KeyboardInterrupt",
+    "full_suite_pass": false,
+    "application_failure_claimed": false
+  },
+  "source_baseline": {
+    "reported_by": "orchestrator",
+    "working_directory": "Original agent-skill-mastery-engine checkout",
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 -m pytest -p no:cacheprovider",
+    "source_revision": "1137c6705fd844546d5588757a5a23d4007b20c4",
+    "status": "completed_pass_with_one_skip",
+    "collected": 560,
+    "passed": 559,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 1,
+    "exit_code": 0,
+    "duration_seconds": 3926.15,
+    "full_suite_completed": true,
+    "full_suite_pass": true,
+    "started_at": null,
+    "ended_at": null,
+    "timestamp_status": "Exact process start/end timestamps were not supplied; measured pytest duration retained.",
+    "source_head_unchanged_after": true,
+    "source_tracked_clean_after": true,
+    "skip_scope": {
+      "node": "tests/test_skill_assets.py::test_built_wheel_carries_the_skill_files",
+      "reason": "setuptools is not importable in this environment",
+      "basis": "Only skip call found in complete tests inventory; fresh importlib.util.find_spec returned None",
+      "separate_verification": "Actual declared isolated PEP517 build, full archive inspection, temporary offline wheel installation and fresh CLI subprocess checks recorded in initial_package_build"
+    }
+  },
+  "destination_full_suite": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 -m pytest -p no:cacheprovider",
+    "cwd_role": "Lifecycle ASME port worktree",
+    "started_at": "2026-09-07T00:58:54.694038+00:00",
+    "finished_at": "2026-09-07T02:05:25.579612+00:00",
+    "elapsed_seconds": 3990.766,
+    "exit_code": 1,
+    "output": "........................................................................ [ 12%]\n........................................................................ [ 24%]\n........................................................................ [ 36%]\n.................................................................F...... [ 48%]\n........................................................................ [ 60%]\n........................................................................ [ 72%]\n.......................................s................................ [ 84%]\n........................................................................ [ 96%]\n...................F                                                     [100%]\n=================================== FAILURES ===================================\n___ test_current_authority_and_attribution_sources_are_hash_reconstructable ____\n\n    def test_current_authority_and_attribution_sources_are_hash_reconstructable() -> None:\n        provenance = (Path(__file__).parents[1] / \"PROVENANCE.md\").read_text(\n            encoding=\"utf-8\"\n        )\n>       goal = _provenance_record(provenance, \"Current development authority\")\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\ntests/test_governance_dependencies_gate2.py:108: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\ntext = '# Lifecycle provenance and ASME preservation\\n\\nLifecycle imports Agent Skill Mastery Engine at pinned local revision...lineage and dated evidence. It does not establish\\nlegal novelty, patentability, or a legal prior-art determination.\\n'\nheading = 'Current development authority'\n\n    def _provenance_record(text: str, heading: str) -> str:\n        match = re.search(\n            rf\"^## {re.escape(heading)}$.*?^```text\\n(.*?)\\n```$\",\n            text,\n            flags=re.MULTILINE | re.DOTALL,\n        )\n>       assert match is not None\nE       assert None is not None\n\ntests/test_governance_dependencies_gate2.py:100: AssertionError\n__________________ test_current_tree_is_community_scan_clean ___________________\n\n    def test_current_tree_is_community_scan_clean() -> None:\n        package_root = Path(__file__).parents[1]\n>       projection = build_projection(\n            source_root=package_root,\n            compatibility=Compatibility(\n                contract_version=\"asme.contract.v1\",\n                core_version=\"0.1.0\",\n                package_version=\"0.1.0\",\n                adapter_id=\"hermes\",\n                adapter_version=\"0.1.0\",\n                runtime_min_tested=\"0.20.5\",\n                runtime_max_tested=\"0.20.6\",\n                runtime_tested=(\"0.20.5\", \"0.20.6\"),\n            ),\n            source_attribution=({\"title\": \"WikiSkill\", \"license\": \"CC BY 4.0\"},),\n        )\n\ntests/test_workspace_hermes_adapter.py:366: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \nsrc/asme/package.py:199: in build_projection\n    return _finish_projection(\nsrc/asme/package.py:260: in _finish_projection\n    scan_community_safety(payload)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nfiles = {'.gitignore': b'__pycache__/\\n*.pyc\\n.pytest_cache/\\n*.egg-info/\\n.venv/\\nbuild/\\ndist/\\n\\n# EvoScientist/langgraph d... and Lifecycle Decisions | 0/2 | Not started | - |\\n| 10. Open-Source Distribution | 0/2 | Not started | - |\\n\\n\", ...}\n\n    def scan_community_safety(files: Mapping[str, bytes]) -> None:\n        \"\"\"Fail closed on credential files, private absolute paths, and secret-like values.\"\"\"\n    \n        for path, content in files.items():\n            safe_member_name(path)\n            name = PurePosixPath(path).name\n            if name in _CREDENTIAL_FILE_NAMES or name.startswith(\".env.\"):\n                raise ContractError(f\"credential-like file forbidden in community package: {path}\")\n            if any(pattern.search(content) for pattern in _PRIVATE_PATH_PATTERNS):\n>               raise ContractError(f\"private absolute path detected in package file: {path}\")\nE               asme.canonical.ContractError: private absolute path detected in package file: .planning/quick/260906-omm-port-asme-into-lifecycle-with-complete-f/260906-omm-PLAN.md\n\nsrc/asme/package.py:388: ContractError\n=========================== short test summary info ============================\nFAILED tests/test_governance_dependencies_gate2.py::test_current_authority_and_attribution_sources_are_hash_reconstructable\nFAILED tests/test_workspace_hermes_adapter.py::test_current_tree_is_community_scan_clean\n2 failed, 593 passed, 1 skipped in 3984.88s (1:06:24)\n",
+    "scope": "Full destination suite, no deselection",
+    "status": "completed_with_two_documentation_regressions_before_repair",
+    "collected": 596,
+    "passed": 593,
+    "failed": 2,
+    "skipped": 1,
+    "pytest_duration_seconds": 3984.88,
+    "inherited_tests": 560,
+    "new_verifier_tests": 36,
+    "failed_nodes": [
+      "tests/test_governance_dependencies_gate2.py::test_current_authority_and_attribution_sources_are_hash_reconstructable",
+      "tests/test_workspace_hermes_adapter.py::test_current_tree_is_community_scan_clean"
+    ],
+    "skip_scope": {
+      "node": "tests/test_skill_assets.py::test_built_wheel_carries_the_skill_files",
+      "reason": "setuptools is not importable in this environment",
+      "basis": "Only skip call found in complete tests inventory; fresh importlib.util.find_spec returned None",
+      "separate_verification": "Actual declared isolated PEP517 build, full archive inspection, temporary offline wheel installation and fresh CLI subprocess checks recorded in initial_package_build"
+    },
+    "receipt": ".planning/quick/260906-omm-port-asme-into-lifecycle-with-complete-f/destination-pytest.json"
+  },
+  "packaging_blocker": {
+    "status": "initial_authored_plan_regression_closed",
+    "resolution": "Eleven authored references replaced with equivalent portable forms; all nine referenced files exist and the unchanged community scan passed in the seven-test repair run.",
+    "historical_private_path_file_names": [
+      ".planning/quick/260906-omm-port-asme-into-lifecycle-with-complete-f/260906-omm-PLAN.md"
+    ],
+    "remaining_scope": "Broader public-distribution membership and document dependency closure belong to a separate packaging feature. Fourteen omitted assets/eval files are the measured evaluation-asset subset, not all omissions; linked migration/evidence JSON and locked/ also require review."
+  },
+  "documentation_regressions": [
+    {
+      "id": "portable_plan_paths",
+      "status": "repaired_and_verified",
+      "repair": "Replace author-created workstation-specific planning references with equivalent portable references after original baseline finishes.",
+      "verification_receipt": ".planning/quick/260906-omm-port-asme-into-lifecycle-with-complete-f/destination-doc-repairs.json"
+    },
+    {
+      "id": "canonical_provenance_records",
+      "status": "repaired_and_verified",
+      "repair": "Restore both exact source records at original canonical anchors with historical/superseded-authority explanation; preserve all inherited tests and source registry.",
+      "verification_receipt": ".planning/quick/260906-omm-port-asme-into-lifecycle-with-complete-f/destination-doc-repairs.json"
+    }
+  ],
+  "independent_review": {
+    "status": "passed",
+    "report": ".planning/quick/260906-omm-port-asme-into-lifecycle-with-complete-f/260906-omm-VERIFICATION.md",
+    "verified_at": "2026-09-07T02:32:28Z",
+    "reported_by": "independent wikiskill_roadmap reviewer",
+    "complete_source_comparison": {
+      "status": "pass",
+      "source_paths": 129,
+      "destination_files": 125,
+      "exact_canonical": 119,
+      "revised_documents": 3,
+      "historical_copies": 3,
+      "retained_maps": 7,
+      "source_index_matches_pin": true,
+      "source_working_bytes_modes_match": true,
+      "source_untracked": 0,
+      "source_ignored": 91,
+      "local_commits": 6,
+      "destination_digest": "00ead34220eca190d1ebac8c06618b2551d97807f7fc762b237df2219dcc6a57"
+    },
+    "verifier_tests": {
+      "passed": 36,
+      "duration_seconds": 8.37,
+      "exit_code": 0
+    },
+    "open_requirements": [],
+    "report_sha256": "f2022407115bd96a367fe5d59bbc252674e01c82bf8704fcb2a73a433f8cecff",
+    "score": "4/4",
+    "gaps_remaining": 0,
+    "scope": "Mechanical compatibility import only; excludes complete distribution membership, WikiSkill empirical parity, live Hermes, substantial Substack, and Git closeout.",
+    "focused_post_repair_tests": {
+      "passed": 43,
+      "duration_seconds": 125.92,
+      "exit_code": 0,
+      "argv": [
+        "python3",
+        "-m",
+        "pytest",
+        "-p",
+        "no:cacheprovider",
+        "tests/test_asme_port.py",
+        "tests/test_governance_dependencies_gate2.py::test_current_authority_and_attribution_sources_are_hash_reconstructable",
+        "tests/test_workspace_hermes_adapter.py::test_current_tree_is_community_scan_clean",
+        "tests/test_release_surface.py"
+      ],
+      "environment": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1"
+      }
+    },
+    "final_archive_comparison": {
+      "status": "pass",
+      "wheel_regular_members": 53,
+      "sdist_regular_members": 117,
+      "sdist_total_members": 135,
+      "runtime_data_files_in_each_archive": 37,
+      "wheel_skill_companions": 9,
+      "full_regular_member_path_hash_sets_checked": true,
+      "unchanged_safety_scanner_passed": true,
+      "installed_target_bytes_checked": true
+    },
+    "prior_report_sha256_before_staged_check": "c31f56894fb3ff691155b810788d11fc43ffe4b644a12ad7d310f8eeada6dcf9",
+    "staged_diff_assessment": {
+      "status": "inherited_formatting_limitation",
+      "full_check_exit_code": 2,
+      "all_13_staged_and_working_blobs_match_source": true,
+      "bounded_import_verdict": "passed",
+      "configuration_and_source_bytes_unchanged": true
+    }
+  },
+  "initial_package_build": {
+    "reported_by": "orchestrator",
+    "status": "built_and_inspected_before_document_repairs",
+    "command": "python3 -m build --outdir build/port-verification --report build/port-verification-report.json",
+    "exit_code": 0,
+    "build_backend_dependency": "setuptools 84.0.0 in isolated build environment",
+    "report": "build/port-verification-report.json",
+    "wheel": {
+      "members": 53,
+      "sha256": "e90e56a4fc7b79ec07d530064882ccdc3032e273e5ee6635c66d46e31192676e"
+    },
+    "sdist": {
+      "sha256": "b6df059e0b4f91a1639034fb89a9d4138be769913c18d28e8a45b7566f407cb7",
+      "archive_members": 135,
+      "regular_members": 117
+    },
+    "inspection": {
+      "exit_code": 0,
+      "duration_seconds": 5.8259,
+      "all_file_contents_community_scanned": true,
+      "exact_source_python_json_files_in_each_archive": 37,
+      "exact_wheel_skill_files": 9
+    },
+    "inherited_gap": {
+      "omitted_sdist_evaluation_assets": 14,
+      "cause": "Inherited MANIFEST.in includes asset templates but omits arithmetic/echo JSON, JSONL and TXT evaluation files.",
+      "repair_scope": "Separate packaging feature; source manifest and inherited files remain unchanged in mechanical import."
+    },
+    "rebuild_required_after_current_document_repairs": false,
+    "inspection_receipt": ".planning/quick/260906-omm-port-asme-into-lifecycle-with-complete-f/260906-omm-build-inspection.json",
+    "installed_wheel": {
+      "installation_command": "python3 -m pip install --no-index --no-deps --target build/port-wheel-install build/port-verification/agent_skill_mastery_engine-0.2.0-py3-none-any.whl",
+      "installation_exit_code": 0,
+      "verification_exit_code": 0,
+      "verification_tool_wall_seconds": 4.834015942,
+      "distribution_version": "0.2.0",
+      "module_loaded_from": "build/port-wheel-install/asme",
+      "skill_root": "build/port-wheel-install/asme/skill",
+      "skill_files_byte_equal": 9,
+      "cli_checks": [
+        {
+          "argv": [
+            "--help"
+          ],
+          "exit_code": 0,
+          "stdout_sha256": "ffca3a9d1082308f5e8aaff9f420c7800e22a21f3b0096cd706c88f90e03b5b8",
+          "stdout_bytes": 3225
+        },
+        {
+          "argv": [
+            "transition-matrix"
+          ],
+          "exit_code": 0,
+          "stdout_sha256": "e1f417c1f56cde04f5bcf11e473775c99be252c8253a6b13590692f151704651",
+          "stdout_bytes": 12965
+        }
+      ],
+      "execution": "Fresh Python subprocesses executed python -m asme with PYTHONPATH=build/port-wheel-install after asserting imports and skill lookup resolve inside that isolated target.",
+      "provider_calls": 0,
+      "harness_correction": "An initial direct-call check redirected stdout to StringIO, which lacks the binary buffer required by CLI output. It failed with AttributeError before any product change. The corrected check used real CLI subprocesses; both returned 0."
+    },
+    "rebuild_resolution": "Final build, inspection, offline installation and target-bound CLI probes completed successfully; initial artifacts retained."
+  },
+  "pre_repair_destination_content_digest": "ead997d49425bde6c42d2d9fe7d87107382ec5b7954374f5a6c5d5c0557c58b2",
+  "document_repairs": {
+    "argv": [
+      "python3",
+      "-m",
+      "pytest",
+      "-p",
+      "no:cacheprovider",
+      "tests/test_governance_dependencies_gate2.py::test_current_authority_and_attribution_sources_are_hash_reconstructable",
+      "tests/test_workspace_hermes_adapter.py::test_current_tree_is_community_scan_clean",
+      "tests/test_release_surface.py"
+    ],
+    "environment": {
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1"
+    },
+    "started_at": "2026-09-07T02:07:12.707707+00:00",
+    "ended_at": "2026-09-07T02:07:16.297947+00:00",
+    "elapsed_seconds": 3.588,
+    "exit_code": 0,
+    "stdout": ".......                                                                  [100%]\n7 passed in 1.90s\n",
+    "stderr": "",
+    "scope": "Two originally failing inherited checks and all five inherited public-document checks; unchanged source and test assertions",
+    "passed": 7,
+    "failed": 0,
+    "skipped": 0,
+    "pytest_duration_seconds": 1.9,
+    "receipt": ".planning/quick/260906-omm-port-asme-into-lifecycle-with-complete-f/destination-doc-repairs.json",
+    "source_code_modified": false,
+    "inherited_tests_modified": false,
+    "source_registry_modified": false
+  },
+  "final_package_build": {
+    "argv": [
+      "python3",
+      "-m",
+      "build",
+      "--outdir",
+      "build/port-verification-final",
+      "--report",
+      "build/port-verification-final-report.json"
+    ],
+    "cwd_role": "Lifecycle ASME port worktree",
+    "started_at": "2026-09-07T02:08:39.687768+00:00",
+    "finished_at": "2026-09-07T02:09:29.006381+00:00",
+    "elapsed_seconds": 49.305,
+    "exit_code": 0,
+    "scope": "Declared PEP 517 sdist and wheel-from-sdist after final canonical document repairs",
+    "output_artifact": {
+      "path": "build/port-verification-final-build.log",
+      "sha256": "e6884c034e85ded4dc3388bdcb49dbd76d8b48ee36d380279c657d4335150ef7",
+      "bytes": 31272,
+      "classification": "generated raw build log with machine-specific output paths; preserved separately from portable source documents"
+    },
+    "result": "Successfully built source distribution and wheel from source distribution",
+    "receipt": ".planning/quick/260906-omm-port-asme-into-lifecycle-with-complete-f/destination-final-build.json",
+    "documentation_manifest_digest": "00ead34220eca190d1ebac8c06618b2551d97807f7fc762b237df2219dcc6a57"
+  },
+  "final_package_inspection": {
+    "argv": [
+      "python3",
+      ".planning/quick/260906-omm-port-asme-into-lifecycle-with-complete-f/260906-omm-inspect-build.py",
+      "--source",
+      ".",
+      "--artifacts",
+      "build/port-verification-final"
+    ],
+    "environment": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "started_at": "2026-09-07T02:11:37.189355+00:00",
+    "finished_at": "2026-09-07T02:11:44.696595+00:00",
+    "elapsed_seconds": 7.318,
+    "exit_code": 0,
+    "inspection": {
+      "schema": "lifecycle.asme-port-archive-inspection.v1",
+      "status": "passed_with_inherited_sdist_asset_omission",
+      "source_revision": "1137c6705fd844546d5588757a5a23d4007b20c4",
+      "archives": [
+        {
+          "kind": "wheel",
+          "path": "build/port-verification-final/agent_skill_mastery_engine-0.2.0-py3-none-any.whl",
+          "sha256": "9855a00556bfd34f0999e231218994cf04772f5b1a5aa8a8d05db9b44125e418",
+          "bytes": 135938,
+          "archive_members": 53,
+          "regular_members": 53,
+          "runtime_files_byte_equal": 37,
+          "skill_files_byte_equal": 9,
+          "community_scan": "passed",
+          "evaluation_assets_omitted": []
+        },
+        {
+          "kind": "sdist",
+          "path": "build/port-verification-final/agent_skill_mastery_engine-0.2.0.tar.gz",
+          "sha256": "de5d315a668aba5046e1bcebd18ba5070c8c98a4c38addadfeb23e7f59b60aab",
+          "bytes": 207647,
+          "archive_members": 135,
+          "regular_members": 117,
+          "runtime_files_byte_equal": 37,
+          "skill_files_byte_equal": null,
+          "community_scan": "passed",
+          "evaluation_assets_omitted": [
+            "assets/eval/arithmetic/answers.jsonl",
+            "assets/eval/arithmetic/cartridge.json",
+            "assets/eval/arithmetic/prompt.txt",
+            "assets/eval/arithmetic/rollouts/run-1/baseline.jsonl",
+            "assets/eval/arithmetic/rollouts/run-1/confirmation.jsonl",
+            "assets/eval/arithmetic/rollouts/run-1/validation.jsonl",
+            "assets/eval/arithmetic/tasks.jsonl",
+            "assets/eval/echo/answers.jsonl",
+            "assets/eval/echo/cartridge.json",
+            "assets/eval/echo/prompt.txt",
+            "assets/eval/echo/rollouts/run-1/baseline.jsonl",
+            "assets/eval/echo/rollouts/run-1/confirmation.jsonl",
+            "assets/eval/echo/rollouts/run-1/validation.jsonl",
+            "assets/eval/echo/tasks.jsonl"
+          ]
+        }
+      ],
+      "limits": [
+        "This verifies compatibility runtime and wheel skill bytes, not complete source-distribution membership.",
+        "The inherited evaluation-asset omission is assigned to the separate package-boundary feature.",
+        "No host, provider, benchmark or empirical execution is performed."
+      ]
+    },
+    "receipt": ".planning/quick/260906-omm-port-asme-into-lifecycle-with-complete-f/destination-final-build-inspection.json"
+  },
+  "final_wheel_install": {
+    "argv": [
+      "python3",
+      "-m",
+      "pip",
+      "install",
+      "--no-index",
+      "--no-deps",
+      "--target",
+      "build/port-wheel-install-final",
+      "build/port-verification-final/agent_skill_mastery_engine-0.2.0-py3-none-any.whl"
+    ],
+    "started_at": "2026-09-07T02:12:19.912746+00:00",
+    "finished_at": "2026-09-07T02:12:36.127447+00:00",
+    "elapsed_seconds": 16.213,
+    "exit_code": 0,
+    "stdout": "Processing ./build/port-verification-final/agent_skill_mastery_engine-0.2.0-py3-none-any.whl\nInstalling collected packages: agent-skill-mastery-engine\nSuccessfully installed agent-skill-mastery-engine-0.2.0\n",
+    "stderr": "",
+    "scope": "Offline installation into task-owned target; no dependency or global installation",
+    "receipt": ".planning/quick/260906-omm-port-asme-into-lifecycle-with-complete-f/destination-final-wheel-install.json"
+  },
+  "final_wheel_probe": {
+    "scope": "Final wheel installed offline into isolated target, actual imports and fresh CLI subprocesses; no providers",
+    "started_at": "2026-09-07T02:13:18.210079+00:00",
+    "finished_at": "2026-09-07T02:13:29.272900+00:00",
+    "elapsed_seconds": 11.06,
+    "exit_code": 0,
+    "environment": {
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONPATH": "build/port-wheel-install-final"
+    },
+    "module": "build/port-wheel-install-final/asme/__init__.py",
+    "skill_root": "build/port-wheel-install-final/asme/skill",
+    "distribution_version": "0.2.0",
+    "skill_files_byte_equal": [
+      "SKILL.md",
+      "PURPOSE.md",
+      "NOTICE.md",
+      "LICENSE",
+      "references/fidelity.md",
+      "references/integration.md",
+      "references/paper-notes.md",
+      "references/verification/README.md",
+      "references/verification/independent-review-protocol.md"
+    ],
+    "checks": [
+      {
+        "argv": [
+          "python3",
+          "-m",
+          "asme",
+          "--help"
+        ],
+        "exit_code": 0,
+        "stdout_bytes": 3225,
+        "stdout_sha256": "ffca3a9d1082308f5e8aaff9f420c7800e22a21f3b0096cd706c88f90e03b5b8",
+        "stderr_bytes": 0
+      },
+      {
+        "argv": [
+          "python3",
+          "-m",
+          "asme",
+          "transition-matrix"
+        ],
+        "exit_code": 0,
+        "stdout_bytes": 12965,
+        "stdout_sha256": "e1f417c1f56cde04f5bcf11e473775c99be252c8253a6b13590692f151704651",
+        "stderr_bytes": 0
+      }
+    ],
+    "provider_calls": 0,
+    "receipt": ".planning/quick/260906-omm-port-asme-into-lifecycle-with-complete-f/destination-final-wheel-probe.json"
+  },
+  "historical_preliminary_independent_review": {
+    "status": "gaps_found_preliminary",
+    "report": ".planning/quick/260906-omm-port-asme-into-lifecycle-with-complete-f/260906-omm-VERIFICATION.md",
+    "verified_at": "2026-09-07T01:20:27Z",
+    "reported_by": "independent wikiskill_roadmap reviewer",
+    "complete_source_comparison": {
+      "status": "pass",
+      "source_paths": 129,
+      "destination_files": 125,
+      "exact_canonical": 119,
+      "revised_documents": 3,
+      "historical_copies": 3,
+      "retained_maps": 7,
+      "source_index_matches_pin": true,
+      "source_working_bytes_modes_match": true,
+      "source_untracked": 0,
+      "source_ignored": 91,
+      "local_commits": 6,
+      "destination_digest": "ead997d49425bde6c42d2d9fe7d87107382ec5b7954374f5a6c5d5c0557c58b2"
+    },
+    "verifier_tests": {
+      "passed": 36,
+      "duration_seconds": 8.37,
+      "exit_code": 0
+    },
+    "open_requirements": [
+      "Two documented current-document corrections and their checks",
+      "Complete source and destination test results",
+      "Final current-document digest comparison"
+    ]
+  },
+  "remaining_orchestrator_actions": [
+    "Commit verified task files and consolidate task state",
+    "Integrate the feature with fresh branch/worktree audit and post-merge checks",
+    "Preserve ignored raw build artifacts/logs before safe clean merged task-owned worktree and branch removal"
+  ],
+  "final_deliverable_readback": {
+    "checked_at_utc": "2026-09-07T02:28:37.580672+00:00",
+    "status": "pass",
+    "declared_paths": 150,
+    "unique_declared_paths": 150,
+    "all_declared_files_exist": true,
+    "undeclared_untracked_files": 0,
+    "json_files_parsed": 17,
+    "current_documents_checked": 5,
+    "local_links_resolve": 27,
+    "public_em_dashes": 0,
+    "root_state_diff_empty": true,
+    "git_diff_check_exit_code": 0,
+    "authored_stub_scan": "No TODO, FIXME, coming soon, placeholder, or not available matches in verifier/tests/archive inspector/migration report/preliminary draft.",
+    "task_commits_exist": false,
+    "git_closeout_owner": "orchestrator"
+  },
+  "staged_diff_check": {
+    "command": "git diff --cached --check",
+    "observed_at": "2026-09-07T02:31:57.255122+00:00",
+    "exit_code": 2,
+    "output": "SECURITY.md:14: new blank line at EOF.\nassets/index.md.tmpl:4: new blank line at EOF.\nassets/inference-prompt.txt.tmpl:12: new blank line at EOF.\nassets/log.md.tmpl:2: new blank line at EOF.\nassets/pattern.md.tmpl:14: new blank line at EOF.\nassets/skill-impact.md.tmpl:9: new blank line at EOF.\ndocs/migration/asme-source/CONTRIBUTING.md:21: new blank line at EOF.\ndocs/migration/asme-source/PROVENANCE.md:32: trailing whitespace.\n+Project steward and local architecture attribution: **Mani Saint-Victor, MD**  \nreferences/fidelity.md:33: new blank line at EOF.\nscripts/extractors/answer_tag.py:41: new blank line at EOF.\nscripts/scorers/exact_match.py:24: new blank line at EOF.\ntests/conftest.py:50: new blank line at EOF.\ntests/test_crash_oracle.py:252: new blank line at EOF.\n",
+    "source_revision": "1137c6705fd844546d5588757a5a23d4007b20c4",
+    "warnings": [
+      {
+        "destination": "SECURITY.md",
+        "line": 14,
+        "warning": "new blank line at EOF.",
+        "source_path": "SECURITY.md",
+        "sha256": "f3b7c96a7f70e5f287db15a458d76eb37f4347b70d5e342ef9e0acc9c27dfda0",
+        "byte_equal_to_pin": true
+      },
+      {
+        "destination": "assets/index.md.tmpl",
+        "line": 4,
+        "warning": "new blank line at EOF.",
+        "source_path": "assets/index.md.tmpl",
+        "sha256": "611008da6208a38329b72aaef7e56eb71c22879e6c96551acc8df657950cc51c",
+        "byte_equal_to_pin": true
+      },
+      {
+        "destination": "assets/inference-prompt.txt.tmpl",
+        "line": 12,
+        "warning": "new blank line at EOF.",
+        "source_path": "assets/inference-prompt.txt.tmpl",
+        "sha256": "4ca8a7797c8ec804bfa7a4894c37ae969c0f9468999360c43b770b6d144ce7ea",
+        "byte_equal_to_pin": true
+      },
+      {
+        "destination": "assets/log.md.tmpl",
+        "line": 2,
+        "warning": "new blank line at EOF.",
+        "source_path": "assets/log.md.tmpl",
+        "sha256": "3daf3ceb6960b04782b822d6c807594e045e1389951c2359f16308790ebad17e",
+        "byte_equal_to_pin": true
+      },
+      {
+        "destination": "assets/pattern.md.tmpl",
+        "line": 14,
+        "warning": "new blank line at EOF.",
+        "source_path": "assets/pattern.md.tmpl",
+        "sha256": "dc7913c9fb439b7d5df354d1bc95b5819863c936b28765a46ae70d492164a14f",
+        "byte_equal_to_pin": true
+      },
+      {
+        "destination": "assets/skill-impact.md.tmpl",
+        "line": 9,
+        "warning": "new blank line at EOF.",
+        "source_path": "assets/skill-impact.md.tmpl",
+        "sha256": "b88e0a336f5b61023e609ec98cb847651ef114e8eca901e6c3392889ad15292f",
+        "byte_equal_to_pin": true
+      },
+      {
+        "destination": "docs/migration/asme-source/CONTRIBUTING.md",
+        "line": 21,
+        "warning": "new blank line at EOF.",
+        "source_path": "CONTRIBUTING.md",
+        "sha256": "7d452945ffc7d0a83f4789d1b13f670a6dec33b7349342472adf6bed55eae6d0",
+        "byte_equal_to_pin": true
+      },
+      {
+        "destination": "docs/migration/asme-source/PROVENANCE.md",
+        "line": 32,
+        "warning": "trailing whitespace.",
+        "source_path": "PROVENANCE.md",
+        "sha256": "ff12252a5257fb162051c5198a66122e54dc1ac31d7ed9ef25dec5d4dcdf10a5",
+        "byte_equal_to_pin": true
+      },
+      {
+        "destination": "references/fidelity.md",
+        "line": 33,
+        "warning": "new blank line at EOF.",
+        "source_path": "references/fidelity.md",
+        "sha256": "10edf788a1288ae01f1a1caa9de146f861e7c8b1fa7c431bd6fe9cfd09a1d887",
+        "byte_equal_to_pin": true
+      },
+      {
+        "destination": "scripts/extractors/answer_tag.py",
+        "line": 41,
+        "warning": "new blank line at EOF.",
+        "source_path": "scripts/extractors/answer_tag.py",
+        "sha256": "2b9253cc920d2f4813951cd2b9619ebf71e288317acff4471c16f7b3667a45e2",
+        "byte_equal_to_pin": true
+      },
+      {
+        "destination": "scripts/scorers/exact_match.py",
+        "line": 24,
+        "warning": "new blank line at EOF.",
+        "source_path": "scripts/scorers/exact_match.py",
+        "sha256": "4da5e1019e8400311164c5341eed297fc1ddc45123098d2cb273fb5c81579541",
+        "byte_equal_to_pin": true
+      },
+      {
+        "destination": "tests/conftest.py",
+        "line": 50,
+        "warning": "new blank line at EOF.",
+        "source_path": "tests/conftest.py",
+        "sha256": "0e017f4320661a4b47d6ec80774b8d4e2e60a4dc9546afbbf67eb6df2995e31d",
+        "byte_equal_to_pin": true
+      },
+      {
+        "destination": "tests/test_crash_oracle.py",
+        "line": 252,
+        "warning": "new blank line at EOF.",
+        "source_path": "tests/test_crash_oracle.py",
+        "sha256": "203e28fe217f0a1ec31c43eece2aa6ea57c9ac884003b28a14505057d9d5e30a",
+        "byte_equal_to_pin": true
+      }
+    ],
+    "scope": "All staged additions;13 inherited whitespace warnings, each independently compared byte-for-byte with the pin",
+    "disposition": "Preserve exact imported bytes. No whitespace configuration change, test weakening or source cleanup. The full staged check remains failed; this is an explicitly documented inherited formatting limitation."
+  }
+}

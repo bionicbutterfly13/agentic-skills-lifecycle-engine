@@ -1,0 +1,923 @@
+{
+  "argv": [
+    "python3",
+    ".planning/quick/260906-omm-port-asme-into-lifecycle-with-complete-f/260906-omm-inspect-build.py",
+    "--source",
+    ".",
+    "--artifacts",
+    "build/port-verification-final"
+  ],
+  "environment": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "started_at": "2026-09-07T02:11:37.189355+00:00",
+  "finished_at": "2026-09-07T02:11:44.696595+00:00",
+  "elapsed_seconds": 7.318,
+  "exit_code": 0,
+  "inspection": {
+    "schema": "lifecycle.asme-port-archive-inspection.v1",
+    "status": "passed_with_inherited_sdist_asset_omission",
+    "source_revision": "1137c6705fd844546d5588757a5a23d4007b20c4",
+    "archives": [
+      {
+        "kind": "wheel",
+        "path": "build/port-verification-final/agent_skill_mastery_engine-0.2.0-py3-none-any.whl",
+        "sha256": "9855a00556bfd34f0999e231218994cf04772f5b1a5aa8a8d05db9b44125e418",
+        "bytes": 135938,
+        "archive_members": 53,
+        "regular_members": 53,
+        "runtime_files_byte_equal": 37,
+        "skill_files_byte_equal": 9,
+        "community_scan": "passed",
+        "evaluation_assets_omitted": [],
+        "files": [
+          {
+            "path": "agent_skill_mastery_engine-0.2.0.dist-info/METADATA",
+            "bytes": 4089,
+            "sha256": "b3c34a0bd48f356a6372ffe369dcc603ace7b2a1ac77377844da95e02dfad49c"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0.dist-info/RECORD",
+            "bytes": 4279,
+            "sha256": "ecfd79811026d0951bc234aa9b09de928a7633132f3a2623a745fa46f0952981"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0.dist-info/WHEEL",
+            "bytes": 91,
+            "sha256": "61532836a2b3111b7ec23519c09df7c41180c27165fb872a6d8913b566b88ad1"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0.dist-info/entry_points.txt",
+            "bytes": 39,
+            "sha256": "580c871d42455c62c1e5bad5fd93b0b6ec04871c63499c9b6fcf8f95ebfeab07"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0.dist-info/licenses/LICENSE",
+            "bytes": 1398,
+            "sha256": "c8f562989bbb38537389477b5e6de7b91eb3d29d192dc4a4f18ced0d570e4289"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0.dist-info/licenses/NOTICE.md",
+            "bytes": 1468,
+            "sha256": "fb2c6a455a86e9f1a814553b15ccb28d0bd73e9aa77ddd64c679e83b953f0432"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0.dist-info/top_level.txt",
+            "bytes": 5,
+            "sha256": "06ad2593ea8e38d1d91a96b94492a816a0b36f112d52eae5d1481017e6cfdca7"
+          },
+          {
+            "path": "asme/__init__.py",
+            "bytes": 195,
+            "sha256": "872bbfc13231d014b172de5b2d0df3903da5c2da3dc18132aed3d03115dddbb9"
+          },
+          {
+            "path": "asme/__main__.py",
+            "bytes": 49,
+            "sha256": "0f7d54f3fbb1f79a85eb8110f11793db99da6f3c61ee979de5abe9a1b5f3fdb3"
+          },
+          {
+            "path": "asme/adapter.py",
+            "bytes": 6492,
+            "sha256": "9d6e1a995613c667d6f696f7b6a3000fdde41b2d17d2a81fb34f36879c9d51e7"
+          },
+          {
+            "path": "asme/bootstrap.py",
+            "bytes": 4990,
+            "sha256": "65bb2e89c232fd99fd67b16893b2d6427a1dd4d4157898e8e77f91c83384087f"
+          },
+          {
+            "path": "asme/canonical.py",
+            "bytes": 4244,
+            "sha256": "51e0ca74eb7b2c4ac3a8ce6cda62235fa2427b3abf0d19baba1cdeeb5ecc9e7d"
+          },
+          {
+            "path": "asme/cartridge.py",
+            "bytes": 7177,
+            "sha256": "2d164a259a8fb5f83b1e9afdb08cfa4daf3a631a2a76380f676726130a0736a3"
+          },
+          {
+            "path": "asme/claims.py",
+            "bytes": 3923,
+            "sha256": "a450a7b7d378611333b5350cb105a9a56d7ca14415c71d0dbc81b87dbd81aaf4"
+          },
+          {
+            "path": "asme/cli.py",
+            "bytes": 22227,
+            "sha256": "0089fc62e1f400e2add051edc282ac5e15b8b4fbcd116672e77ac751089f5167"
+          },
+          {
+            "path": "asme/clock.py",
+            "bytes": 1151,
+            "sha256": "fcdd120a8b9ba88accf3a2ddc24b0497c3668907ebeeb5367d67cd30f1f54190"
+          },
+          {
+            "path": "asme/contract.py",
+            "bytes": 15587,
+            "sha256": "87752014e1bfbc5d09aa56b5287eb214e9297e30d2c1ffcd310504f81b09c740"
+          },
+          {
+            "path": "asme/data/source-registry.json",
+            "bytes": 31515,
+            "sha256": "5335e267c5259d047cf9eb3ef175f6757ea2d393e9b21948700b4eee25c38a39"
+          },
+          {
+            "path": "asme/delivery.py",
+            "bytes": 19823,
+            "sha256": "3ce1c00bc768c405a62731929f54b87792ec40f622f5c05426f60225f12c8b95"
+          },
+          {
+            "path": "asme/dependencies.py",
+            "bytes": 10077,
+            "sha256": "ace887a20fe20f6e8f3b6ada3d70c4a51e4810496174c23f9bf5543855e3e2e1"
+          },
+          {
+            "path": "asme/domain.py",
+            "bytes": 15491,
+            "sha256": "4c70775c4585f33523fa857b0f135454a75c0cb9176f9bf65abb48d25157a17f"
+          },
+          {
+            "path": "asme/evalreport.py",
+            "bytes": 9096,
+            "sha256": "86bb37b43053212617149a435cf50226cbd3ed57b77746fe84c4999671e833c3"
+          },
+          {
+            "path": "asme/evaluation.py",
+            "bytes": 3870,
+            "sha256": "32e7798acd411a3a4de74795c164457b64131d806f583ad4f0b6690d3416b1c5"
+          },
+          {
+            "path": "asme/evidence.py",
+            "bytes": 5923,
+            "sha256": "3771fd045d313646eb9c61cdd6627f045b9ad52b7d4405864c9026ed69e8dec7"
+          },
+          {
+            "path": "asme/evolution_eval.py",
+            "bytes": 14016,
+            "sha256": "8286f252f1cca5932427f4fea71c6e14ed8bef66fb5bfc6c73d43b82c821257b"
+          },
+          {
+            "path": "asme/gate2.py",
+            "bytes": 3452,
+            "sha256": "4edc53268c8d6941cf313fe2a630445b302795056a340eb154de60fb72e450b8"
+          },
+          {
+            "path": "asme/governance.py",
+            "bytes": 5410,
+            "sha256": "67ddcddace34c1fab39f07d208e05042bc2ac7db3973a1bcdd7a22a900d08147"
+          },
+          {
+            "path": "asme/impact.py",
+            "bytes": 3345,
+            "sha256": "1245ea2610dd5fa1ea766ba78d5768f3e6fc9e89d5e85369ae42efc54135eaee"
+          },
+          {
+            "path": "asme/integration.py",
+            "bytes": 10379,
+            "sha256": "e7f908970b345d819e47ad765c9de9df4829c919e81dd8c49883c99d979b661d"
+          },
+          {
+            "path": "asme/lifecycle.py",
+            "bytes": 20981,
+            "sha256": "88163d8e6e89e14672f8a00eecad1a6426df18d2af74c972e38e7b34cc528a8a"
+          },
+          {
+            "path": "asme/manifest.py",
+            "bytes": 7705,
+            "sha256": "73ff5d0ea100dc51dea71f429eeb8cd3fc4619e9f01a79d1b3930a491894a99f"
+          },
+          {
+            "path": "asme/observer_bridge.py",
+            "bytes": 9401,
+            "sha256": "6f3760870e0a65e34beb7628146f22b76241fd75d9c6d127279dca1d5abd2c6f"
+          },
+          {
+            "path": "asme/package.py",
+            "bytes": 18056,
+            "sha256": "9d9fe4277f5ccaa9a66da9db6c6643ac2c09134f310420ba357d5503085e907e"
+          },
+          {
+            "path": "asme/proposal.py",
+            "bytes": 9955,
+            "sha256": "7b00ab77b6de3eba987fdd05232960b49214084c4ba3683ed397705095c76360"
+          },
+          {
+            "path": "asme/seed.py",
+            "bytes": 7341,
+            "sha256": "3d789a7b8d46185b44526933c938ebf607c51c48480f43b655e928f376399f94"
+          },
+          {
+            "path": "asme/skill/LICENSE",
+            "bytes": 1398,
+            "sha256": "c8f562989bbb38537389477b5e6de7b91eb3d29d192dc4a4f18ced0d570e4289"
+          },
+          {
+            "path": "asme/skill/NOTICE.md",
+            "bytes": 1468,
+            "sha256": "fb2c6a455a86e9f1a814553b15ccb28d0bd73e9aa77ddd64c679e83b953f0432"
+          },
+          {
+            "path": "asme/skill/PURPOSE.md",
+            "bytes": 1973,
+            "sha256": "b37e11bde6838f48b27628e6709a19d12ba077114fc28b4217511fc27f18a628"
+          },
+          {
+            "path": "asme/skill/SKILL.md",
+            "bytes": 3895,
+            "sha256": "45eee50caf592746a4d6c5e7cbb83204c8c2352719a11471b191c00a551fa600"
+          },
+          {
+            "path": "asme/skill/references/fidelity.md",
+            "bytes": 1424,
+            "sha256": "10edf788a1288ae01f1a1caa9de146f861e7c8b1fa7c431bd6fe9cfd09a1d887"
+          },
+          {
+            "path": "asme/skill/references/integration.md",
+            "bytes": 6628,
+            "sha256": "60c529672fdc2bd4854158dc913486b5faca45b2b53ec403669ddc66883b4465"
+          },
+          {
+            "path": "asme/skill/references/paper-notes.md",
+            "bytes": 3218,
+            "sha256": "dfed1eaa2edc2800387fd3c15e72fb61a174e0dcd9996caea7843c42787824e1"
+          },
+          {
+            "path": "asme/skill/references/verification/README.md",
+            "bytes": 4624,
+            "sha256": "3be4a54ae021bd0f1f922607ab8ac61aae94d21a362ca602a56fc3c51a9a4546"
+          },
+          {
+            "path": "asme/skill/references/verification/independent-review-protocol.md",
+            "bytes": 7203,
+            "sha256": "202300643ff5e6c6850b18a7d3806737c8156be5e1308bd2d687cd8dbdeef330"
+          },
+          {
+            "path": "asme/skill_assets.py",
+            "bytes": 3184,
+            "sha256": "20d2ce3e3fa142f9b7f6f5ebe58f6ae06fe647246e1efae427cb04580ac9a1fd"
+          },
+          {
+            "path": "asme/skill_install.py",
+            "bytes": 5556,
+            "sha256": "e4a377624da5d3dc8bd045c8966bc66cdfd34c94d3e167ae84c465bbda091ce8"
+          },
+          {
+            "path": "asme/skill_safety.py",
+            "bytes": 5765,
+            "sha256": "13648030c27c77399241f780d3eac81255d4c1510dfdd44255f2a436fa2e3072"
+          },
+          {
+            "path": "asme/snapshot.py",
+            "bytes": 7510,
+            "sha256": "9e97504f8e00559f19e8b9ca5e8b74a364c04acf3bc2ab871129688005063b69"
+          },
+          {
+            "path": "asme/source_registry.py",
+            "bytes": 6193,
+            "sha256": "6d4471ffbe9742cf64adf8d8ad6c0fb1804de2287bc2a163b6f7d39ffd25fabb"
+          },
+          {
+            "path": "asme/transaction.py",
+            "bytes": 37602,
+            "sha256": "910b8f211eb399d3ac7bd51b776d64756d04a2b489163a0a59f7e8833c999f9a"
+          },
+          {
+            "path": "asme/wiki.py",
+            "bytes": 17053,
+            "sha256": "a36d8aeda6de96719ab32240ec66fbe8cac2bab9db5016b5e5499b124d7227ff"
+          },
+          {
+            "path": "asme/workflow.py",
+            "bytes": 88100,
+            "sha256": "9dcaa203b50ef7d21e78dfd4195a4acd0118b4eacfc91a09b1931b239dfbed47"
+          },
+          {
+            "path": "asme/workspace.py",
+            "bytes": 22811,
+            "sha256": "e17cf2245e709aae4b96c1e0797a1d5a335266f048b64d5bba28511f525ca0e9"
+          }
+        ]
+      },
+      {
+        "kind": "sdist",
+        "path": "build/port-verification-final/agent_skill_mastery_engine-0.2.0.tar.gz",
+        "sha256": "de5d315a668aba5046e1bcebd18ba5070c8c98a4c38addadfeb23e7f59b60aab",
+        "bytes": 207647,
+        "archive_members": 135,
+        "regular_members": 117,
+        "runtime_files_byte_equal": 37,
+        "skill_files_byte_equal": null,
+        "community_scan": "passed",
+        "evaluation_assets_omitted": [
+          "assets/eval/arithmetic/answers.jsonl",
+          "assets/eval/arithmetic/cartridge.json",
+          "assets/eval/arithmetic/prompt.txt",
+          "assets/eval/arithmetic/rollouts/run-1/baseline.jsonl",
+          "assets/eval/arithmetic/rollouts/run-1/confirmation.jsonl",
+          "assets/eval/arithmetic/rollouts/run-1/validation.jsonl",
+          "assets/eval/arithmetic/tasks.jsonl",
+          "assets/eval/echo/answers.jsonl",
+          "assets/eval/echo/cartridge.json",
+          "assets/eval/echo/prompt.txt",
+          "assets/eval/echo/rollouts/run-1/baseline.jsonl",
+          "assets/eval/echo/rollouts/run-1/confirmation.jsonl",
+          "assets/eval/echo/rollouts/run-1/validation.jsonl",
+          "assets/eval/echo/tasks.jsonl"
+        ],
+        "files": [
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/CHANGELOG.md",
+            "bytes": 709,
+            "sha256": "a1bcccee7d594a2f6d85b56876ce67ff2f1374c45771385dda2a2eaa3a3671fa"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/CITATION.cff",
+            "bytes": 331,
+            "sha256": "f1edf1c419bf1d7399d896e4c0b8813263bfde3ae9774b3f3f3852a2e1694e07"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/CONTRIBUTING.md",
+            "bytes": 1951,
+            "sha256": "548937a9cdd35f1511e80c8a978c045e09ed8a82daab0ae88774ee069522586d"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/LICENSE",
+            "bytes": 1398,
+            "sha256": "c8f562989bbb38537389477b5e6de7b91eb3d29d192dc4a4f18ced0d570e4289"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/MANIFEST.in",
+            "bytes": 275,
+            "sha256": "b40c80f397557aa0cf491b58e2950feba7aff5e85b75bd2bd5bd471a9c686b08"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/NOTICE.md",
+            "bytes": 1468,
+            "sha256": "fb2c6a455a86e9f1a814553b15ccb28d0bd73e9aa77ddd64c679e83b953f0432"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/PKG-INFO",
+            "bytes": 4089,
+            "sha256": "b3c34a0bd48f356a6372ffe369dcc603ace7b2a1ac77377844da95e02dfad49c"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/PROVENANCE.md",
+            "bytes": 5540,
+            "sha256": "de76d3b84a9e5e3a081f39528143341ac91ea4df6a7f311a0972aa3ec8b85e19"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/PURPOSE.md",
+            "bytes": 1973,
+            "sha256": "b37e11bde6838f48b27628e6709a19d12ba077114fc28b4217511fc27f18a628"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/README.md",
+            "bytes": 3522,
+            "sha256": "52932f47dd570b8594869e9aa2c6c1b4617c4561bd560ada18940cd1a4bc1fb7"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/SECURITY.md",
+            "bytes": 707,
+            "sha256": "f3b7c96a7f70e5f287db15a458d76eb37f4347b70d5e342ef9e0acc9c27dfda0"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/SKILL.md",
+            "bytes": 3895,
+            "sha256": "45eee50caf592746a4d6c5e7cbb83204c8c2352719a11471b191c00a551fa600"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/adapters/hermes_plugin/README.md",
+            "bytes": 1287,
+            "sha256": "83455fcfd49233b6715e29c46658d0f099cde4b259ef16bb53cb82c4e51500dc"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/adapters/hermes_plugin/__init__.py",
+            "bytes": 4396,
+            "sha256": "dffab647e30098329809cde4857b50e0eee30bfd97f762f6ee26b12c2a9f221c"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/adapters/hermes_plugin/plugin.yaml",
+            "bytes": 487,
+            "sha256": "9b8bdfce7a37985cd6912595125f567aa3765a94b1be9d0fc877b29ba1b90e33"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/assets/PURPOSE.md.tmpl",
+            "bytes": 366,
+            "sha256": "f9967cafe4845e29b49fe8fb8e615d0bbb5500deeba149ba9893e268545407d8"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/assets/SKILL.md.tmpl",
+            "bytes": 467,
+            "sha256": "f88821d7ffecf0342b12819099c1ba15da558466e4a013faece3de940572ffe9"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/assets/index.md.tmpl",
+            "bytes": 67,
+            "sha256": "611008da6208a38329b72aaef7e56eb71c22879e6c96551acc8df657950cc51c"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/assets/inference-prompt.txt.tmpl",
+            "bytes": 202,
+            "sha256": "4ca8a7797c8ec804bfa7a4894c37ae969c0f9468999360c43b770b6d144ce7ea"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/assets/log.md.tmpl",
+            "bytes": 88,
+            "sha256": "3daf3ceb6960b04782b822d6c807594e045e1389951c2359f16308790ebad17e"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/assets/pattern.md.tmpl",
+            "bytes": 291,
+            "sha256": "dc7913c9fb439b7d5df354d1bc95b5819863c936b28765a46ae70d492164a14f"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/assets/skill-impact.md.tmpl",
+            "bytes": 278,
+            "sha256": "b88e0a336f5b61023e609ec98cb847651ef114e8eca901e6c3392889ad15292f"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/docs/implementation-parity.md",
+            "bytes": 19364,
+            "sha256": "0e102a4d344cd8cd521c231e3dfdc3c86514402d16d6f376f648604f32c08c67"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/docs/license-decision.md",
+            "bytes": 5700,
+            "sha256": "183250dc0e77b0078576efce35f680e672a4bd0f8d4ddb1e232ddfbfc23857a6"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/docs/migration/asme-port.md",
+            "bytes": 18176,
+            "sha256": "e1bf227be694fada841d40a4afa6ccb1ac4aa6b94b39faf3d17e71312faf73b5"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/docs/migration/asme-source/CONTRIBUTING.md",
+            "bytes": 1037,
+            "sha256": "7d452945ffc7d0a83f4789d1b13f670a6dec33b7349342472adf6bed55eae6d0"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/docs/migration/asme-source/PROVENANCE.md",
+            "bytes": 5182,
+            "sha256": "ff12252a5257fb162051c5198a66122e54dc1ac31d7ed9ef25dec5d4dcdf10a5"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/docs/migration/asme-source/README.md",
+            "bytes": 6518,
+            "sha256": "a1dc95b92b76cf094dc0d46bb98177897ecdec1ba32e1e05696ec5a55bd311ac"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/docs/public/2026-09-06-from-wikiskill-to-lifecycle.md",
+            "bytes": 5994,
+            "sha256": "64edac58015133fc95ec59762b0b2738a54f1327beed886e49cae9e8991d68ea"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/pyproject.toml",
+            "bytes": 873,
+            "sha256": "5a43a492654b60f39ca1bc73d6b307bf61e81228cf94e0d9a8bdcfa75cf56233"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/references/fidelity.md",
+            "bytes": 1424,
+            "sha256": "10edf788a1288ae01f1a1caa9de146f861e7c8b1fa7c431bd6fe9cfd09a1d887"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/references/integration.md",
+            "bytes": 6628,
+            "sha256": "60c529672fdc2bd4854158dc913486b5faca45b2b53ec403669ddc66883b4465"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/references/paper-notes.md",
+            "bytes": 3218,
+            "sha256": "dfed1eaa2edc2800387fd3c15e72fb61a174e0dcd9996caea7843c42787824e1"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/references/verification/README.md",
+            "bytes": 4624,
+            "sha256": "3be4a54ae021bd0f1f922607ab8ac61aae94d21a362ca602a56fc3c51a9a4546"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/references/verification/independent-review-protocol.md",
+            "bytes": 7203,
+            "sha256": "202300643ff5e6c6850b18a7d3806737c8156be5e1308bd2d687cd8dbdeef330"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/scripts/extractors/answer_tag.py",
+            "bytes": 1293,
+            "sha256": "2b9253cc920d2f4813951cd2b9619ebf71e288317acff4471c16f7b3667a45e2"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/scripts/install_claude_skill.py",
+            "bytes": 2102,
+            "sha256": "f7f8ab4384aa619e60252b2fc8b5f96992ed153871cdcdb3347b02f646c0108b"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/scripts/scorers/exact_match.py",
+            "bytes": 638,
+            "sha256": "4da5e1019e8400311164c5341eed297fc1ddc45123098d2cb273fb5c81579541"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/scripts/scorers/numeric_tolerance.py",
+            "bytes": 1054,
+            "sha256": "e3180cdaab679cf82c8504b346f7cb1515431812b7235a3831760589589d8b1b"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/scripts/stdlib_smoke.py",
+            "bytes": 5468,
+            "sha256": "056879f9f780e2c132b74fe681fd0a5211f542fe029b0a27b5b64945d4338943"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/scripts/verify_asme_port.py",
+            "bytes": 8881,
+            "sha256": "9518df6647d8624417ec42474e579647163d3060dedcc37be729f32f2dd938ad"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/setup.cfg",
+            "bytes": 38,
+            "sha256": "1c473cbaee8da5fc46e7f0158794af5cea4414c34a3cf3f180c2001f5e38bd3e"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/setup.py",
+            "bytes": 1455,
+            "sha256": "ddcdd4b7410d5e5cae8a1e258b41863545d61b8148e7fa7118460f03a1e319b6"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/src/agent_skill_mastery_engine.egg-info/PKG-INFO",
+            "bytes": 4089,
+            "sha256": "b3c34a0bd48f356a6372ffe369dcc603ace7b2a1ac77377844da95e02dfad49c"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/src/agent_skill_mastery_engine.egg-info/SOURCES.txt",
+            "bytes": 3016,
+            "sha256": "f2ae0d329fe6bbfcdf8189d011ef9e799cad41fb05ec5d9f088188904df4b267"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/src/agent_skill_mastery_engine.egg-info/dependency_links.txt",
+            "bytes": 1,
+            "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/src/agent_skill_mastery_engine.egg-info/entry_points.txt",
+            "bytes": 39,
+            "sha256": "580c871d42455c62c1e5bad5fd93b0b6ec04871c63499c9b6fcf8f95ebfeab07"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/src/agent_skill_mastery_engine.egg-info/top_level.txt",
+            "bytes": 5,
+            "sha256": "06ad2593ea8e38d1d91a96b94492a816a0b36f112d52eae5d1481017e6cfdca7"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/src/asme/__init__.py",
+            "bytes": 195,
+            "sha256": "872bbfc13231d014b172de5b2d0df3903da5c2da3dc18132aed3d03115dddbb9"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/src/asme/__main__.py",
+            "bytes": 49,
+            "sha256": "0f7d54f3fbb1f79a85eb8110f11793db99da6f3c61ee979de5abe9a1b5f3fdb3"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/src/asme/adapter.py",
+            "bytes": 6492,
+            "sha256": "9d6e1a995613c667d6f696f7b6a3000fdde41b2d17d2a81fb34f36879c9d51e7"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/src/asme/bootstrap.py",
+            "bytes": 4990,
+            "sha256": "65bb2e89c232fd99fd67b16893b2d6427a1dd4d4157898e8e77f91c83384087f"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/src/asme/canonical.py",
+            "bytes": 4244,
+            "sha256": "51e0ca74eb7b2c4ac3a8ce6cda62235fa2427b3abf0d19baba1cdeeb5ecc9e7d"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/src/asme/cartridge.py",
+            "bytes": 7177,
+            "sha256": "2d164a259a8fb5f83b1e9afdb08cfa4daf3a631a2a76380f676726130a0736a3"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/src/asme/claims.py",
+            "bytes": 3923,
+            "sha256": "a450a7b7d378611333b5350cb105a9a56d7ca14415c71d0dbc81b87dbd81aaf4"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/src/asme/cli.py",
+            "bytes": 22227,
+            "sha256": "0089fc62e1f400e2add051edc282ac5e15b8b4fbcd116672e77ac751089f5167"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/src/asme/clock.py",
+            "bytes": 1151,
+            "sha256": "fcdd120a8b9ba88accf3a2ddc24b0497c3668907ebeeb5367d67cd30f1f54190"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/src/asme/contract.py",
+            "bytes": 15587,
+            "sha256": "87752014e1bfbc5d09aa56b5287eb214e9297e30d2c1ffcd310504f81b09c740"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/src/asme/data/source-registry.json",
+            "bytes": 31515,
+            "sha256": "5335e267c5259d047cf9eb3ef175f6757ea2d393e9b21948700b4eee25c38a39"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/src/asme/delivery.py",
+            "bytes": 19823,
+            "sha256": "3ce1c00bc768c405a62731929f54b87792ec40f622f5c05426f60225f12c8b95"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/src/asme/dependencies.py",
+            "bytes": 10077,
+            "sha256": "ace887a20fe20f6e8f3b6ada3d70c4a51e4810496174c23f9bf5543855e3e2e1"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/src/asme/domain.py",
+            "bytes": 15491,
+            "sha256": "4c70775c4585f33523fa857b0f135454a75c0cb9176f9bf65abb48d25157a17f"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/src/asme/evalreport.py",
+            "bytes": 9096,
+            "sha256": "86bb37b43053212617149a435cf50226cbd3ed57b77746fe84c4999671e833c3"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/src/asme/evaluation.py",
+            "bytes": 3870,
+            "sha256": "32e7798acd411a3a4de74795c164457b64131d806f583ad4f0b6690d3416b1c5"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/src/asme/evidence.py",
+            "bytes": 5923,
+            "sha256": "3771fd045d313646eb9c61cdd6627f045b9ad52b7d4405864c9026ed69e8dec7"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/src/asme/evolution_eval.py",
+            "bytes": 14016,
+            "sha256": "8286f252f1cca5932427f4fea71c6e14ed8bef66fb5bfc6c73d43b82c821257b"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/src/asme/gate2.py",
+            "bytes": 3452,
+            "sha256": "4edc53268c8d6941cf313fe2a630445b302795056a340eb154de60fb72e450b8"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/src/asme/governance.py",
+            "bytes": 5410,
+            "sha256": "67ddcddace34c1fab39f07d208e05042bc2ac7db3973a1bcdd7a22a900d08147"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/src/asme/impact.py",
+            "bytes": 3345,
+            "sha256": "1245ea2610dd5fa1ea766ba78d5768f3e6fc9e89d5e85369ae42efc54135eaee"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/src/asme/integration.py",
+            "bytes": 10379,
+            "sha256": "e7f908970b345d819e47ad765c9de9df4829c919e81dd8c49883c99d979b661d"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/src/asme/lifecycle.py",
+            "bytes": 20981,
+            "sha256": "88163d8e6e89e14672f8a00eecad1a6426df18d2af74c972e38e7b34cc528a8a"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/src/asme/manifest.py",
+            "bytes": 7705,
+            "sha256": "73ff5d0ea100dc51dea71f429eeb8cd3fc4619e9f01a79d1b3930a491894a99f"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/src/asme/observer_bridge.py",
+            "bytes": 9401,
+            "sha256": "6f3760870e0a65e34beb7628146f22b76241fd75d9c6d127279dca1d5abd2c6f"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/src/asme/package.py",
+            "bytes": 18056,
+            "sha256": "9d9fe4277f5ccaa9a66da9db6c6643ac2c09134f310420ba357d5503085e907e"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/src/asme/proposal.py",
+            "bytes": 9955,
+            "sha256": "7b00ab77b6de3eba987fdd05232960b49214084c4ba3683ed397705095c76360"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/src/asme/seed.py",
+            "bytes": 7341,
+            "sha256": "3d789a7b8d46185b44526933c938ebf607c51c48480f43b655e928f376399f94"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/src/asme/skill_assets.py",
+            "bytes": 3184,
+            "sha256": "20d2ce3e3fa142f9b7f6f5ebe58f6ae06fe647246e1efae427cb04580ac9a1fd"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/src/asme/skill_install.py",
+            "bytes": 5556,
+            "sha256": "e4a377624da5d3dc8bd045c8966bc66cdfd34c94d3e167ae84c465bbda091ce8"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/src/asme/skill_safety.py",
+            "bytes": 5765,
+            "sha256": "13648030c27c77399241f780d3eac81255d4c1510dfdd44255f2a436fa2e3072"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/src/asme/snapshot.py",
+            "bytes": 7510,
+            "sha256": "9e97504f8e00559f19e8b9ca5e8b74a364c04acf3bc2ab871129688005063b69"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/src/asme/source_registry.py",
+            "bytes": 6193,
+            "sha256": "6d4471ffbe9742cf64adf8d8ad6c0fb1804de2287bc2a163b6f7d39ffd25fabb"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/src/asme/transaction.py",
+            "bytes": 37602,
+            "sha256": "910b8f211eb399d3ac7bd51b776d64756d04a2b489163a0a59f7e8833c999f9a"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/src/asme/wiki.py",
+            "bytes": 17053,
+            "sha256": "a36d8aeda6de96719ab32240ec66fbe8cac2bab9db5016b5e5499b124d7227ff"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/src/asme/workflow.py",
+            "bytes": 88100,
+            "sha256": "9dcaa203b50ef7d21e78dfd4195a4acd0118b4eacfc91a09b1931b239dfbed47"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/src/asme/workspace.py",
+            "bytes": 22811,
+            "sha256": "e17cf2245e709aae4b96c1e0797a1d5a335266f048b64d5bba28511f525ca0e9"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/tests/test_asme_port.py",
+            "bytes": 10855,
+            "sha256": "7bd1c40bdada892e83043fddfcb48a04a5c1353591cdeb9a512865f21af748d2"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/tests/test_bootstrap.py",
+            "bytes": 5194,
+            "sha256": "cfee91732eac7ce7a3be0153f876c5cff305fac279f41bdbc55103903092e170"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/tests/test_builtin_cartridge_programs.py",
+            "bytes": 957,
+            "sha256": "5fddef92e11cea97ccfa6eff019e92cd0010d55b38ce1a077248231e57f7bb94"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/tests/test_cartridge.py",
+            "bytes": 2832,
+            "sha256": "5d27e17f0aa6e7872854d30b82fde1b5b0dd32ebebd97a12bcdaf6fdc230d170"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/tests/test_cli.py",
+            "bytes": 5838,
+            "sha256": "ea59fcd350336f82c32633a7490a74236294e708e5242b9ad9fa6d92fd7af140"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/tests/test_cli_eval_bridge.py",
+            "bytes": 5875,
+            "sha256": "33f38ae968904ffeef8715542423d5d95a99c787efd9e38ca3984dd7cd445feb"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/tests/test_clock.py",
+            "bytes": 1988,
+            "sha256": "f1e3f73876cb0ba59e93ac6a4d006b3aad478a983f64cc4d124a31847a01c263"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/tests/test_contract_adapter.py",
+            "bytes": 8181,
+            "sha256": "8b515035b2f2091b7a3437a2378e9b7676e97cfcfaca890ae7fe6e72086b451c"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/tests/test_crash_oracle.py",
+            "bytes": 7133,
+            "sha256": "203e28fe217f0a1ec31c43eece2aa6ea57c9ac884003b28a14505057d9d5e30a"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/tests/test_delivery.py",
+            "bytes": 16234,
+            "sha256": "0d7d4138666de699f83ae47bd5e70c428ce477155db364584b8ebf8af0117eb5"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/tests/test_domain_evaluation_manifest.py",
+            "bytes": 14649,
+            "sha256": "59b297328bd0fae4049d5f655615397f4c7522a6c0cbec3dd1e9585606ae556e"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/tests/test_evalreport.py",
+            "bytes": 8269,
+            "sha256": "5e8fe46f77ee99abc07760becb1355889df4b6e0c4ea794bf3a07d29df440272"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/tests/test_evolution_eval.py",
+            "bytes": 3469,
+            "sha256": "08f97ab84879bdee42185119b5c43f60c3c8e7c447b18740f512e45ce32abc3e"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/tests/test_governance_dependencies_gate2.py",
+            "bytes": 28440,
+            "sha256": "43ea2ce6c4e35cc7c0972e10979e21ce48270edf80b1b0cbdbc04e6bf034abb8"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/tests/test_integration_bridge.py",
+            "bytes": 7178,
+            "sha256": "ae98207f5ab3028fe86f92bd5a0c9ee3390ecfe54b95394aadbcae938c3fc276"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/tests/test_lifecycle.py",
+            "bytes": 10871,
+            "sha256": "bc35c968c0f290bfaac2a53c6e7f3884ea1b4ab1222ed7df2034d83bcc59f7e8"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/tests/test_observer_bridge.py",
+            "bytes": 9305,
+            "sha256": "a9fd4e894978c48e5c798c761fff712a693f82936818f0555dd221d43f7b6346"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/tests/test_proposal.py",
+            "bytes": 7578,
+            "sha256": "5377c8f2c728f1f5fb9b9edf13caa281fc5a58e4b28f2d5b696b50fce2d9a0ce"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/tests/test_release_surface.py",
+            "bytes": 3312,
+            "sha256": "9b53bda6b24862a89991c6d8894f79098864352aa4a4c1594fe95f7c95b45e09"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/tests/test_reset_errors.py",
+            "bytes": 10222,
+            "sha256": "3ebc217a972ad15dbf2ad46ca1a95cac18981e317364d76d78d418884f44697b"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/tests/test_seed.py",
+            "bytes": 5948,
+            "sha256": "0e689d60618b064ddd96232aecc7519b72cc401f8e82f84367435d66cbbc4f1f"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/tests/test_skill_assets.py",
+            "bytes": 3513,
+            "sha256": "6bbfec898065f9971f4ba33bb34778c988818e15e34e638061460185b764ab6b"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/tests/test_skill_install.py",
+            "bytes": 7843,
+            "sha256": "7bdd92169e47b7ac00ec30acf3b8b21c3ecf9776de8018f02737542243d4de0c"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/tests/test_skill_safety.py",
+            "bytes": 4016,
+            "sha256": "1091d4c1634d62912330453c3fd627b361af1738e9353626b0cd5404a15d335b"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/tests/test_snapshot_package.py",
+            "bytes": 9883,
+            "sha256": "3dd4b92ff6bdb0aa32745f8f52a94c431121e5c2bfba15fa57b08ac5a2167f26"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/tests/test_stdlib_smoke.py",
+            "bytes": 874,
+            "sha256": "8bcc15c9e32047d51da61ec22edf7a87c691ac89dc6a4ff94732b5fd37475ed1"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/tests/test_terminal_paths.py",
+            "bytes": 22796,
+            "sha256": "1cf7a3eef8ad8f9073f6de299f6e74df9390855043dc765478a69ad0405678ce"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/tests/test_transaction.py",
+            "bytes": 14097,
+            "sha256": "df72ee6b67fc97f1b0b56cfb4ca48ee62539cb1992b7efdcd295a331a5b0da6a"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/tests/test_wiki.py",
+            "bytes": 5824,
+            "sha256": "41c856098e5ff5ea1e990987c932e0c40b12c52480f2280c396b38153b27222c"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/tests/test_workflow.py",
+            "bytes": 11954,
+            "sha256": "6efd1e4c986f0ad9d12b11b455cee7e18215ec8143ea07b1b41a09553695b7ed"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/tests/test_workflow_candidate.py",
+            "bytes": 11707,
+            "sha256": "3236e49cdfb72e68218dc24b80c7a45b6b27f6a65737b5a80fe6e17315aa68ac"
+          },
+          {
+            "path": "agent_skill_mastery_engine-0.2.0/tests/test_workspace_hermes_adapter.py",
+            "bytes": 14158,
+            "sha256": "34dbf564194ba3040199b112e009df18438646b527943e4c9839d2f95134c02f"
+          }
+        ]
+      }
+    ],
+    "limits": [
+      "This verifies compatibility runtime and wheel skill bytes, not complete source-distribution membership.",
+      "The inherited evaluation-asset omission is assigned to the separate package-boundary feature.",
+      "No host, provider, benchmark or empirical execution is performed."
+    ]
+  },
+  "stderr": ""
+}

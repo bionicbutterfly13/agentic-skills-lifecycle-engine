@@ -1,0 +1,19 @@
+{
+  "label": "Preserved CLI help",
+  "argv": [
+    "python3",
+    "-m",
+    "asme",
+    "--help"
+  ],
+  "environment": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONPATH": "src"
+  },
+  "started_at": "2026-09-07T01:02:24.886604+00:00",
+  "ended_at": "2026-09-07T01:02:32.786777+00:00",
+  "elapsed_seconds": 7.9,
+  "exit_code": 0,
+  "stdout": "usage: asme [-h] [--version]\n            {transition-matrix,verify-archive,candidate-manifest,observation-candidate,init,skip-seed,seed-observations,rollback-seed,prepare-rollout,record-execution,ingest-rollout,reset-manifest,finalize-baseline,sample,apply-wiki,proposer-context,apply-proposal,gate,abandon-candidate,export,package-untested,eval-run,verify-packet,install,status,recover} ...\n\nRuntime-neutral WikiSkill core. Evolved candidates are staged, never\ninstalled; only `install` writes a skill directory, and it copies just Agent\nSkill Mastery Engine's own skill.\n\npositional arguments:\n  {transition-matrix,verify-archive,candidate-manifest,observation-candidate,init,skip-seed,seed-observations,rollback-seed,prepare-rollout,record-execution,ingest-rollout,reset-manifest,finalize-baseline,sample,apply-wiki,proposer-context,apply-proposal,gate,abandon-candidate,export,package-untested,eval-run,verify-packet,install,status,recover}\n    transition-matrix   Print the total lifecycle matrix\n    verify-archive      Verify a normalized staged .skill archive\n    candidate-manifest  Print a deterministic candidate manifest without\n                        writing an artifact\n    observation-candidate\n                        Print a review-only reusable-signal candidate without\n                        writing Task Observer\n    init                Initialize one sealed development domain\n    skip-seed           Record that no optional observation seed is used\n    seed-observations   Apply one human-approved named observation packet\n    rollback-seed       Remove an exact seed before baseline evidence exists\n    prepare-rollout     Write hash-bound jobs for one rollout phase\n    record-execution    Record one adapter-returned captured execution\n    ingest-rollout      Evaluate captured outputs and create one manifest\n    reset-manifest      Remove invalid unconsumed evidence, preserving outputs\n    finalize-baseline   Consume a valid baseline and enter evolution\n    sample              Create deterministic Wiki Maintainer input from train\n                        traces\n    apply-wiki          Validate and apply one Wiki Maintainer JSON result\n    proposer-context    Create the train-only Skill Proposer context\n    apply-proposal      Validate one create, patch, or no-action proposal\n    gate                Apply strict improvement and confirmation rules\n    abandon-candidate   Abandon the current candidate transactionally\n    export              Stage a validated active skill; never install it\n    package-untested    Stage an explicitly untested skill with approval\n    eval-run            Score offline rollouts through one cartridge and print\n                        the A2 report\n    verify-packet       Verify one Task Observer review packet against its\n                        manifest, read-only\n    install             Copy Agent Skill Mastery Engine's own skill files into\n                        a Claude Code skill directory\n    status              Read one domain state without recovery\n    recover             Replay one recorded pending transaction\n\noptions:\n  -h, --help            show this help message and exit\n  --version             show program's version number and exit\n",
+  "stderr": ""
+}

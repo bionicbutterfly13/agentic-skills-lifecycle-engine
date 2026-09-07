@@ -1,0 +1,4 @@
+{"expected": "4", "marker": "arith-1", "split": "test", "task_id": "arith-1"}
+{"expected": "6", "marker": "arith-2", "split": "test", "task_id": "arith-2"}
+{"expected": "9", "marker": "arith-3", "split": "test", "task_id": "arith-3"}
+{"expected": "12", "marker": "arith-4", "split": "test", "task_id": "arith-4"}
