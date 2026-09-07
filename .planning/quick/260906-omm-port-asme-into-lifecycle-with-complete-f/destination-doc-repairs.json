@@ -1,0 +1,23 @@
+{
+  "argv": [
+    "python3",
+    "-m",
+    "pytest",
+    "-p",
+    "no:cacheprovider",
+    "tests/test_governance_dependencies_gate2.py::test_current_authority_and_attribution_sources_are_hash_reconstructable",
+    "tests/test_workspace_hermes_adapter.py::test_current_tree_is_community_scan_clean",
+    "tests/test_release_surface.py"
+  ],
+  "environment": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1"
+  },
+  "started_at": "2026-09-07T02:07:12.707707+00:00",
+  "ended_at": "2026-09-07T02:07:16.297947+00:00",
+  "elapsed_seconds": 3.588,
+  "exit_code": 0,
+  "stdout": ".......                                                                  [100%]\n7 passed in 1.90s\n",
+  "stderr": "",
+  "scope": "Two originally failing inherited checks and all five inherited public-document checks; unchanged source and test assertions"
+}

@@ -1,0 +1,1 @@
+{"extractor": "../../../scripts/extractors/answer_tag.py", "scorer": "../../../scripts/scorers/numeric_tolerance.py"}

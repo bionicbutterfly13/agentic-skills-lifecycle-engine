@@ -1,0 +1,52 @@
+{
+  "scope": "Final wheel installed offline into isolated target, actual imports and fresh CLI subprocesses; no providers",
+  "started_at": "2026-09-07T02:13:18.210079+00:00",
+  "finished_at": "2026-09-07T02:13:29.272900+00:00",
+  "elapsed_seconds": 11.06,
+  "exit_code": 0,
+  "environment": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONPATH": "build/port-wheel-install-final"
+  },
+  "module": "build/port-wheel-install-final/asme/__init__.py",
+  "skill_root": "build/port-wheel-install-final/asme/skill",
+  "distribution_version": "0.2.0",
+  "skill_files_byte_equal": [
+    "SKILL.md",
+    "PURPOSE.md",
+    "NOTICE.md",
+    "LICENSE",
+    "references/fidelity.md",
+    "references/integration.md",
+    "references/paper-notes.md",
+    "references/verification/README.md",
+    "references/verification/independent-review-protocol.md"
+  ],
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-m",
+        "asme",
+        "--help"
+      ],
+      "exit_code": 0,
+      "stdout_bytes": 3225,
+      "stdout_sha256": "ffca3a9d1082308f5e8aaff9f420c7800e22a21f3b0096cd706c88f90e03b5b8",
+      "stderr_bytes": 0
+    },
+    {
+      "argv": [
+        "python3",
+        "-m",
+        "asme",
+        "transition-matrix"
+      ],
+      "exit_code": 0,
+      "stdout_bytes": 12965,
+      "stdout_sha256": "e1f417c1f56cde04f5bcf11e473775c99be252c8253a6b13590692f151704651",
+      "stderr_bytes": 0
+    }
+  ],
+  "provider_calls": 0
+}

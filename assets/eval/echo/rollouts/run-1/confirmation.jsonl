@@ -1,0 +1,4 @@
+{"returned_output": "<answer>alpha</answer>", "task_id": "echo-1"}
+{"returned_output": "<answer>beta</answer>", "task_id": "echo-2"}
+{"returned_output": "<answer>gamma</answer>", "task_id": "echo-3"}
+{"returned_output": "<answer>off</answer>", "task_id": "echo-4"}

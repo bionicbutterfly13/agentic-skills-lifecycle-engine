@@ -1,0 +1,95 @@
+{
+  "schema": "lifecycle.asme-port-build-inspection.v1",
+  "status": "initial_build_verified_document_repairs_pending",
+  "observed_date": "2026-09-06",
+  "timezone": "America/New_York",
+  "source_revision": "1137c6705fd844546d5588757a5a23d4007b20c4",
+  "lifecycle_integration_base": "19375806a748db16e706c70f49aa3bc83b142eb0",
+  "working_directory_role": "ASME compatibility port worktree",
+  "build": {
+    "command": "python3 -m build --outdir build/port-verification --report build/port-verification-report.json",
+    "exit_code": 0,
+    "execution_session": 82539,
+    "backend": "setuptools.build_meta",
+    "isolated_backend_version": "84.0.0",
+    "report": "build/port-verification-report.json",
+    "duration_seconds": null
+  },
+  "inspection": {
+    "exit_code": 0,
+    "tool_wall_seconds": 5.825892251,
+    "commands_summary": [
+      "Enumerate every regular ZIP and tar member; reject duplicate/unsafe members.",
+      "Run unchanged asme.package.scan_community_safety over all archive file bytes.",
+      "Compare every src/asme .py and .json file against both archives.",
+      "Compare the complete nine-file skill_files(root) inventory and bytes against the wheel.",
+      "Enumerate all assets/eval checkout files and report source-distribution omissions."
+    ],
+    "wheel": {
+      "path": "build/port-verification/agent_skill_mastery_engine-0.2.0-py3-none-any.whl",
+      "sha256": "e90e56a4fc7b79ec07d530064882ccdc3032e273e5ee6635c66d46e31192676e",
+      "size": 135930,
+      "members": 53,
+      "source_files_byte_equal": 37,
+      "skill_files_byte_equal": 9,
+      "community_scan": "passed"
+    },
+    "sdist": {
+      "path": "build/port-verification/agent_skill_mastery_engine-0.2.0.tar.gz",
+      "sha256": "b6df059e0b4f91a1639034fb89a9d4138be769913c18d28e8a45b7566f407cb7",
+      "size": 206331,
+      "members": 117,
+      "source_files_byte_equal": 37,
+      "community_scan": "passed",
+      "eval_assets_not_in_sdist": [
+        "assets/eval/arithmetic/answers.jsonl",
+        "assets/eval/arithmetic/cartridge.json",
+        "assets/eval/arithmetic/prompt.txt",
+        "assets/eval/arithmetic/rollouts/run-1/baseline.jsonl",
+        "assets/eval/arithmetic/rollouts/run-1/confirmation.jsonl",
+        "assets/eval/arithmetic/rollouts/run-1/validation.jsonl",
+        "assets/eval/arithmetic/tasks.jsonl",
+        "assets/eval/echo/answers.jsonl",
+        "assets/eval/echo/cartridge.json",
+        "assets/eval/echo/prompt.txt",
+        "assets/eval/echo/rollouts/run-1/baseline.jsonl",
+        "assets/eval/echo/rollouts/run-1/confirmation.jsonl",
+        "assets/eval/echo/rollouts/run-1/validation.jsonl",
+        "assets/eval/echo/tasks.jsonl"
+      ]
+    }
+  },
+  "installed_wheel": {
+    "installation_command": "python3 -m pip install --no-index --no-deps --target build/port-wheel-install build/port-verification/agent_skill_mastery_engine-0.2.0-py3-none-any.whl",
+    "installation_exit_code": 0,
+    "verification_exit_code": 0,
+    "verification_tool_wall_seconds": 4.834015942,
+    "distribution_version": "0.2.0",
+    "module_loaded_from": "build/port-wheel-install/asme",
+    "skill_root": "build/port-wheel-install/asme/skill",
+    "skill_files_byte_equal": 9,
+    "cli_checks": [
+      {
+        "argv": ["--help"],
+        "exit_code": 0,
+        "stdout_sha256": "ffca3a9d1082308f5e8aaff9f420c7800e22a21f3b0096cd706c88f90e03b5b8",
+        "stdout_bytes": 3225
+      },
+      {
+        "argv": ["transition-matrix"],
+        "exit_code": 0,
+        "stdout_sha256": "e1f417c1f56cde04f5bcf11e473775c99be252c8253a6b13590692f151704651",
+        "stdout_bytes": 12965
+      }
+    ],
+    "execution": "Fresh Python subprocesses executed python -m asme with PYTHONPATH=build/port-wheel-install after asserting imports and skill lookup resolve inside that isolated target.",
+    "provider_calls": 0,
+    "harness_correction": "An initial direct-call check redirected stdout to StringIO, which lacks the binary buffer required by CLI output. It failed with AttributeError before any product change. The corrected check used real CLI subprocesses; both returned 0."
+  },
+  "limitations": [
+    "This inspection used the initial imported documentation, before the two pending portability/provenance repairs; final artifacts must be rebuilt after those edits.",
+    "The original pytest environment lacks setuptools and may skip its wheel test. This separate declared-dependency isolated build is actual artifact evidence, not a claim that that skipped test ran.",
+    "The source archive omits 14 toy evaluation assets under the inherited MANIFEST.in rules; the separate package-boundary feature must address this.",
+    "No installed Hermes, model-provider, real benchmark, paid execution, publication or full paper-parity conclusion follows from these package checks."
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "argv": [
+    "python3",
+    "-m",
+    "build",
+    "--outdir",
+    "build/port-verification-final",
+    "--report",
+    "build/port-verification-final-report.json"
+  ],
+  "cwd_role": "Lifecycle ASME port worktree",
+  "started_at": "2026-09-07T02:08:39.687768+00:00",
+  "finished_at": "2026-09-07T02:09:29.006381+00:00",
+  "elapsed_seconds": 49.305,
+  "exit_code": 0,
+  "scope": "Declared PEP 517 sdist and wheel-from-sdist after final canonical document repairs",
+  "output_artifact": {
+    "path": "build/port-verification-final-build.log",
+    "sha256": "e6884c034e85ded4dc3388bdcb49dbd76d8b48ee36d380279c657d4335150ef7",
+    "bytes": 31272,
+    "classification": "generated raw build log with machine-specific output paths; preserved separately from portable source documents"
+  },
+  "result": "Successfully built source distribution and wheel from source distribution"
+}

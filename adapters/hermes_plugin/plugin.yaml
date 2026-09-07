@@ -1,0 +1,16 @@
+manifest_version: 2
+api_version: 1
+name: asme
+version: "0.2.0"
+kind: standalone
+description: "Truthful Hermes capability probe and staging-only adapter for the Agent Skill Mastery Engine core. Role dispatch remains disabled until Hermes exposes a fail-closed provider route lock."
+author: "Mani Saint-Victor, MD"
+provides_tools:
+  - wikiskill_capabilities
+python_dependencies:
+  - "agent-skill-mastery-engine>=0.2.0,<0.3"
+tags:
+  - agentskills
+  - evaluation
+  - hermes
+  - staging-only

@@ -1,0 +1,16 @@
+{
+  "label": "Destination stdlib smoke",
+  "argv": [
+    "python3",
+    "scripts/stdlib_smoke.py"
+  ],
+  "environment": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "started_at": "2026-09-07T01:01:56.524053+00:00",
+  "ended_at": "2026-09-07T01:02:24.883583+00:00",
+  "elapsed_seconds": 28.359,
+  "exit_code": 0,
+  "stdout": "{\"domain_id\":\"stdlib-smoke\",\"isolation\":\"unsandboxed\",\"network_used\":false,\"phase\":\"DONE\",\"score\":1.0,\"trace_fidelity\":\"final_only\"}\n",
+  "stderr": ""
+}
