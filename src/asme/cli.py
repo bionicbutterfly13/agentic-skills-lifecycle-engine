@@ -94,6 +94,9 @@ def _parser() -> argparse.ArgumentParser:
     initialize.add_argument(
         "--visibility", choices=("internal", "public"), default="internal"
     )
+    initialize.add_argument(
+        "--confirmation", choices=("required", "off"), default="required"
+    )
     initialize.set_defaults(handler=_initialize)
 
     skip_seed = subcommands.add_parser(
@@ -368,6 +371,7 @@ def _initialize(args: argparse.Namespace) -> Any:
         _workspace(args).initialize(
             domain=domain,
             max_iterations=args.max_iterations,
+            confirmation_required=(args.confirmation != "off"),
             cartridge=cartridge,
         )
     )

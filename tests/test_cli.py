@@ -142,6 +142,61 @@ def test_cli_init_seals_executable_cartridge_and_skip_seed(
     assert workspace.status().state is LifecycleState.NEEDS_BASELINE_RUN
 
 
+@pytest.mark.parametrize(
+    ("confirmation_flag", "expected"),
+    (
+        (None, True),
+        ("required", True),
+        ("off", False),
+    ),
+)
+def test_cli_init_confirmation_switch_round_trips_through_status(
+    tmp_path: Path, declared_domain, capsys, confirmation_flag, expected
+) -> None:
+    tool_profile = tmp_path / "tool-profile.json"
+    tool_profile.write_text(json.dumps({"mode": "none"}), encoding="utf-8")
+    root = tmp_path / "workspace"
+    init_args = [
+        "init",
+        "--domain",
+        declared_domain.domain_id,
+        "--domain-root",
+        str(root),
+        "--tasks",
+        str(tmp_path / "tasks.jsonl"),
+        "--answers",
+        str(tmp_path / "answers.jsonl"),
+        "--prompt",
+        str(tmp_path / "prompt.txt"),
+        "--extractor",
+        str(tmp_path / "extractor"),
+        "--scorer",
+        str(tmp_path / "scorer"),
+        "--tool-profile",
+        str(tool_profile),
+        "--max-iterations",
+        "1",
+    ]
+    if confirmation_flag is not None:
+        init_args += ["--confirmation", confirmation_flag]
+    assert main(init_args) == 0
+    capsys.readouterr()
+    assert (
+        main(
+            [
+                "status",
+                "--domain",
+                declared_domain.domain_id,
+                "--domain-root",
+                str(root),
+            ]
+        )
+        == 0
+    )
+    status = json.loads(capsys.readouterr().out)
+    assert status["confirmation_required"] is expected
+
+
 def test_candidate_manifest_is_stdout_only_and_byte_stable(
     tmp_path: Path, capsys: pytest.CaptureFixture[str]
 ) -> None:

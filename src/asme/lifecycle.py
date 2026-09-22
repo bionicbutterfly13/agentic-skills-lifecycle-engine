@@ -47,6 +47,7 @@ class DomainState:
     revision: int = 0
     iteration: int = 0
     max_iterations: int = 1
+    confirmation_required: bool = True
     best_score: float | None = None
     active_snapshot_hash: str | None = None
     candidate_snapshot_hash: str | None = None
@@ -284,7 +285,28 @@ def transition(
         if current.best_score is None:
             raise TransitionRefused("gate requires an established best score")
         strict_win = candidate > current.best_score
-        if current.gate_phase == "validation" and strict_win:
+        if (
+            current.gate_phase == "validation"
+            and strict_win
+            and not current.confirmation_required
+        ):
+            if current.current_manifest_phase != "val" or current.current_manifest_hash is None:
+                raise TransitionRefused("validation gate requires an unconsumed val manifest")
+            if not current.candidate_snapshot_hash:
+                raise TransitionRefused("accepted candidate has no snapshot hash")
+            consumed = _consume_manifest(
+                current,
+                current.current_manifest_hash,
+                by="gate-validation",
+            )
+            result = _advance_iteration(
+                replace(
+                    consumed,
+                    best_score=candidate,
+                    active_snapshot_hash=current.candidate_snapshot_hash,
+                )
+            )
+        elif current.gate_phase == "validation" and strict_win:
             if current.current_manifest_phase != "val" or current.current_manifest_hash is None:
                 raise TransitionRefused("validation gate requires an unconsumed val manifest")
             manifest_hash = current.current_manifest_hash

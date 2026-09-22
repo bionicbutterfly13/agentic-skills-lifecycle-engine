@@ -1410,8 +1410,14 @@ class EvolutionWorkflow:
                 tree_reads=snapshot_reads,
                 values=gate_values,
             )
-        if state.gate_phase == "validation":
+        if (
+            state.gate_phase == "validation"
+            and next_state.active_snapshot_hash != state.candidate_snapshot_hash
+        ):
             outcome = ImpactOutcome.REJECTED
+            scores = (float(state.provisional_score),)
+        elif state.gate_phase == "validation":
+            outcome = ImpactOutcome.ACCEPTED
             scores = (float(state.provisional_score),)
         elif next_state.active_snapshot_hash == state.candidate_snapshot_hash:
             outcome = ImpactOutcome.ACCEPTED
