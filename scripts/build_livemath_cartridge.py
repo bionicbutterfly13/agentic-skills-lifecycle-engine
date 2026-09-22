@@ -118,6 +118,9 @@ def main() -> int:
         "## Answer Format\n\n"
         "Think step by step, then provide your final answer inside <answer>...</answer> "
         "tags. Inside the tags, output only the single choice label, such as A or C.\n\n"
+        "Keep your reasoning short enough to reach the answer. If the question is hard, "
+        "stop reasoning and commit to your best current choice rather than running out "
+        "of room, because a response with no answer tag scores nothing.\n\n"
         "Example:\n\n<answer>B</answer>\n\n"
         "## Question\n\n{input}\n",
         encoding="utf-8",

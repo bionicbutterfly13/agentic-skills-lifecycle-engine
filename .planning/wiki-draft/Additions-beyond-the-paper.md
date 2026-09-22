@@ -71,3 +71,15 @@ What Lifecycle does: adds a staging archive that holds candidate skills and thei
 Why: separates "evaluated" from "promoted" as distinct, auditable states, consistent with the project's requirement that promotion needs an auditable decision record.
 
 Status: implemented. See src/asme/delivery.py and src/asme/package.py; export stages a verified skill archive and never installs into a live runtime skill root.
+
+## Answer-budget guard in the inference prompt
+
+What the paper does: the LiveMath inference prompt (Appendix E.1) asks the model to think step by step and place the final answer in answer tags, with no instruction about running out of output budget.
+
+What Lifecycle does: adds one sentence telling the model to stop reasoning and commit to its best current choice rather than exhausting its output budget, because a response with no answer tag scores nothing.
+
+Why: a measured run on qwen3.5:4b spent an entire 3072-token budget inside its reasoning block and emitted no answer tag, producing an invalid manifest after 26 minutes. The engine correctly refused to score it, but the trial yielded no evidence at all. The guard converts a wasted trial into a usable one.
+
+Effect on parity: this is a deviation from the paper's prompt text. Any run labelled paper_comparable must use the verbatim prompt in .planning/paper-prompts/E1-inference-agent-prompts.md instead, and accept the resulting truncation rate as part of the measurement.
+
+Status: implemented 2026-09-22 in scripts/build_livemath_cartridge.py.
