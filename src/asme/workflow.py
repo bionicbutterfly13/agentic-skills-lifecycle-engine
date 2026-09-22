@@ -165,7 +165,10 @@ class EvolutionWorkflow:
 
         state = self.workspace.status()
         snapshot = self._load_snapshot(str(state.active_snapshot_hash))
-        history = _read_impact_history(self.workspace.engine.target_roots["impact"])
+        history = _read_impact_history(
+            self.workspace.engine.target_roots["impact"],
+            confirmation_required=state.confirmation_required,
+        )
         return build_observation_candidate(
             state=state,
             snapshot=snapshot,
@@ -1051,7 +1054,9 @@ class EvolutionWorkflow:
         wiki_root = self.workspace.engine.target_roots["wiki"]
         wiki_pages = _read_text_tree(wiki_root)
         impact_root = self.workspace.engine.target_roots["impact"]
-        history = _read_impact_history(impact_root)
+        history = _read_impact_history(
+            impact_root, confirmation_required=state.confirmation_required
+        )
         domain_record_path = require_regular_file(
             self.workspace.layout.domain_root / "domain.json",
             root=self.workspace.layout.domain_root,
@@ -1227,7 +1232,10 @@ class EvolutionWorkflow:
             else ()
         )
         if validated.action == "no_action":
-            history = _read_impact_history(self.workspace.engine.target_roots["impact"])
+            history = _read_impact_history(
+                self.workspace.engine.target_roots["impact"],
+                confirmation_required=state.confirmation_required,
+            )
             entry = create_impact(
                 domain_id=self.workspace.domain_id,
                 iteration=state.iteration,
@@ -1441,7 +1449,10 @@ class EvolutionWorkflow:
             scores=scores,
             unified_diff=str(candidate["unified_diff"]),
         )
-        history = _read_impact_history(self.workspace.engine.target_roots["impact"])
+        history = _read_impact_history(
+            self.workspace.engine.target_roots["impact"],
+            confirmation_required=state.confirmation_required,
+        )
         return self.workspace.apply(
             operation="gate",
             arguments={
@@ -1493,7 +1504,10 @@ class EvolutionWorkflow:
                 phase=invalid_phase,
                 iteration=state.iteration,
             )
-        history = _read_impact_history(self.workspace.engine.target_roots["impact"])
+        history = _read_impact_history(
+            self.workspace.engine.target_roots["impact"],
+            confirmation_required=state.confirmation_required,
+        )
         entry = create_impact(
             domain_id=self.workspace.domain_id,
             iteration=state.iteration,
@@ -1887,7 +1901,9 @@ def _read_json_object(path: Path, *, label: str) -> dict[str, Any]:
     return raw
 
 
-def _read_impact_history(root: Path) -> tuple[ImpactEntry, ...]:
+def _read_impact_history(
+    root: Path, *, confirmation_required: bool
+) -> tuple[ImpactEntry, ...]:
     path = root / "history.json"
     content = _optional_regular_bytes(path, root=root)
     if content is None:
@@ -1913,6 +1929,16 @@ def _read_impact_history(root: Path) -> tuple[ImpactEntry, ...]:
             raise ContractError("impact history entry differs from the contract") from exc
     if len({item.entry_id for item in entries}) != len(entries):
         raise ContractError("impact history contains duplicate entry IDs")
+    # An accepted entry carries one score when the domain promotes on a single
+    # validation win and two when it requires a confirmation run. ImpactEntry
+    # cannot see the domain's mode, so the reader enforces the pairing here.
+    accepted_scores = 2 if confirmation_required else 1
+    for item in entries:
+        if item.outcome is ImpactOutcome.ACCEPTED and len(item.scores) != accepted_scores:
+            raise ContractError(
+                "accepted impact entry score count differs from the domain's "
+                "confirmation mode"
+            )
     return tuple(entries)
 
 

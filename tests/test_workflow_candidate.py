@@ -583,3 +583,46 @@ def test_changed_candidate_requires_two_wins_and_records_terminal_impact(
         "test-baseline",
         "test-final",
     }
+
+
+@pytest.mark.parametrize(
+    ("confirmation_required", "stored_scores", "refused"),
+    [
+        (True, (0.8,), True),
+        (True, (0.8, 0.7), False),
+        (False, (0.8, 0.7), True),
+        (False, (0.8,), False),
+    ],
+)
+def test_impact_history_accepted_score_count_must_match_confirmation_mode(
+    tmp_path: Path,
+    confirmation_required: bool,
+    stored_scores: tuple[float, ...],
+    refused: bool,
+) -> None:
+    from dataclasses import asdict
+
+    from asme.canonical import ContractError, canonical_bytes
+    from asme.impact import ImpactOutcome, create_impact
+    from asme.workflow import IMPACT_SCHEMA, _read_impact_history
+
+    entry = create_impact(
+        domain_id="domain",
+        iteration=1,
+        outcome=ImpactOutcome.ACCEPTED,
+        active_before="a" * 64,
+        candidate_snapshot="b" * 64,
+        active_after="b" * 64,
+        scores=stored_scores,
+        unified_diff="diff",
+    )
+    (tmp_path / "history.json").write_bytes(
+        canonical_bytes({"schema": IMPACT_SCHEMA, "entries": [asdict(entry)]})
+    )
+
+    if refused:
+        with pytest.raises(ContractError, match="confirmation mode"):
+            _read_impact_history(tmp_path, confirmation_required=confirmation_required)
+    else:
+        history = _read_impact_history(tmp_path, confirmation_required=confirmation_required)
+        assert history[0].scores == stored_scores
