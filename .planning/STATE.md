@@ -77,6 +77,7 @@ None yet.
 | # | Description | Date | Commit | Status | Directory |
 |---|--------------|------|--------|--------|-----------|
 | 260922-i7i | Record 2026-09-22 WikiSkill parity grill decisions (5 ADRs, CONTEXT.md glossary, PAR-01..07 requirements, wiki draft) | 2026-09-22 | fea3886 | — | [260922-i7i-record-2026-09-22-wikiskill-parity-grill](./quick/260922-i7i-record-2026-09-22-wikiskill-parity-grill/) |
+| 260922-lmm | PAR-03 confirmation-run switch: DomainState.confirmation_required, off-mode accept-immediately gate branch, workspace/CLI plumbing | 2026-09-22 | 4fbe427 | Complete | [260922-lmm-par-03-confirmation-run-switch](./quick/260922-lmm-par-03-confirmation-run-switch/) |
 
 ## Deferred Items
 
