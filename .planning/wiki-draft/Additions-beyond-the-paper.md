@@ -10,7 +10,7 @@ What Lifecycle does: adds a study-manifest switch. Runs labelled paper_comparabl
 
 Why: a single run risks promoting a skill that only helped by chance. The switch keeps the paper-comparable path unmodified for parity claims while adding a stricter bar for any promotion meant for real use.
 
-Status: decided 2026-09-22. The gate exists in the engine's state machine with the confirmation path hard-coded; making it a per-study switch is not yet implemented.
+Status: implemented 2026-09-22. `asme init --confirmation off` gives the paper's single-run gate; the default, `required`, keeps two strict wins with the lower score recorded. The setting is sealed in the domain record, and the impact history refuses an accepted entry whose score count does not match the domain's mode. See src/asme/lifecycle.py and src/asme/workflow.py.
 
 ## Transaction journal with digest binding
 

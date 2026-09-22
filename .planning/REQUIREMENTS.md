@@ -120,22 +120,22 @@ evaluation shows that it helps without violating correctness or safety.
 - [ ] **PAR-01**: A contributor can confirm the current study targets method parity
   (paper's four roles, paper's prompts, one domain, no numbers claimed) per ADR-0001,
   with empirical parity deferred until a real end-to-end run.
-- [ ] **PAR-02**: The Inference Agent can run against a bare local model through a
+- [x] **PAR-02**: The Inference Agent can run against a bare local model through a
   direct adapter speaking any OpenAI-compatible endpoint, per ADR-0002, without a paid
   provider.
-- [ ] **PAR-03**: A study manifest can switch the confirmation run off for
+- [x] **PAR-03**: A study manifest can switch the confirmation run off for
   paper_comparable runs and on (two strict wins, score = min(val, confirm)) for
   production promotion, per ADR-0003.
 - [ ] **PAR-04**: The Skill Proposer can run in detective mode (multi-turn ReAct,
   journaled reads, >=4 traces read before proposing) by default, with a single-shot
   ablation flag for testing that default, per ADR-0004.
-- [ ] **PAR-05**: The paper's prompts (Appendix E.1-E.3) are copied verbatim into
+- [x] **PAR-05**: The paper's prompts (Appendix E.1-E.3) are copied verbatim into
   references/paper-prompts/ with CC BY 4.0 attribution, with local additions kept in a
   separate wrapper layer, per ADR-0005.
 - [ ] **PAR-06**: The first study domain is LiveMath-like (LiveMathematicianBench-style
   single-step math items) with tool mode none, iteration cap K=8, and early stop when
   R_best=1.0.
-- [ ] **PAR-07**: A GitHub wiki page titled "Additions beyond the paper" lists every
+- [x] **PAR-07**: A GitHub wiki page titled "Additions beyond the paper" lists every
   Lifecycle deviation or extension from the WikiSkill paper (confirmation-run switch,
   transaction journal, digest binding, attestation field, detective-mode flag, direct
   adapter, seed observations, staging archive), drafted at docs/wiki-draft/. The
