@@ -60,8 +60,10 @@ include references/integration.md
 include references/paper-notes.md
 include references/verification/README.md
 include references/verification/independent-review-protocol.md
+include scripts/build_livemath_cartridge.py
 include scripts/extractors/answer_tag.py
 include scripts/install_claude_skill.py
+include scripts/run_rollout.py
 include scripts/scorers/exact_match.py
 include scripts/scorers/numeric_tolerance.py
 include scripts/stdlib_smoke.py
