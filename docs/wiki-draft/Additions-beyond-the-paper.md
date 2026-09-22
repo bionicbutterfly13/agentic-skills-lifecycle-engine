@@ -1,0 +1,73 @@
+# Additions beyond the paper
+
+Lifecycle implements the WikiSkill method described in Tang et al. (arXiv 2608.27454, CC BY 4.0). This page lists every place Lifecycle deviates from or extends the paper. Each entry states what the paper does, what Lifecycle does, and why the change was made.
+
+## Confirmation-run switch
+
+What the paper does: Algorithm 1 promotes a skill after a single validation run showing a strict improvement.
+
+What Lifecycle does: adds a study-manifest switch. Runs labelled paper_comparable keep the paper's single validation run with a strict comparison, so method parity holds. Production promotion instead requires two strict wins, with the promotion score set to the minimum of the validation and confirmation scores.
+
+Why: a single run risks promoting a skill that only helped by chance. The switch keeps the paper-comparable path unmodified for parity claims while adding a stricter bar for any promotion meant for real use.
+
+Status: decided 2026-09-22, not yet implemented.
+
+## Transaction journal with digest binding
+
+What the paper does: does not specify an append-only record binding each run to the exact skill bytes evaluated.
+
+What Lifecycle does: logs every read, write, and decision to a transaction journal, with each entry bound to a content digest of the skill package in play.
+
+Why: without a digest-bound journal, a later reader cannot confirm which exact bytes produced a given result, which conflicts with the project's reproducibility requirement.
+
+Status: decided 2026-09-22, not yet implemented.
+
+## Wiki Maintainer attestation field
+
+What the paper does: does not require an explicit attestation from the wiki-maintaining role.
+
+What Lifecycle does: adds an attestation field the Wiki Maintainer role must fill when committing a skill change to the wiki.
+
+Why: creates an auditable point of accountability for wiki-side changes, separate from the paper's four-role loop.
+
+Status: decided 2026-09-22, not yet implemented.
+
+## Detective-mode flag (single-shot ablation)
+
+What the paper does: does not ablate the Proposer's reasoning mode.
+
+What Lifecycle does: runs the Proposer in detective mode by default, a multi-turn ReAct loop that reads the wiki and prior traces (at least four traces read before proposing), with every read logged in the transaction journal. A study flag allows running the Proposer single-shot instead, as a local ablation.
+
+Why: the paper never tested whether multi-turn reading helps the Proposer, so its effectiveness is unproven. The ablation flag lets Lifecycle test that assumption instead of taking it on faith.
+
+Status: decided 2026-09-22, not yet implemented.
+
+## Direct local-model adapter
+
+What the paper does: assumes an OpenAI-routed model as the Inference Agent runtime (inherited into this codebase from the prior ASME implementation, not paper-mandated).
+
+What Lifecycle does: adds a direct adapter for a bare local model (tested against Ollama on the development machine, running hermes3 and deepseek-r1) as the first Inference Agent runtime. Host adapters for Hermes, Codex, and Claude Code are planned after the loop is proven on the local adapter.
+
+Why: removes a paid-provider dependency for the first vertical study and keeps host integration explicit and separate from core orchestration, per the project's host-independence constraint.
+
+Status: decided 2026-09-22, not yet implemented.
+
+## Seed observations
+
+What the paper does: does not specify a mechanism for injecting starting observations into a new wiki before any trial has run.
+
+What Lifecycle does: adds seed observations as an explicit input to bootstrap a wiki's initial state.
+
+Why: gives a new study a documented, inspectable starting point instead of an empty or implicitly seeded wiki.
+
+Status: decided 2026-09-22, not yet implemented.
+
+## Staging archive
+
+What the paper does: does not define a holding area between an evaluated candidate and its promotion.
+
+What Lifecycle does: adds a staging archive that holds candidate skills and their evidence records after evaluation and before a promotion decision is finalized.
+
+Why: separates "evaluated" from "promoted" as distinct, auditable states, consistent with the project's requirement that promotion needs an auditable decision record.
+
+Status: decided 2026-09-22, not yet implemented.
