@@ -24,19 +24,24 @@ The adapter never writes to a live skill root and performs no installation.
 from __future__ import annotations
 
 from datetime import datetime, timezone
+import hashlib
 import json
 from typing import Any, Callable, Mapping
 import urllib.error
 import urllib.request
 
-from asme.adapter import AdapterJob
 from asme.contract import (
     CapabilityEvidence,
     CapabilityReport,
     CapturedExecution,
     ContractError,
+    TraceFidelity,
 )
-from asme.evidence import captured_execution
+
+# Adapters may import only asme.contract (governance rule HF-A03), so the job is
+# duck-typed: dispatch reads role_spec, digest, correlation_id, and
+# capability_report_hash from the prepared AdapterJob the core hands over.
+AdapterJob = Any
 
 ADAPTER_ID = "direct"
 ADAPTER_VERSION = "0.1.0"
@@ -185,7 +190,7 @@ class DirectAdapter:
             payload = self._post("/chat/completions", body)
         except DirectAdapterError as exc:
             finished = datetime.now(timezone.utc).isoformat()
-            return captured_execution(
+            return _captured_execution(
                 execution_id=f"execution-{job.correlation_id}",
                 runtime_id=ADAPTER_ID,
                 runtime_version=self._server_version,
@@ -212,7 +217,7 @@ class DirectAdapter:
         if finish_reason and finish_reason != "stop":
             termination = f"truncated: {finish_reason}"
 
-        return captured_execution(
+        return _captured_execution(
             execution_id=f"execution-{job.correlation_id}",
             runtime_id=ADAPTER_ID,
             runtime_version=self._server_version,
@@ -316,3 +321,71 @@ def _snapshot_hash(job: AdapterJob) -> str:
     if not isinstance(schema, Mapping) or not schema.get("snapshot_hash"):
         raise DirectAdapterError("prepared job carries no snapshot hash")
     return str(schema["snapshot_hash"])
+
+
+_FIDELITY_RANK = {
+    TraceFidelity.UNKNOWN: 0,
+    TraceFidelity.FINAL_ONLY: 1,
+    TraceFidelity.OBSERVABLE_TRANSCRIPT: 2,
+    TraceFidelity.PAPER_COMPLETE: 3,
+}
+
+
+def _classify_trace(events: tuple[Mapping[str, Any], ...], returned_output: str) -> TraceFidelity:
+    """Mirror the core trace classifier without importing a non-contract module."""
+
+    kinds = {str(event.get("kind") or event.get("event_type") or "") for event in events}
+    if {"reasoning", "tool_call", "tool_output", "final_answer"}.issubset(kinds):
+        return TraceFidelity.PAPER_COMPLETE
+    if kinds & {"assistant_message", "tool_call", "tool_output"}:
+        return TraceFidelity.OBSERVABLE_TRANSCRIPT
+    if returned_output:
+        return TraceFidelity.FINAL_ONLY
+    return TraceFidelity.UNKNOWN
+
+
+def _captured_execution(
+    *,
+    execution_id: str,
+    runtime_id: str,
+    runtime_version: str,
+    adapter_version: str,
+    job_spec_hash: str,
+    prompt_hash: str,
+    active_snapshot_hash: str,
+    started: str,
+    finished: str,
+    termination: str,
+    events: tuple[Mapping[str, Any], ...],
+    returned_output: str,
+    capability: CapabilityReport,
+) -> CapturedExecution:
+    """Build one CapturedExecution bound to the measured capability report."""
+
+    fidelity = _classify_trace(events, returned_output)
+    if _FIDELITY_RANK[fidelity] > _FIDELITY_RANK[capability.trace_fidelity]:
+        raise ContractError("captured events exceed the measured capability report")
+    return CapturedExecution(
+        execution_id=execution_id,
+        runtime_id=runtime_id,
+        runtime_version=runtime_version,
+        adapter_version=adapter_version,
+        job_spec_hash=job_spec_hash,
+        prompt_hash=prompt_hash,
+        active_snapshot_hash=active_snapshot_hash,
+        started=started,
+        finished=finished,
+        termination=termination,
+        captured_events=tuple(dict(event) for event in events),
+        returned_output=returned_output,
+        returned_output_hash=hashlib.sha256(returned_output.encode("utf-8")).hexdigest(),
+        trace_fidelity=fidelity,
+        isolation_labels={
+            "conversation": capability.conversation_isolation,
+            "filesystem": capability.filesystem_isolation,
+            "tool": capability.tool_isolation,
+            "held_out_answer": capability.held_out_answer_isolation,
+            "wiki": capability.wiki_isolation,
+        },
+        capability_report_hash=capability.digest,
+    )
