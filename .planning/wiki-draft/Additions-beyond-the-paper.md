@@ -10,7 +10,7 @@ What Lifecycle does: adds a study-manifest switch. Runs labelled paper_comparabl
 
 Why: a single run risks promoting a skill that only helped by chance. The switch keeps the paper-comparable path unmodified for parity claims while adding a stricter bar for any promotion meant for real use.
 
-Status: decided 2026-09-22, not yet implemented.
+Status: decided 2026-09-22. The gate exists in the engine's state machine with the confirmation path hard-coded; making it a per-study switch is not yet implemented.
 
 ## Transaction journal with digest binding
 
@@ -20,7 +20,7 @@ What Lifecycle does: logs every read, write, and decision to a transaction journ
 
 Why: without a digest-bound journal, a later reader cannot confirm which exact bytes produced a given result, which conflicts with the project's reproducibility requirement.
 
-Status: decided 2026-09-22, not yet implemented.
+Status: implemented. See src/asme/transaction.py and src/asme/snapshot.py; every operation records intent before mutation and binds reads and writes to content digests.
 
 ## Wiki Maintainer attestation field
 
@@ -30,7 +30,7 @@ What Lifecycle does: adds an attestation field the Wiki Maintainer role must fil
 
 Why: creates an auditable point of accountability for wiki-side changes, separate from the paper's four-role loop.
 
-Status: decided 2026-09-22, not yet implemented.
+Status: implemented. See the attestation validation in src/asme/wiki.py, which requires class coverage and per-pattern evidence bound to the sampled trace IDs.
 
 ## Detective-mode flag (single-shot ablation)
 
@@ -40,7 +40,7 @@ What Lifecycle does: runs the Proposer in detective mode by default, a multi-tur
 
 Why: the paper never tested whether multi-turn reading helps the Proposer, so its effectiveness is unproven. The ablation flag lets Lifecycle test that assumption instead of taking it on faith.
 
-Status: decided 2026-09-22, not yet implemented.
+Status: decided 2026-09-22, not yet implemented. The Proposer is currently single-shot: it receives one bundled context and returns one decision.
 
 ## Direct local-model adapter
 
@@ -50,7 +50,7 @@ What Lifecycle does: adds a direct adapter for a bare local model (tested agains
 
 Why: removes a paid-provider dependency for the first vertical study and keeps host integration explicit and separate from core orchestration, per the project's host-independence constraint.
 
-Status: decided 2026-09-22, not yet implemented.
+Status: implemented 2026-09-22. See adapters/direct, with offline contract tests in tests/test_direct_adapter.py. It reports final_only fidelity and refuses the sandboxed and unseen labels, because it cannot constrain the model server it talks to.
 
 ## Seed observations
 
@@ -60,7 +60,7 @@ What Lifecycle does: adds seed observations as an explicit input to bootstrap a 
 
 Why: gives a new study a documented, inspectable starting point instead of an empty or implicitly seeded wiki.
 
-Status: decided 2026-09-22, not yet implemented.
+Status: implemented. See src/asme/seed.py and the seed transitions in src/asme/lifecycle.py; seeding is optional, transaction-bound, and reversible before the baseline is finalized.
 
 ## Staging archive
 
@@ -70,4 +70,4 @@ What Lifecycle does: adds a staging archive that holds candidate skills and thei
 
 Why: separates "evaluated" from "promoted" as distinct, auditable states, consistent with the project's requirement that promotion needs an auditable decision record.
 
-Status: decided 2026-09-22, not yet implemented.
+Status: implemented. See src/asme/delivery.py and src/asme/package.py; export stages a verified skill archive and never installs into a live runtime skill root.
