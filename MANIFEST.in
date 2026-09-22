@@ -1,6 +1,7 @@
 global-exclude *
 include CHANGELOG.md
 include CITATION.cff
+include CONTEXT.md
 include CONTRIBUTING.md
 include LICENSE
 include MANIFEST.in
@@ -10,6 +11,7 @@ include PURPOSE.md
 include README.md
 include SECURITY.md
 include SKILL.md
+include adapters/direct/__init__.py
 include adapters/hermes_plugin/README.md
 include adapters/hermes_plugin/__init__.py
 include adapters/hermes_plugin/plugin.yaml
@@ -34,6 +36,11 @@ include assets/inference-prompt.txt.tmpl
 include assets/log.md.tmpl
 include assets/pattern.md.tmpl
 include assets/skill-impact.md.tmpl
+include docs/adr/0001-method-parity-target.md
+include docs/adr/0002-local-model-direct-adapter.md
+include docs/adr/0003-confirmation-run-switch.md
+include docs/adr/0004-detective-mode-proposer.md
+include docs/adr/0005-verbatim-paper-prompts.md
 include docs/distribution.md
 include docs/evidence/asme-github-timeline.json
 include docs/evidence/asme-port-verification.json
@@ -109,6 +116,7 @@ include tests/test_clock.py
 include tests/test_contract_adapter.py
 include tests/test_crash_oracle.py
 include tests/test_delivery.py
+include tests/test_direct_adapter.py
 include tests/test_distribution.py
 include tests/test_domain_evaluation_manifest.py
 include tests/test_evalreport.py
