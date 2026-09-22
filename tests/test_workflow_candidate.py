@@ -53,6 +53,248 @@ def _record_phase(
     return workflow.ingest_rollout(phase=phase)
 
 
+def _build_candidate_workspace(tmp_path: Path, *, confirmation_required: bool = True):
+    tasks = tmp_path / "tasks.jsonl"
+    answers = tmp_path / "answers.jsonl"
+    task_rows = [
+        *(
+            {"task_id": f"train-{index}", "input": f"train input {index}"}
+            for index in range(1, 5)
+        ),
+        {"task_id": "validation-1", "input": "validation input"},
+        {"task_id": "test-1", "input": "test input"},
+    ]
+    answer_rows = [
+        *(
+            {
+                "task_id": f"train-{index}",
+                "split": "train",
+                "expected": str(index),
+                "marker": f"marker-train-{index}",
+            }
+            for index in range(1, 5)
+        ),
+        {
+            "task_id": "validation-1",
+            "split": "validation",
+            "expected": "v",
+            "marker": "marker-validation",
+        },
+        {
+            "task_id": "test-1",
+            "split": "test",
+            "expected": "t",
+            "marker": "marker-test",
+        },
+    ]
+    tasks.write_text(
+        "".join(json.dumps(item) + "\n" for item in task_rows), encoding="utf-8"
+    )
+    answers.write_text(
+        "".join(json.dumps(item) + "\n" for item in answer_rows), encoding="utf-8"
+    )
+    prompt = tmp_path / "prompt.txt"
+    extractor = tmp_path / "extractor"
+    scorer = tmp_path / "scorer"
+    prompt.write_text("Solve: {input}\n{active_skills}", encoding="utf-8")
+    extractor.write_text(
+        "#!/usr/bin/env python3\n"
+        "import json,sys\n"
+        "p=json.load(sys.stdin)\n"
+        "sys.exit(2) if p['returned_output']=='MALFORMED' else None\n"
+        "print(json.dumps({'returned_output_hash':p['returned_output_hash'],'prediction':p['returned_output'].strip()}))\n",
+        encoding="utf-8",
+    )
+    scorer.write_text(
+        "#!/usr/bin/env python3\n"
+        "import json,sys\n"
+        "p=json.load(sys.stdin)\n"
+        "print('1' if p['prediction']==p['expected'] else '0')\n",
+        encoding="utf-8",
+    )
+    domain = load_declared_domain(
+        domain_id="candidate-domain",
+        task_file=tasks,
+        answer_file=answers,
+        prompt_file=prompt,
+        extractor_file=extractor,
+        scorer_file=scorer,
+        tool_profile={"mode": "none"},
+    )
+    cartridge = DomainCartridge.from_paths(
+        domain=domain,
+        prompt=prompt,
+        extractor=extractor,
+        scorer=scorer,
+        read_resources={},
+    )
+    workspace = DomainWorkspace(
+        domain_id=domain.domain_id,
+        layout=WorkspaceLayout.under(tmp_path / "workspace"),
+    )
+    workspace.initialize(
+        domain=domain,
+        max_iterations=1,
+        confirmation_required=confirmation_required,
+        cartridge=cartridge,
+    )
+    workspace.apply(operation="skip-seed")
+    workflow = EvolutionWorkflow(workspace)
+    report = CapabilityReport.conservative(
+        runtime_id="test-runtime",
+        runtime_version="1.0.0",
+        adapter_version="1.0.0",
+        provider="openai-codex",
+        model_id="gpt-test",
+        openai_backed=True,
+        captured_events=("final_answer",),
+    )
+    policy = ProviderPolicy(("openai-codex",), ("gpt-test",))
+    return workspace, workflow, report, policy
+
+
+def _drive_to_candidate(workflow, report, policy, workspace):
+    _record_phase(
+        workflow,
+        report,
+        policy,
+        phase="baseline",
+        outputs={"validation-1": "wrong"},
+    )
+    workflow.finalize_baseline()
+    _record_phase(
+        workflow,
+        report,
+        policy,
+        phase="train",
+        outputs={f"train-{index}": str(index) for index in range(1, 5)},
+    )
+    workflow.sample_train()
+    maintainer_input = workspace.engine.target_roots["runs"] / "1/maintainer-input.json"
+    pattern = "\n".join(
+        (
+            "pattern_kind: success",
+            "",
+            "## Description",
+            "Return the expected concise output.",
+            "## Root cause",
+            "The successful trace respected the requested format.",
+            "## Evidence",
+            '- pass train-1: "1"',
+            "## Solution",
+            "Keep the response constrained to the requested output.",
+        )
+    )
+    workflow.apply_wiki(
+        json.dumps(
+            {
+                "create_patterns": {"concise-output": pattern},
+                "update_patterns": {},
+                "update_index": "# Pattern index\n\n- concise-output\n",
+                "append_log": "iteration 1: added concise-output",
+                "attestation": {
+                    "input_hash": sha256_bytes(maintainer_input.read_bytes()),
+                    "class_coverage": {
+                        "success": {"represented_by": ["concise-output"]}
+                    },
+                    "per_pattern": {
+                        "concise-output": {
+                            "pattern_kind": "success",
+                            "failure_traces": {
+                                "not_applicable": "No failing traces were sampled."
+                            },
+                            "success_traces": ["train-1"],
+                            "quoted_commands": [
+                                {
+                                    "trace": "train-1",
+                                    "outcome": "pass",
+                                    "span": "1",
+                                }
+                            ],
+                            "dedup_disposition": "new",
+                            "dedup_reason": "No prior pattern pages exist.",
+                            "root_cause_reason": "The trace demonstrates the format rule.",
+                            "generalizable_because": "The rule applies across concise outputs.",
+                        }
+                    },
+                },
+            }
+        )
+    )
+    context = workflow.proposer_context()
+    proposed = workflow.apply_proposal(
+        json.dumps(
+            {
+                "action": "create",
+                "context_hash": sha256_bytes(context),
+                "reason": "Four successful train traces support a reusable constraint.",
+                "trace_ids": [f"train-{index}" for index in range(1, 5)],
+                "skill_name": "concise-answer",
+                "files": {
+                    "SKILL.md": "# Concise answer\n\nReturn only the requested value.\n"
+                },
+            }
+        )
+    )
+    assert proposed.state is LifecycleState.NEEDS_VAL_RUN
+    return proposed.candidate_snapshot_hash
+
+
+def test_confirmation_off_accepts_a_single_strict_validation_win(
+    tmp_path: Path,
+) -> None:
+    workspace, workflow, report, policy = _build_candidate_workspace(
+        tmp_path, confirmation_required=False
+    )
+    candidate_hash = _drive_to_candidate(workflow, report, policy, workspace)
+
+    _record_phase(
+        workflow,
+        report,
+        policy,
+        phase="val",
+        outputs={"validation-1": "v"},
+    )
+    accepted = workflow.gate()
+    assert accepted.state is LifecycleState.DONE
+    assert accepted.active_snapshot_hash == candidate_hash
+    assert accepted.best_score == 1.0
+    impact = json.loads(
+        (workspace.engine.target_roots["impact"] / "history.json").read_text(
+            encoding="utf-8"
+        )
+    )["entries"]
+    assert impact[0]["outcome"] == "Accepted"
+    assert impact[0]["scores"] == [1.0]
+
+
+def test_confirmation_off_rejects_a_non_strict_validation_result(
+    tmp_path: Path,
+) -> None:
+    workspace, workflow, report, policy = _build_candidate_workspace(
+        tmp_path, confirmation_required=False
+    )
+    candidate_hash = _drive_to_candidate(workflow, report, policy, workspace)
+
+    _record_phase(
+        workflow,
+        report,
+        policy,
+        phase="val",
+        outputs={"validation-1": "wrong"},
+    )
+    rejected = workflow.gate()
+    assert rejected.state is LifecycleState.DONE
+    assert rejected.active_snapshot_hash != candidate_hash
+    impact = json.loads(
+        (workspace.engine.target_roots["impact"] / "history.json").read_text(
+            encoding="utf-8"
+        )
+    )["entries"]
+    assert impact[0]["outcome"] == "Rejected"
+    assert impact[0]["scores"] == [0.0]
+
+
 @pytest.mark.parametrize(
     "route",
     (
@@ -341,3 +583,46 @@ def test_changed_candidate_requires_two_wins_and_records_terminal_impact(
         "test-baseline",
         "test-final",
     }
+
+
+@pytest.mark.parametrize(
+    ("confirmation_required", "stored_scores", "refused"),
+    [
+        (True, (0.8,), True),
+        (True, (0.8, 0.7), False),
+        (False, (0.8, 0.7), True),
+        (False, (0.8,), False),
+    ],
+)
+def test_impact_history_accepted_score_count_must_match_confirmation_mode(
+    tmp_path: Path,
+    confirmation_required: bool,
+    stored_scores: tuple[float, ...],
+    refused: bool,
+) -> None:
+    from dataclasses import asdict
+
+    from asme.canonical import ContractError, canonical_bytes
+    from asme.impact import ImpactOutcome, create_impact
+    from asme.workflow import IMPACT_SCHEMA, _read_impact_history
+
+    entry = create_impact(
+        domain_id="domain",
+        iteration=1,
+        outcome=ImpactOutcome.ACCEPTED,
+        active_before="a" * 64,
+        candidate_snapshot="b" * 64,
+        active_after="b" * 64,
+        scores=stored_scores,
+        unified_diff="diff",
+    )
+    (tmp_path / "history.json").write_bytes(
+        canonical_bytes({"schema": IMPACT_SCHEMA, "entries": [asdict(entry)]})
+    )
+
+    if refused:
+        with pytest.raises(ContractError, match="confirmation mode"):
+            _read_impact_history(tmp_path, confirmation_required=confirmation_required)
+    else:
+        history = _read_impact_history(tmp_path, confirmation_required=confirmation_required)
+        assert history[0].scores == stored_scores

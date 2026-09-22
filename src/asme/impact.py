@@ -34,14 +34,15 @@ class ImpactEntry:
         if self.iteration < 1:
             raise ContractError("impact iteration must be positive")
         expected_scores = {
-            ImpactOutcome.REJECTED: 1,
-            ImpactOutcome.ACCEPTED: 2,
-            ImpactOutcome.REJECTED_AFTER_CONFIRM: 2,
-            ImpactOutcome.NO_ACTION: 0,
-            ImpactOutcome.ABANDONED: 0,
+            ImpactOutcome.REJECTED: (1,),
+            ImpactOutcome.ACCEPTED: (1, 2),
+            ImpactOutcome.REJECTED_AFTER_CONFIRM: (2,),
+            ImpactOutcome.NO_ACTION: (0,),
+            ImpactOutcome.ABANDONED: (0,),
         }[self.outcome]
-        if len(self.scores) != expected_scores:
-            raise ContractError(f"{self.outcome.value} requires {expected_scores} score values")
+        if len(self.scores) not in expected_scores:
+            allowed = " or ".join(str(count) for count in expected_scores)
+            raise ContractError(f"{self.outcome.value} requires {allowed} score values")
         if any(isinstance(score, bool) or not 0.0 <= score <= 1.0 for score in self.scores):
             raise ContractError("impact scores must be within [0,1]")
         candidate_outcome = self.outcome is not ImpactOutcome.NO_ACTION

@@ -113,6 +113,59 @@ def test_confirmation_preserves_both_scores_and_promotes_their_minimum() -> None
     assert accepted.best_score == 0.6
 
 
+def test_confirmation_off_accepts_a_strict_validation_win_immediately() -> None:
+    current = _state(
+        LifecycleState.NEEDS_GATE,
+        iteration=1,
+        max_iterations=1,
+        best_score=0.5,
+        provisional_score=0.7,
+        gate_phase="validation",
+        current_manifest_hash="c" * 64,
+        current_manifest_phase="val",
+        active_snapshot_hash="a" * 64,
+        candidate_snapshot_hash="b" * 64,
+        confirmation_required=False,
+    )
+    accepted = transition(current, "gate")
+    assert accepted.state is LifecycleState.DONE
+    assert accepted.active_snapshot_hash == "b" * 64
+    assert accepted.best_score == 0.7
+    assert accepted.consumed_manifests == (
+        {"manifest_hash": "c" * 64, "by": "gate-validation"},
+    )
+    assert accepted.candidate_snapshot_hash is None
+    assert accepted.provisional_score is None
+    assert accepted.gate_phase is None
+
+
+def test_confirmation_off_rejects_a_non_strict_validation_result() -> None:
+    current = _state(
+        LifecycleState.NEEDS_GATE,
+        iteration=1,
+        max_iterations=1,
+        best_score=0.5,
+        provisional_score=0.5,
+        gate_phase="validation",
+        current_manifest_hash="c" * 64,
+        current_manifest_phase="val",
+        active_snapshot_hash="a" * 64,
+        candidate_snapshot_hash="b" * 64,
+        confirmation_required=False,
+    )
+    rejected = transition(current, "gate")
+    assert rejected.state is LifecycleState.DONE
+    assert rejected.active_snapshot_hash == "a" * 64
+    assert rejected.consumed_manifests == (
+        {"manifest_hash": "c" * 64, "by": "gate-validation-reject"},
+    )
+
+
+def test_confirmation_required_default_is_unaffected_by_the_switch() -> None:
+    default_state = _state(LifecycleState.NEEDS_GATE, best_score=0.0)
+    assert default_state.confirmation_required is True
+
+
 def test_equal_score_rejects_and_never_switches_active_pointer() -> None:
     current = _state(
         LifecycleState.NEEDS_GATE,

@@ -101,6 +101,7 @@ class DomainWorkspace:
         *,
         domain: DeclaredDomain,
         max_iterations: int,
+        confirmation_required: bool = True,
         cartridge: DomainCartridge | None = None,
         crash_at: str | None = None,
     ) -> DomainState:
@@ -118,6 +119,7 @@ class DomainWorkspace:
             domain_id=self.domain_id,
             seal=domain.seal,
             max_iterations=max_iterations,
+            confirmation_required=confirmation_required,
             active_snapshot_hash=empty.snapshot_hash,
         )
         initialized = transition(initial, "init")
@@ -125,13 +127,17 @@ class DomainWorkspace:
             "schema": WORKSPACE_SCHEMA,
             "domain": asdict(domain),
             "max_iterations": max_iterations,
+            "confirmation_required": confirmation_required,
             "empty_snapshot_hash": empty.snapshot_hash,
             "cartridge": cartridge.manifest() if cartridge is not None else None,
         }
         if cartridge is not None:
             cartridge.verify_domain(domain)
         arguments, input_hashes = self._mutation_metadata(
-            arguments={"max_iterations": max_iterations},
+            arguments={
+                "max_iterations": max_iterations,
+                "confirmation_required": confirmation_required,
+            },
             input_hashes={
                 "domain_seal": domain.seal,
                 **({"cartridge": cartridge.digest} if cartridge is not None else {}),
@@ -317,6 +323,8 @@ class DomainWorkspace:
             raise ContractError("recorded domain identity differs from authoritative state")
         if raw.get("max_iterations") != state.max_iterations:
             raise ContractError("recorded domain iteration limit differs from authoritative state")
+        if raw.get("confirmation_required", True) != state.confirmation_required:
+            raise ContractError("recorded domain confirmation switch differs from authoritative state")
         cartridge_manifest = raw.get("cartridge")
         if cartridge_manifest is not None:
             if not isinstance(cartridge_manifest, Mapping):
@@ -562,6 +570,8 @@ def _state_json(state: DomainState) -> dict[str, Any]:
 
 def _state_from_json(raw: Mapping[str, Any]) -> DomainState:
     expected = {field.name for field in fields(DomainState)}
+    if "confirmation_required" not in raw and "confirmation_required" in expected:
+        raw = {**raw, "confirmation_required": True}
     if set(raw) != expected:
         raise ContractError(
             f"domain state fields differ: missing={sorted(expected-set(raw))}, extra={sorted(set(raw)-expected)}"

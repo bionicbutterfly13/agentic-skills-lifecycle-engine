@@ -141,4 +141,5 @@ include tests/test_transaction.py
 include tests/test_wiki.py
 include tests/test_workflow.py
 include tests/test_workflow_candidate.py
+include tests/test_workspace.py
 include tests/test_workspace_hermes_adapter.py
