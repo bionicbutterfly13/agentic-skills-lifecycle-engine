@@ -108,36 +108,14 @@ def _run_dir(harness: TerminalHarness) -> Path:
 
 
 def _drive(harness: TerminalHarness, transport: FakeMaintainerTransport) -> None:
-    """Reproduce scripts/run_maintainer.py's retry loop against a fake transport."""
-
-    from asme.roles import build_role_prompt
+    """Run the shipped retry loop from scripts/run_maintainer.py against a fake transport."""
 
     client = ChatClient(base_url="http://endpoint.invalid/v1", model_id="test-model", transport=transport)
     run_dir = _run_dir(harness)
-    input_path = run_dir / "maintainer-input.json"
-    payload = json.loads(input_path.read_bytes())
-    prompt = build_role_prompt("maintainer", payload)
-    last_error: ContractError | None = None
-    for attempt in range(1, 4):
-        if attempt > 1 and last_error is not None:
-            prompt = (
-                prompt
-                + f"\n\n## Validator error from attempt {attempt - 1}\n\n"
-                + str(last_error)
-                + "\n\nCorrect the output and return the complete corrected JSON object."
-            )
-        response = client.complete([{"role": "user", "content": prompt}])
-        response_text = str(response.get("content") or "")
-        attempt_path = run_dir / f"maintainer-attempt-{attempt}.txt"
-        attempt_path.write_text(response_text, encoding="utf-8")
-        try:
-            harness.workflow.apply_wiki(response_text)
-        except ContractError as exc:
-            last_error = exc
-            continue
-        return
-    assert last_error is not None
-    raise last_error
+    payload = json.loads((run_dir / "maintainer-input.json").read_bytes())
+    run_maintainer.run_maintainer_loop(
+        workflow=harness.workflow, client=client, run_dir=run_dir, payload=payload
+    )
 
 
 def test_first_attempt_valid_completes_in_one_call(tmp_path: Path) -> None:

@@ -61,10 +61,28 @@ def main() -> int:
         run_dir / "maintainer-input.json", root=workspace.engine.target_roots["runs"]
     )
     payload = _load_json(input_path)
+    run_maintainer_loop(workflow=workflow, client=client, run_dir=run_dir, payload=payload)
+    return 0
+
+
+def run_maintainer_loop(
+    *,
+    workflow: EvolutionWorkflow,
+    client: ChatClient,
+    run_dir: Path,
+    payload,
+    max_attempts: int = MAX_ATTEMPTS,
+) -> int:
+    """Drive the Wiki Maintainer until one output validates; return the attempt number.
+
+    Every attempt's raw output is kept as maintainer-attempt-<n>.txt. After a
+    ContractError the validator's message is appended to the prompt for the next
+    attempt. After max_attempts failures the last error is raised.
+    """
 
     prompt = build_role_prompt("maintainer", payload)
     last_error: ContractError | None = None
-    for attempt in range(1, MAX_ATTEMPTS + 1):
+    for attempt in range(1, max_attempts + 1):
         if attempt > 1 and last_error is not None:
             prompt = (
                 prompt
@@ -81,10 +99,10 @@ def main() -> int:
             workflow.apply_wiki(response_text)
         except ContractError as exc:
             last_error = exc
-            print(f"attempt {attempt}/{MAX_ATTEMPTS} failed: {exc}", flush=True)
+            print(f"attempt {attempt}/{max_attempts} failed: {exc}", flush=True)
             continue
-        print(f"attempt {attempt}/{MAX_ATTEMPTS} succeeded", flush=True)
-        return 0
+        print(f"attempt {attempt}/{max_attempts} succeeded", flush=True)
+        return attempt
     assert last_error is not None
     raise last_error
 
