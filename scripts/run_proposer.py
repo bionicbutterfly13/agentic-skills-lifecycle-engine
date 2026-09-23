@@ -221,6 +221,7 @@ def run_detective(
                 failure = _finish_failure(proposal, read_traces=read_traces)
                 if failure is None:
                     _persist_reads_log(run_dir, reads_log)
+                    # Driver-inserted: mechanical binding the model cannot compute.
                     proposal["context_hash"] = sha256_bytes(context_bytes)
                     workflow.apply_proposal(json.dumps(proposal, sort_keys=True))
                     return

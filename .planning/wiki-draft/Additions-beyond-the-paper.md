@@ -40,7 +40,27 @@ What Lifecycle does: runs the Proposer in detective mode by default, a multi-tur
 
 Why: the paper never tested whether multi-turn reading helps the Proposer, so its effectiveness is unproven. The ablation flag lets Lifecycle test that assumption instead of taking it on faith.
 
-Status: decided 2026-09-22, not yet implemented. The Proposer is currently single-shot: it receives one bundled context and returns one decision.
+Status: implemented 2026-09-23. See scripts/run_proposer.py, with offline tests in tests/test_run_proposer.py. Detective mode (`--mode detective`, the default) runs a multi-turn ReAct loop against a virtual, read-only filesystem built only from `workflow.proposer_context()`'s train-only payload (wiki pages, train traces, active skill), exposed through a `read_file` tool call; any path outside that set, including a validation- or test-split id or a path-traversal attempt, is refused and logged rather than served. A `finish()` call is refused once and must be retried if fewer than 4 distinct traces were read, or if the proposal cites a trace_id never actually read via `read_file`; a second insufficient `finish()` raises. Every read attempt, successful or refused, is journaled to a persisted reads log (path, sha256 of the content returned, turn number). `--mode single-shot` is the local ablation flag: one call with the full context payload, no tool loop, no retry on a malformed response.
+
+## Maintainer driver's retry policy
+
+What the paper does: Algorithm 1 does not specify a retry mechanic for a malformed Wiki Maintainer response; a single call is implied.
+
+What Lifecycle does: `scripts/run_maintainer.py` retries a Wiki Maintainer call up to 3 attempts total, re-prompting with the validator's own `ContractError` text appended after the first failure. Every raw attempt is persisted under the run directory regardless of outcome.
+
+Why: bounded resilience against transient model formatting errors (a slightly malformed JSON object, a missing field), not a paper mechanism. The bound is small and fixed so a persistently broken model still fails loudly rather than looping.
+
+Status: implemented 2026-09-23. See `MAX_ATTEMPTS = 3` in scripts/run_maintainer.py, with scenario tests in tests/test_run_maintainer.py covering first-try success, retry-then-success, and exhausted retries.
+
+## Driver-inserted context_hash (Proposer only)
+
+What the paper does: does not specify who computes the binding hash between a Proposer's context and its decision, since the paper has no `context_hash` field at all.
+
+What Lifecycle does: `scripts/run_proposer.py` never asks the model to compute `context_hash`; the model's `finish()` payload (detective mode) or single-shot response is not trusted to supply it correctly, since it cannot reliably reproduce the exact byte-canonical `proposer_context()` representation. The driver computes `sha256` of the exact context bytes itself and inserts (overwrites) `context_hash` mechanically before calling `workflow.apply_proposal`. This applies to the Proposer path only; the Maintainer contract has no `context_hash` field and this mechanic does not apply there.
+
+Why: a model-supplied hash is a claim the model could get wrong or never has enough information to compute exactly; a driver-computed hash is a mechanical binding that cannot drift from the actual input. `asme.proposal.validate_proposal`'s own equality check against the true context hash remains a second, independent gate even if the driver-side overwrite were ever removed.
+
+Status: implemented 2026-09-23. See the `# Driver-inserted: mechanical binding the model cannot compute.` comment in scripts/run_proposer.py's detective-mode `finish` handling, and `test_detective_context_hash_is_always_driver_computed` in tests/test_run_proposer.py.
 
 ## Direct local-model adapter
 
