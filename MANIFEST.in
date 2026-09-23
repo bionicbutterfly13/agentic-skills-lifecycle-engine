@@ -67,6 +67,7 @@ include scripts/build_livemath_cartridge.py
 include scripts/extractors/answer_tag.py
 include scripts/install_claude_skill.py
 include scripts/run_maintainer.py
+include scripts/run_proposer.py
 include scripts/run_rollout.py
 include scripts/scorers/exact_match.py
 include scripts/scorers/numeric_tolerance.py
@@ -139,6 +140,7 @@ include tests/test_release_surface.py
 include tests/test_reset_errors.py
 include tests/test_roles.py
 include tests/test_run_maintainer.py
+include tests/test_run_proposer.py
 include tests/test_seed.py
 include tests/test_skill_assets.py
 include tests/test_skill_install.py
