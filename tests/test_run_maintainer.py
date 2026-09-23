@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import argparse
+import inspect
 import json
 from pathlib import Path
 import sys
@@ -11,9 +13,11 @@ import urllib.request
 import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[0]))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
 from test_terminal_paths import TerminalHarness  # noqa: E402
 
+import run_maintainer  # noqa: E402
 from asme.canonical import ContractError, sha256_bytes  # noqa: E402
 from asme.contract import LifecycleState  # noqa: E402
 from asme.model_client import ChatClient  # noqa: E402
@@ -179,6 +183,23 @@ def test_invalid_then_valid_retries_once(tmp_path: Path) -> None:
         assert str(exc) in attempt_2_prompt
     state = harness.workspace.status()
     assert state.state is not LifecycleState.NEEDS_WIKI
+
+
+def test_api_key_is_read_from_environment_not_a_cli_flag(monkeypatch: pytest.MonkeyPatch) -> None:
+    """The key must come from an env var; no --api-key flag may exist (secret exposure)."""
+
+    # Inspect the source of main()'s parser wiring rather than duplicating
+    # flag names, so this test fails if a --api-key value flag is
+    # reintroduced (leaking into the process list and shell history).
+    source = inspect.getsource(run_maintainer.main)
+    assert "--api-key-env" in source
+    assert "--api-key'" not in source and '--api-key"' not in source
+    assert run_maintainer.DEFAULT_API_KEY_ENV == "LIFECYCLE_MODEL_API_KEY"
+    monkeypatch.setenv("LIFECYCLE_MODEL_API_KEY", "secret-value-should-not-be-logged")
+    import os
+
+    key = os.environ.get(run_maintainer.DEFAULT_API_KEY_ENV)
+    assert key == "secret-value-should-not-be-logged"
 
 
 def test_three_invalid_attempts_raises_and_state_unchanged(tmp_path: Path) -> None:

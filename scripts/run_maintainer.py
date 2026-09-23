@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -30,6 +31,11 @@ from asme.workflow import EvolutionWorkflow
 # Local retry policy, not paper-specified.
 MAX_ATTEMPTS = 3
 
+# Default env var name holding the model endpoint's API key. Never taken as a
+# CLI value: a --api-key flag would leak into the process list and shell
+# history. The key is optional (a local Ollama endpoint needs none).
+DEFAULT_API_KEY_ENV = "LIFECYCLE_MODEL_API_KEY"
+
 
 def main() -> int:
     parser = argparse.ArgumentParser()
@@ -38,14 +44,14 @@ def main() -> int:
     parser.add_argument("--base-url", default="http://127.0.0.1:11434/v1")
     parser.add_argument("--model", required=True)
     parser.add_argument("--provider", default="ollama")
-    parser.add_argument("--api-key", default=None)
+    parser.add_argument("--api-key-env", default=DEFAULT_API_KEY_ENV)
     args = parser.parse_args()
 
     workspace = DomainWorkspace(
         domain_id=args.domain, layout=WorkspaceLayout.under(args.domain_root)
     )
     workflow = EvolutionWorkflow(workspace)
-    key = args.api_key
+    key = os.environ.get(args.api_key_env)
     client = ChatClient(base_url=args.base_url, model_id=args.model, api_key=key)
 
     workflow.sample_train()
