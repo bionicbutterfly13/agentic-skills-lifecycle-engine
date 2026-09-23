@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import argparse
+import inspect
 import json
 from pathlib import Path
 import sys
@@ -11,9 +13,11 @@ import urllib.request
 import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[0]))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
 from test_terminal_paths import TerminalHarness  # noqa: E402
 
+import run_maintainer  # noqa: E402
 from asme.canonical import ContractError, sha256_bytes  # noqa: E402
 from asme.contract import LifecycleState  # noqa: E402
 from asme.model_client import ChatClient  # noqa: E402
@@ -104,36 +108,14 @@ def _run_dir(harness: TerminalHarness) -> Path:
 
 
 def _drive(harness: TerminalHarness, transport: FakeMaintainerTransport) -> None:
-    """Reproduce scripts/run_maintainer.py's retry loop against a fake transport."""
-
-    from asme.roles import build_role_prompt
+    """Run the shipped retry loop from scripts/run_maintainer.py against a fake transport."""
 
     client = ChatClient(base_url="http://endpoint.invalid/v1", model_id="test-model", transport=transport)
     run_dir = _run_dir(harness)
-    input_path = run_dir / "maintainer-input.json"
-    payload = json.loads(input_path.read_bytes())
-    prompt = build_role_prompt("maintainer", payload)
-    last_error: ContractError | None = None
-    for attempt in range(1, 4):
-        if attempt > 1 and last_error is not None:
-            prompt = (
-                prompt
-                + f"\n\n## Validator error from attempt {attempt - 1}\n\n"
-                + str(last_error)
-                + "\n\nCorrect the output and return the complete corrected JSON object."
-            )
-        response = client.complete([{"role": "user", "content": prompt}])
-        response_text = str(response.get("content") or "")
-        attempt_path = run_dir / f"maintainer-attempt-{attempt}.txt"
-        attempt_path.write_text(response_text, encoding="utf-8")
-        try:
-            harness.workflow.apply_wiki(response_text)
-        except ContractError as exc:
-            last_error = exc
-            continue
-        return
-    assert last_error is not None
-    raise last_error
+    payload = json.loads((run_dir / "maintainer-input.json").read_bytes())
+    run_maintainer.run_maintainer_loop(
+        workflow=harness.workflow, client=client, run_dir=run_dir, payload=payload
+    )
 
 
 def test_first_attempt_valid_completes_in_one_call(tmp_path: Path) -> None:
@@ -179,6 +161,23 @@ def test_invalid_then_valid_retries_once(tmp_path: Path) -> None:
         assert str(exc) in attempt_2_prompt
     state = harness.workspace.status()
     assert state.state is not LifecycleState.NEEDS_WIKI
+
+
+def test_api_key_is_read_from_environment_not_a_cli_flag(monkeypatch: pytest.MonkeyPatch) -> None:
+    """The key must come from an env var; no --api-key flag may exist (secret exposure)."""
+
+    # Inspect the source of main()'s parser wiring rather than duplicating
+    # flag names, so this test fails if a --api-key value flag is
+    # reintroduced (leaking into the process list and shell history).
+    source = inspect.getsource(run_maintainer.main)
+    assert "--api-key-env" in source
+    assert "--api-key'" not in source and '--api-key"' not in source
+    assert run_maintainer.DEFAULT_API_KEY_ENV == "LIFECYCLE_MODEL_API_KEY"
+    monkeypatch.setenv("LIFECYCLE_MODEL_API_KEY", "secret-value-should-not-be-logged")
+    import os
+
+    key = os.environ.get(run_maintainer.DEFAULT_API_KEY_ENV)
+    assert key == "secret-value-should-not-be-logged"
 
 
 def test_three_invalid_attempts_raises_and_state_unchanged(tmp_path: Path) -> None:

@@ -3,9 +3,9 @@ gsd_state_version: "1.0"
 current_phase: 1
 current_phase_name: Public Project Contract
 status: planning
-stopped_at: Initial roadmap created; Phase 1 is ready for detailed planning
-last_updated: "2026-09-22T17:15:14.598Z"
-last_activity: 2026-09-04, initialized project research and v1 requirements
+stopped_at: Completed quick task 260923-cki-02 (Skill Proposer driver, PAR-04 closed)
+last_updated: "2026-09-23T14:22:41.000Z"
+last_activity: 2026-09-23, completed PAR-04 Skill Proposer driver (detective + single-shot modes)
 state_head: fea388689165a5c80729ecc9801761e4393472fa
 progress:
   total_phases: 10
@@ -78,6 +78,8 @@ None yet.
 |---|--------------|------|--------|--------|-----------|
 | 260922-i7i | Record 2026-09-22 WikiSkill parity grill decisions (5 ADRs, CONTEXT.md glossary, PAR-01..07 requirements, wiki draft) | 2026-09-22 | fea3886 | — | [260922-i7i-record-2026-09-22-wikiskill-parity-grill](./quick/260922-i7i-record-2026-09-22-wikiskill-parity-grill/) |
 | 260922-lmm | PAR-03 confirmation-run switch: DomainState.confirmation_required, off-mode accept-immediately gate branch, workspace/CLI plumbing | 2026-09-22 | 4fbe427 | Complete | [260922-lmm-par-03-confirmation-run-switch](./quick/260922-lmm-par-03-confirmation-run-switch/) |
+| 260923-cki-01 | Relocated verbatim Appendix E paper prompts to references/paper-prompts/*.txt, built roles.py wrapper layer + model_client.py ChatClient, wired live Maintainer driver (scripts/run_maintainer.py) | 2026-09-23 | f95d71f | Complete | [260923-cki-par-04-wire-maintainer-and-proposer-role](./quick/260923-cki-par-04-wire-maintainer-and-proposer-role/) |
+| 260923-cki-02 | Built the Skill Proposer driver (scripts/run_proposer.py) in detective (default, ReAct loop + read journal + provenance gate) and single-shot (ablation) modes per ADR-0004; closed out PAR-04; moved both drivers' API key onto an env var | 2026-09-23 | 233ba0b | Complete | [260923-cki-par-04-wire-maintainer-and-proposer-role](./quick/260923-cki-par-04-wire-maintainer-and-proposer-role/) |
 
 ## Deferred Items
 
@@ -88,6 +90,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-09-04
-Stopped at: Initial roadmap created; Phase 1 is ready for detailed planning
+Last session: 2026-09-23
+Stopped at: Completed quick task 260923-cki-02 (Skill Proposer driver, PAR-04 closed)
 Resume file: None
