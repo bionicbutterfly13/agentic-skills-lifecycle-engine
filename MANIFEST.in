@@ -132,10 +132,12 @@ include tests/test_evolution_eval.py
 include tests/test_governance_dependencies_gate2.py
 include tests/test_integration_bridge.py
 include tests/test_lifecycle.py
+include tests/test_model_client.py
 include tests/test_observer_bridge.py
 include tests/test_proposal.py
 include tests/test_release_surface.py
 include tests/test_reset_errors.py
+include tests/test_roles.py
 include tests/test_run_maintainer.py
 include tests/test_seed.py
 include tests/test_skill_assets.py
