@@ -194,3 +194,109 @@ def test_three_invalid_attempts_raises_and_state_unchanged(tmp_path: Path) -> No
         ) == invalid
     state = harness.workspace.status()
     assert state.state is LifecycleState.NEEDS_WIKI
+
+
+# ---------------------------------------------------------------------------
+# Quick task 260924-tdp: --header CLI option
+# ---------------------------------------------------------------------------
+
+CLI_HEADER_ARGS = [
+    "--header",
+    "originator: codex_cli_rs",
+    "--header",
+    "version: 0.155.1",
+    "--header",
+    "user-agent: codex_cli_rs/0.155.1 (probe)",
+]
+
+
+def _cli_harness(tmp_path: Path) -> TerminalHarness:
+    """A harness ready for run_maintainer.main(), which calls sample_train() itself."""
+
+    harness = TerminalHarness(tmp_path, case_id="RUN-MAINTAINER-CLI", max_iterations=2)
+    harness.baseline(0.25)
+    train = harness.run_phase("train", 1.0)
+    assert train.valid and train.aggregate_score == 1.0
+    return harness
+
+
+def _cli_argv(harness: TerminalHarness, tmp_path: Path, *extra: str) -> list[str]:
+    return [
+        "run_maintainer.py",
+        "--domain",
+        harness.workspace.domain_id,
+        "--domain-root",
+        str(tmp_path / "workspace"),
+        "--model",
+        "test-model",
+        *extra,
+    ]
+
+
+def _record_loop(monkeypatch: pytest.MonkeyPatch) -> list[ChatClient]:
+    captured: list[ChatClient] = []
+
+    def recorder(**kwargs: Any) -> int:
+        captured.append(kwargs["client"])
+        return 1
+
+    monkeypatch.setattr(run_maintainer, "run_maintainer_loop", recorder)
+    return captured
+
+
+def test_cli_header_reaches_the_chat_client(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.delenv("LIFECYCLE_MODEL_API_KEY", raising=False)
+    harness = _cli_harness(tmp_path)
+    captured = _record_loop(monkeypatch)
+    monkeypatch.setattr(sys, "argv", _cli_argv(harness, tmp_path, *CLI_HEADER_ARGS))
+
+    assert run_maintainer.main() == 0
+
+    (client,) = captured
+    headers = {name.lower(): value for name, value in client._headers().items()}
+    assert headers["originator"] == "codex_cli_rs"
+    assert headers["version"] == "0.155.1"
+    assert headers["user-agent"] == "codex_cli_rs/0.155.1 (probe)"
+    assert "authorization" not in headers
+
+
+def test_cli_without_header_keeps_default_client_headers(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.delenv("LIFECYCLE_MODEL_API_KEY", raising=False)
+    harness = _cli_harness(tmp_path)
+    captured = _record_loop(monkeypatch)
+    monkeypatch.setattr(sys, "argv", _cli_argv(harness, tmp_path))
+
+    assert run_maintainer.main() == 0
+
+    (client,) = captured
+    assert client._headers() == {"Content-Type": "application/json"}
+
+
+def test_cli_refuses_authorization_header_without_echoing_value(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    monkeypatch.delenv("LIFECYCLE_MODEL_API_KEY", raising=False)
+    harness = _cli_harness(tmp_path)
+    captured = _record_loop(monkeypatch)
+    # Assembled at runtime so this file's bytes do not trip the package
+    # secret scanner (asme.package._SECRET_PATTERNS).
+    sentinel = "sk-" + "test-should-not-echo"
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        _cli_argv(harness, tmp_path, "--header", f"Authorization: Bearer {sentinel}"),
+    )
+
+    with pytest.raises(SystemExit) as exited:
+        run_maintainer.main()
+
+    assert exited.value.code == 2
+    stderr = capsys.readouterr().err
+    assert "usage:" in stderr
+    assert "authorization" in stderr.lower()
+    assert sentinel not in stderr
+    assert captured == []
