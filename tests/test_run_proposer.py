@@ -444,3 +444,98 @@ def test_detective_max_turns_reached_raises(tmp_path: Path) -> None:
     assert harness.workspace.status().state is LifecycleState.NEEDS_PROPOSAL
     reads_log = json.loads((run_dir / "proposer-reads-log.json").read_text(encoding="utf-8"))
     assert len(reads_log) == 3
+
+
+# ---------------------------------------------------------------------------
+# Quick task 260924-tdp: --header CLI option
+# ---------------------------------------------------------------------------
+
+CLI_HEADER_ARGS = [
+    "--header",
+    "originator: codex_cli_rs",
+    "--header",
+    "version: 0.155.1",
+    "--header",
+    "user-agent: codex_cli_rs/0.155.1 (probe)",
+]
+
+
+def _cli_argv(tmp_path: Path, *extra: str) -> list[str]:
+    return [
+        "run_proposer.py",
+        "--domain",
+        "terminal-run-proposer",
+        "--domain-root",
+        str(tmp_path / "workspace"),
+        "--model",
+        "test-model",
+        *extra,
+    ]
+
+
+def _record_detective(monkeypatch: pytest.MonkeyPatch) -> list[ChatClient]:
+    captured: list[ChatClient] = []
+
+    def recorder(workflow: Any, client: ChatClient, run_dir: Path, *, max_turns: int) -> None:
+        captured.append(client)
+
+    monkeypatch.setattr(run_proposer, "run_detective", recorder)
+    return captured
+
+
+def test_cli_header_reaches_the_chat_client(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.delenv("LIFECYCLE_MODEL_API_KEY", raising=False)
+    _harness_at_needs_proposal(tmp_path)
+    captured = _record_detective(monkeypatch)
+    monkeypatch.setattr(sys, "argv", _cli_argv(tmp_path, *CLI_HEADER_ARGS))
+
+    assert run_proposer.main() == 0
+
+    (client,) = captured
+    headers = {name.lower(): value for name, value in client._headers().items()}
+    assert headers["originator"] == "codex_cli_rs"
+    assert headers["version"] == "0.155.1"
+    assert headers["user-agent"] == "codex_cli_rs/0.155.1 (probe)"
+    assert "authorization" not in headers
+
+
+def test_cli_without_header_keeps_default_client_headers(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.delenv("LIFECYCLE_MODEL_API_KEY", raising=False)
+    _harness_at_needs_proposal(tmp_path)
+    captured = _record_detective(monkeypatch)
+    monkeypatch.setattr(sys, "argv", _cli_argv(tmp_path))
+
+    assert run_proposer.main() == 0
+
+    (client,) = captured
+    assert client._headers() == {"Content-Type": "application/json"}
+
+
+def test_cli_refuses_authorization_header_without_echoing_value(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    monkeypatch.delenv("LIFECYCLE_MODEL_API_KEY", raising=False)
+    _harness_at_needs_proposal(tmp_path)
+    captured = _record_detective(monkeypatch)
+    # Assembled at runtime so this file's bytes do not trip the package
+    # secret scanner (asme.package._SECRET_PATTERNS).
+    sentinel = "sk-" + "test-should-not-echo"
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        _cli_argv(tmp_path, "--header", f"Authorization: Bearer {sentinel}"),
+    )
+
+    with pytest.raises(SystemExit) as exited:
+        run_proposer.main()
+
+    assert exited.value.code == 2
+    stderr = capsys.readouterr().err
+    assert "usage:" in stderr
+    assert "authorization" in stderr.lower()
+    assert sentinel not in stderr
+    assert captured == []

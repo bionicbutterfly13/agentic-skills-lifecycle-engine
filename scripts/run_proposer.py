@@ -4,6 +4,8 @@
 Usage:
     python scripts/run_proposer.py --domain <id> --domain-root <path> \
         --model qwen3.5:9b --base-url http://127.0.0.1:11434/v1 --mode detective
+    python scripts/run_proposer.py --domain <id> --domain-root <path> \
+        --model <model> --base-url <url> --header "NAME: VALUE" --header "NAME: VALUE"
 
 Two modes exist, per ADR-0004:
 
@@ -32,7 +34,7 @@ from typing import Any, Mapping
 
 from asme.canonical import ContractError, sha256_bytes
 from asme.roles import build_role_prompt
-from asme.model_client import ChatClient
+from asme.model_client import ChatClient, ModelClientError, parse_header_specs
 from asme.workspace import DomainWorkspace, WorkspaceLayout
 from asme.workflow import EvolutionWorkflow
 
@@ -112,16 +114,32 @@ def build_arg_parser() -> argparse.ArgumentParser:
         "--mode", choices=("detective", "single-shot"), default="detective"
     )
     parser.add_argument("--max-turns", type=int, default=DEFAULT_MAX_TURNS)
+    parser.add_argument(
+        "--header",
+        action="append",
+        default=None,
+        metavar="NAME:VALUE",
+        help=(
+            "Extra HTTP header sent with every model request; may be repeated. "
+            "Values are visible in the process list and shell history, so never "
+            "pass secrets. Authorization is refused: the key comes only from "
+            "--api-key-env."
+        ),
+    )
     return parser
 
 
-def build_workspace_and_client(args: argparse.Namespace) -> tuple[DomainWorkspace, EvolutionWorkflow, ChatClient]:
+def build_workspace_and_client(
+    args: argparse.Namespace, *, extra_headers: Mapping[str, str] | None = None
+) -> tuple[DomainWorkspace, EvolutionWorkflow, ChatClient]:
     workspace = DomainWorkspace(
         domain_id=args.domain, layout=WorkspaceLayout.under(args.domain_root)
     )
     workflow = EvolutionWorkflow(workspace)
     key = os.environ.get(args.api_key_env)
-    client = ChatClient(base_url=args.base_url, model_id=args.model, api_key=key)
+    client = ChatClient(
+        base_url=args.base_url, model_id=args.model, api_key=key, extra_headers=extra_headers
+    )
     return workspace, workflow, client
 
 
@@ -360,8 +378,15 @@ def _build_virtual_filesystem(context_payload: Mapping[str, Any]) -> dict[str, b
 
 
 def main() -> int:
-    args = build_arg_parser().parse_args()
-    workspace, workflow, client = build_workspace_and_client(args)
+    parser = build_arg_parser()
+    args = parser.parse_args()
+    # Parsed before any workspace access; refusal exits with argparse status 2.
+    # Header values are never printed or logged.
+    try:
+        extra_headers = parse_header_specs(args.header)
+    except ModelClientError as exc:
+        parser.error(str(exc))
+    workspace, workflow, client = build_workspace_and_client(args, extra_headers=extra_headers)
     run_dir = run_dir_for(workspace)
     if args.mode == "single-shot":
         run_single_shot(workflow, client, run_dir)

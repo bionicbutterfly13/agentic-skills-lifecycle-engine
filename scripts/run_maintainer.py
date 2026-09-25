@@ -4,6 +4,8 @@
 Usage:
     python scripts/run_maintainer.py --domain <id> --domain-root <path> \
         --model qwen3.5:9b --base-url http://127.0.0.1:11434/v1
+    python scripts/run_maintainer.py --domain <id> --domain-root <path> \
+        --model <model> --base-url <url> --header "NAME: VALUE" --header "NAME: VALUE"
 
 Flow: workflow.sample_train() has already persisted the maintainer-input
 payload for the current iteration. This script reads that payload back,
@@ -24,7 +26,7 @@ from pathlib import Path
 
 from asme.canonical import ContractError, require_regular_file
 from asme.roles import build_role_prompt
-from asme.model_client import ChatClient
+from asme.model_client import ChatClient, ModelClientError, parse_header_specs
 from asme.workspace import DomainWorkspace, WorkspaceLayout
 from asme.workflow import EvolutionWorkflow
 
@@ -45,14 +47,34 @@ def main() -> int:
     parser.add_argument("--model", required=True)
     parser.add_argument("--provider", default="ollama")
     parser.add_argument("--api-key-env", default=DEFAULT_API_KEY_ENV)
+    parser.add_argument(
+        "--header",
+        action="append",
+        default=None,
+        metavar="NAME:VALUE",
+        help=(
+            "Extra HTTP header sent with every model request; may be repeated. "
+            "Values are visible in the process list and shell history, so never "
+            "pass secrets. Authorization is refused: the key comes only from "
+            "--api-key-env."
+        ),
+    )
     args = parser.parse_args()
+    # Parsed before any workspace access; refusal exits with argparse status 2.
+    # Header values are never printed or logged.
+    try:
+        extra_headers = parse_header_specs(args.header)
+    except ModelClientError as exc:
+        parser.error(str(exc))
 
     workspace = DomainWorkspace(
         domain_id=args.domain, layout=WorkspaceLayout.under(args.domain_root)
     )
     workflow = EvolutionWorkflow(workspace)
     key = os.environ.get(args.api_key_env)
-    client = ChatClient(base_url=args.base_url, model_id=args.model, api_key=key)
+    client = ChatClient(
+        base_url=args.base_url, model_id=args.model, api_key=key, extra_headers=extra_headers
+    )
 
     workflow.sample_train()
     state = workspace.status()
